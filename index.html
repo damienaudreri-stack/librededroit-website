@@ -17,6 +17,20 @@
       This page requires JavaScript to display.
     </div>
   </noscript>
+  <script>
+    window.claude = {
+      complete: async function(prompt) {
+        const res = await fetch('/.netlify/functions/claude-search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: prompt })
+        });
+        if (!res.ok) throw new Error('Claude API error');
+        const data = await res.json();
+        return data.result;
+      }
+    };
+  </script>
 </head>
 <body>
   <div id="__bundler_thumbnail">
