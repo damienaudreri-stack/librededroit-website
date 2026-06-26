@@ -17,12 +17,6 @@
       This page requires JavaScript to display.
     </div>
   </noscript>
-  <style>
-    @media (max-width: 860px) {
-      .ld-hero-img { order: -1 !important; }
-      #ld-deroule-section .ld-sensi-grid > div:first-child { position: static !important; }
-    }
-  </style>
   <script>
     window.claude = {
       complete: async function(prompt) {
@@ -36,6 +30,26 @@
         return data.result;
       }
     };
+
+    (function() {
+      var css = '@media (max-width: 860px) {' +
+        '.ld-hero-img { order: -1 !important; }' +
+        '#ld-deroule-section .ld-sensi-grid > div:first-child { position: static !important; }' +
+      '}';
+
+      function injectCSS() {
+        if (document.head && !document.getElementById('ld-mobile-fixes')) {
+          var s = document.createElement('style');
+          s.id = 'ld-mobile-fixes';
+          s.textContent = css;
+          document.head.appendChild(s);
+        }
+      }
+
+      injectCSS();
+      var obs = new MutationObserver(injectCSS);
+      obs.observe(document, { childList: true });
+    })();
   </script>
 </head>
 <body>
