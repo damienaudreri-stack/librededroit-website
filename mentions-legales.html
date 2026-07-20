@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mentions légales — LibredeDroit</title>
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Heebo:400,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine: #00008B;
+      --creme: #FCFAF5;
+      --dore: #C99A3F;
+      --terracotta: #C4602F;
+      --texte: #2A2C28;
+      --gris: #5C5F58;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--creme);
+      color: var(--texte);
+      font-family: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+    .bandeau { background: var(--marine); color: var(--creme); padding: 28px 24px; text-align: center; }
+    .bandeau .marque { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 700; letter-spacing: .5px; }
+    .bandeau .fil { width: 54px; height: 3px; background: var(--dore); margin: 12px auto 0; border-radius: 2px; }
+    main { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-family: 'Lora', Georgia, serif; font-size: 32px; color: var(--marine); margin-bottom: 6px; }
+    h1 + .maj { color: var(--gris); font-size: 15px; margin-bottom: 40px; display: block; }
+    h2 {
+      font-family: 'Lora', Georgia, serif; font-size: 22px; color: var(--marine);
+      margin: 40px 0 6px; padding-bottom: 8px; position: relative;
+    }
+    h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 3px; background: var(--dore); border-radius: 2px; }
+    p { margin: 12px 0; }
+    ul { margin: 12px 0 12px 22px; list-style: none; }
+    li { margin: 6px 0; }
+    a { color: var(--marine); text-decoration: underline; text-underline-offset: 2px; }
+    strong { font-weight: 700; }
+    .placeholder { background: #FBECD6; color: #7A5410; padding: 1px 7px; border-radius: 4px; font-weight: 700; white-space: nowrap; }
+    .retour { display: inline-block; margin-top: 40px; font-weight: 700; }
+    footer { text-align: center; color: var(--gris); font-size: 14px; padding: 30px 24px 50px; border-top: 1px solid #E7E2D6; }
+    footer a { color: var(--gris); }
+  </style>
+</head>
+<body>
+  <div class="bandeau">
+    <div class="marque">LibredeDroit</div>
+    <div class="fil"></div>
+  </div>
+
+  <main>
+    <h1>Mentions légales</h1>
+    <span class="maj">Dernière mise à jour : <span class="placeholder">〔date de mise en ligne〕</span></span>
+
+    <h2>Éditeur du site</h2>
+    <p>Le présent site est édité par :</p>
+    <ul>
+      <li><strong>Dénomination :</strong> <span class="placeholder">〔nom exact de l'association〕</span>, association régie par la loi du 1<sup>er</sup> juillet 1901</li>
+      <li><strong>Siège social :</strong> <span class="placeholder">〔adresse du siège social〕</span></li>
+      <li><strong>Numéro RNA :</strong> <span class="placeholder">〔W + 9 chiffres〕</span></li>
+      <li><strong>Numéro SIRET :</strong> <span class="placeholder">〔SIRET, ou « non applicable »〕</span></li>
+      <li><strong>Adresse électronique :</strong> <a href="mailto:contact@librededroit.co">contact@librededroit.co</a></li>
+    </ul>
+
+    <h2>Directeur de la publication</h2>
+    <p><span class="placeholder">〔prénom et nom du président〕</span>, en qualité de président de l'association.</p>
+
+    <h2>Hébergement</h2>
+    <p>Le site est hébergé par :</p>
+    <ul>
+      <li><strong>Société :</strong> Netlify, Inc.</li>
+      <li><strong>Adresse :</strong> <span class="placeholder">〔adresse de Netlify à confirmer, San Francisco, Californie, États-Unis〕</span></li>
+      <li><strong>Site :</strong> <a href="https://www.netlify.com" target="_blank" rel="noopener">www.netlify.com</a></li>
+    </ul>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>L'ensemble des contenus du site (textes, articles, logo, éléments graphiques) est protégé par le droit de la propriété intellectuelle et demeure la propriété de l'association ou de ses partenaires. Toute reproduction ou réutilisation, sans autorisation écrite préalable, est interdite, sous réserve des exceptions prévues par la loi. Les conditions d'utilisation détaillées figurent dans les <a href="cgu.html">conditions générales d'utilisation</a>.</p>
+
+    <h2>Données personnelles</h2>
+    <p>Le traitement des données collectées via le site est décrit dans la <a href="politique-de-confidentialite.html">politique de confidentialité</a>, conformément au Règlement général sur la protection des données (RGPD). Vous y disposez notamment d'un droit d'accès, de rectification et d'effacement de vos données.</p>
+
+    <h2>Contact</h2>
+    <p>Pour toute question relative au site ou à son contenu : <a href="mailto:contact@librededroit.co">contact@librededroit.co</a>.</p>
+
+    <a class="retour" href="/">← Retour à l'accueil</a>
+  </main>
+
+  <footer>
+    © <span class="placeholder">〔année〕</span> LibredeDroit · Association loi 1901 ·
+    <a href="cgu.html">Conditions générales d'utilisation</a> ·
+    <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
+  </footer>
+</body>
+</html>

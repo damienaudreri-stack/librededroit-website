@@ -50,6 +50,113 @@
       var obs = new MutationObserver(injectCSS);
       obs.observe(document, { childList: true });
     })();
+
+    // Branchement des formulaires (aide, contact, sensibilisation) sur la
+    // fonction d'envoi. Le bundle affiche déjà un message de confirmation mais
+    // n'envoyait rien : on écoute en phase de capture, donc avant lui.
+    (function() {
+      var MARQUEURS = [
+        { nom: 'sensibilisation', placeholder: 'Structure / établissement' },
+        { nom: 'aide', placeholder: 'Prénom ou pseudo' },
+        { nom: 'contact', placeholder: 'Votre nom' }
+      ];
+
+      function identifier(form) {
+        for (var i = 0; i < MARQUEURS.length; i++) {
+          if (form.querySelector('[placeholder="' + MARQUEURS[i].placeholder + '"]')) {
+            return MARQUEURS[i].nom;
+          }
+        }
+        return null;
+      }
+
+      function libelle(champ) {
+        if (champ.placeholder) return champ.placeholder;
+        if (champ.tagName === 'SELECT' && champ.options.length) return champ.options[0].text;
+        return 'Champ';
+      }
+
+      function preparer(form) {
+        if (form.hasAttribute('data-ld-pret')) return;
+        form.setAttribute('data-ld-pret', '1');
+
+        // Le placeholder invite à laisser un téléphone, mais type="email" le
+        // refusait : on rend le champ permissif.
+        var contact_victime = form.querySelector('input[type="email"][placeholder^="Email ou téléphone"]');
+        if (contact_victime) contact_victime.type = 'text';
+
+        // Champ invisible : seuls les robots le remplissent.
+        var piege = document.createElement('input');
+        piege.type = 'text';
+        piege.name = 'ld-site-web';
+        piege.tabIndex = -1;
+        piege.autocomplete = 'off';
+        piege.setAttribute('aria-hidden', 'true');
+        piege.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0';
+        form.appendChild(piege);
+      }
+
+      function erreur(form) {
+        var hote = form.parentNode;
+        if (!hote || hote.querySelector('.ld-erreur-envoi')) return;
+        var bloc = document.createElement('div');
+        bloc.className = 'ld-erreur-envoi';
+        bloc.setAttribute('role', 'alert');
+        bloc.style.cssText = 'margin-top:14px;padding:14px 16px;border-radius:10px;background:#C4602F;color:#FCFAF5;font:15px/1.5 -apple-system,BlinkMacSystemFont,sans-serif';
+        bloc.innerHTML = 'Votre message n\'a pas pu être envoyé. Écrivez-nous directement à ' +
+          '<a href="mailto:contact@librededroit.co" style="color:#FCFAF5;font-weight:700">contact@librededroit.co</a>, ' +
+          'nous vous répondrons.';
+        hote.appendChild(bloc);
+      }
+
+      function envoyer(form, nom) {
+        var champs = [];
+        var piege = '';
+        var elements = form.querySelectorAll('input, select, textarea');
+
+        for (var i = 0; i < elements.length; i++) {
+          var el = elements[i];
+          if (el.name === 'ld-site-web') { piege = el.value; continue; }
+          if (el.type === 'submit' || el.type === 'button') continue;
+          var valeur = (el.value || '').trim();
+          // Les selects non touchés renvoient leur libellé d'invite.
+          if (el.tagName === 'SELECT' && el.selectedIndex <= 0) continue;
+          if (!valeur) continue;
+          champs.push({ label: libelle(el), valeur: valeur });
+        }
+
+        if (!champs.length) return;
+
+        fetch('/.netlify/functions/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ formulaire: nom, champs: champs, piege: piege })
+        }).then(function(res) {
+          if (!res.ok) erreur(form);
+        }).catch(function() {
+          erreur(form);
+        });
+      }
+
+      function preparerTout() {
+        var forms = document.querySelectorAll('form');
+        for (var i = 0; i < forms.length; i++) {
+          if (identifier(forms[i])) preparer(forms[i]);
+        }
+      }
+
+      document.addEventListener('submit', function(e) {
+        var form = e.target;
+        if (!form || form.tagName !== 'FORM') return;
+        var nom = identifier(form);
+        if (!nom) return;
+        preparer(form);
+        envoyer(form, nom);
+      }, true);
+
+      preparerTout();
+      new MutationObserver(preparerTout).observe(document, { childList: true, subtree: true });
+    })();
   </script>
 </head>
 <body>
