@@ -1,0 +1,130 @@
+    <section class="hero">
+      <div class="wrap">
+        <span class="kicker">Vous n'êtes pas seul·e</span>
+        <h1>Quoi qu'il vous soit arrivé, vous avez le droit d'être écouté·e.</h1>
+        <p class="intro">Nous accompagnons toute personne victime de violences sexuelles, conjugales, et/ou intrafamiliales, sans distinction.</p>
+        <div class="hero-cta">
+          <a class="btn btn-ghost btn-lg" href="ressources.html">S'informer sur mes droits →</a>
+          <a class="btn btn-primary btn-lg" href="#ld-contact-confidentiel">Demander de l'aide →</a>
+          <a class="btn btn-urgence btn-lg" href="tel:3919">Urgence · 3919</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section marine" id="ld-contact-confidentiel">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker kicker-clair">Formulaire confidentiel</span>
+          <h2 class="titre" data-type="Nous écrire, en confiance">Nous écrire, en confiance</h2>
+          <p class="lead">Ce message arrive directement à notre équipe d'accompagnement. Vous choisissez ce que vous partagez, un prénom suffit.<br>Nous ne jugeons pas, nous ne décidons rien à votre place.</p>
+        </div>
+        <div class="form-card form-panel">
+          <div class="confid-note">
+            <span aria-hidden="true">🔒</span>
+            <span>Vos informations restent strictement confidentielles. Pensez à utiliser un appareil et une adresse auxquels vous seul·e avez accès.</span>
+          </div>
+          <form class="js-contact-form" id="form-aide" data-formulaire="aide" data-succes="aide-succes" novalidate>
+            <div class="honeypot" aria-hidden="true">
+              <label for="aide-site">Ne pas remplir ce champ</label>
+              <input type="text" id="aide-site" name="site" class="honeypot-field" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="aide-prenom">Prénom ou pseudo</label>
+              <input type="text" id="aide-prenom" data-label="Prénom ou pseudo" placeholder="Prénom ou pseudo">
+            </div>
+            <div class="field">
+              <label for="aide-contact">Email ou téléphone pour vous répondre</label>
+              <input type="text" id="aide-contact" data-label="Email ou téléphone" placeholder="Email ou téléphone pour vous répondre">
+            </div>
+            <div class="field">
+              <label for="aide-recontact">Comment préférez-vous être recontacté·e ?</label>
+              <select id="aide-recontact" data-label="Mode de recontact préféré">
+                <option value="" disabled selected>Comment préférez-vous être recontacté·e ?</option>
+                <option>Par email</option>
+                <option>Par téléphone</option>
+                <option>Par SMS discret</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="aide-besoin">De quelle aide avez-vous besoin ?</label>
+              <select id="aide-besoin" data-label="Aide souhaitée">
+                <option value="" disabled selected>De quelle aide avez-vous besoin ?</option>
+                <option>Aide juridique</option>
+                <option>Aide psychologique</option>
+                <option>Les deux</option>
+                <option>Je ne sais pas, mais j'ai besoin d'aide</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="aide-message">Votre message</label>
+              <textarea id="aide-message" data-label="Message" placeholder="Vous pouvez écrire ce que vous voulez."></textarea>
+            </div>
+            <button type="submit" class="btn btn-clair btn-lg">Envoyer en confidentialité</button>
+            <p class="form-status" role="alert" aria-live="polite"></p>
+          </form>
+          <div class="form-success" id="aide-succes" role="status" hidden>
+            <strong>Message reçu. ✓</strong><br>
+            Merci pour votre confiance. Une personne de l'équipe vous répond dès que possible, avec douceur et discrétion. Si vous êtes en danger immédiat, composez le 17.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Un accompagnement direct</span>
+          <h2 class="titre">L'association vous accompagne directement, à chaque étape.</h2>
+          <p class="lead">Au-delà de l'écoute, nous mettons à votre disposition nos avocat·es et nos psychologues spécialisé·es dans les violences sexistes et sexuelles. Ils et elles suivent personnellement chaque personne que nous accompagnons — du premier échange jusqu'au bout de vos démarches.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card"><h3><span aria-hidden="true">⚖️</span> Nos avocat·es spécialisé·es</h3><p>Comprendre vos droits, déposer plainte, être défendu·e. Un accompagnement juridique clair, par des juristes et des avocats spécialisés.</p></div>
+          <div class="card peche"><h3><span aria-hidden="true">🫂</span> Nos psychologues spécialisé·es</h3><p>Un suivi adapté au psychotraumatisme grâce à des psychologues spécialisé·es, pour avancer dans votre reconstruction.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lavande">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="kicker">Après notre accompagnement</span>
+          <h2 class="titre">À leurs côtés.</h2>
+          <p class="lead">Ce que nous avons pu mettre en place, à leurs côtés. Prénoms modifiés, témoignages partagés avec leur accord.</p>
+        </div>
+      </div>
+      <div class="marquee" aria-label="Témoignages de personnes accompagnées">
+        <div class="marquee-track left">
+          {{temoignages_accomp}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="kicker">Premières démarches</span>
+          <h2 class="titre">Vos questions, nos réponses.</h2>
+          <p class="lead">Quelques réponses simples des questions fréquemment posées.</p>
+          <p class="mt-14"><a class="btn btn-ghost" href="ressources.html">S'informer sur mes droits →</a></p>
+        </div>
+        <div class="faq">
+          <details><summary>Dois-je porter plainte tout de suite ?</summary><p>Non. Rien ne vous y oblige et il n'y a pas de bonne ou de mauvaise temporalité. Vous pouvez d'abord en parler, vous informer sur vos droits, et décider plus tard. Nous vous accompagnons quel que soit votre choix.</p></details>
+          <details><summary>Puis-je être accompagné·e même sans plainte ?</summary><p>Oui, absolument. Notre soutien est indépendant de toute procédure judiciaire. Beaucoup de personnes que nous accompagnons n'ont pas (ou pas encore) déposé plainte.</p></details>
+          <details><summary>Est-ce vraiment confidentiel ?</summary><p>Oui. Ce que vous nous confiez reste entre vous et l'équipe d'accompagnement. Nous ne contactons personne et n'entreprenons aucune démarche sans votre accord explicite.</p></details>
+          <details><summary>Faut-il des preuves pour être prise au sérieux ?</summary><p>Non. Vous n'avez rien à prouver pour être écouté·e et soutenu·e. Si vous le souhaitez, nous pouvons vous expliquer comment conserver d'éventuels éléments, à votre rythme.</p></details>
+          <details><summary>Combien ça coûte ?</summary><p>Rien. L'accompagnement, l'écoute et l'information juridique que nous proposons sont entièrement gratuits.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sombre">
+      <div class="wrap">
+        <div class="section-head center">
+          <h2 class="titre">Numéros d'urgence</h2>
+          <p class="lead">En cas de danger, ces lignes sont joignables immédiatement.</p>
+        </div>
+        <div class="urgence-grid">
+          {{urgences}}
+        </div>
+      </div>
+    </section>

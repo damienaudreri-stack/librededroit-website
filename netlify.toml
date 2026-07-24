@@ -1,2 +1,15 @@
 [build]
   functions = "netlify/functions"
+
+# En-tetes de securite appliques a toutes les pages.
+# CSP stricte sans 'unsafe-inline' : tout le CSS et le JS sont dans des
+# fichiers externes self-hosted, aucune dependance ni CDN externe.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains"

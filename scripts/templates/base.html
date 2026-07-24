@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{canonical}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="{{ogtype}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="LibredeDroit">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="theme-color" content="#00008B">
+  <link rel="preload" href="{{root}}fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{root}}fonts/spectral-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{root}}assets/site.css?v={{v_css}}">
+</head>
+<body>
+{{nav}}
+  <main id="contenu">
+{{content}}
+  </main>
+{{footer}}
+  <script src="{{root}}assets/main.js?v={{v_main}}" defer></script>
+{{scripts}}
+</body>
+</html>

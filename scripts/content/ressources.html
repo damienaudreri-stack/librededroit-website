@@ -1,0 +1,64 @@
+    <section class="hero">
+      <div class="wrap">
+        <span class="kicker">Bibliothèque</span>
+        <h1>Comprendre vos droits, trouver de l'aide.</h1>
+        <p class="intro">Une bibliothèque de ressources pour vous informer, comprendre vos droits et les procédures, saisir les mécanismes du traumatisme, et obtenir des réponses à vos questions.</p>
+        <p class="badge badge-verif"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#00008B" d="M12 1.5l2.45 1.78 3.02-.02 .93 2.87 2.45 1.79-.94 2.86.94 2.86-2.45 1.79-.93 2.87-3.02-.02L12 22.5l-2.45-1.78-3.02.02-.93-2.87-2.45-1.79.94-2.86-.94-2.86 2.45-1.79.93-2.87 3.02.02L12 1.5z"></path><path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.2l2.4 2.4 4.6-4.9"></path></svg> Tous nos articles sont vérifiés par des juristes, des avocat·es et des professionnel·les de la santé.</p>
+      </div>
+    </section>
+
+    <section class="section creme">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="titre">Expliquez votre situation en quelques mots</h2>
+          <p class="lead">Notre moteur de recherche parcourt nos articles pour vous proposer les ressources les plus pertinentes, en croisant le cadre juridique et la réalité du terrain, pour une information aussi juste que possible.</p>
+        </div>
+        <div class="search-box">
+          <form id="search-form">
+            <label class="sr-only" for="search-input">Décrivez votre situation</label>
+            <textarea id="search-input" placeholder="Ex. : « J'ai subi des faits il y a longtemps, quand j'étais mineure, je ne sais pas si je peux encore agir. »"></textarea>
+            <div class="search-actions">
+              <button type="submit" id="search-btn" class="btn btn-primary">Trouver mes ressources →</button>
+              <span class="search-conf">Confidentiel · aucune donnée conservée</span>
+            </div>
+          </form>
+          <div class="search-results" id="search-results" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="filters" role="group" aria-label="Filtrer les articles">
+          <button type="button" class="filter-btn actif" data-filter="all">Tout</button>
+          <button type="button" class="filter-btn" data-filter="droit">Droit &amp; procédure</button>
+          <button type="button" class="filter-btn" data-filter="psy">Psychologie &amp; soutien</button>
+        </div>
+        <div class="articles-grid">
+          {{articles_cards}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section lavande">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Aller plus loin</span>
+          <h2 class="titre">Associations partenaires</h2>
+          <p class="lead">Des structures de confiance vers lesquelles nous orientons, partout en France et en Gironde.</p>
+        </div>
+        <div class="asso-grid">
+          {{assos_cards}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section sombre">
+      <div class="wrap">
+        <div class="section-head center">
+          <h2 class="titre">Besoin d'en parler ?</h2>
+          <p class="lead">Nous vous accompagnons, gratuitement et en confiance.</p>
+          <p class="mt-24"><a class="btn btn-clair btn-lg" href="accompagnement.html">Demander de l'aide →</a></p>
+        </div>
+      </div>
+    </section>
