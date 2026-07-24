@@ -78,8 +78,8 @@
           <p class="lead">Au-delà de l'écoute, nous mettons à votre disposition nos avocat·es et nos psychologues spécialisé·es dans les violences sexistes et sexuelles. Ils et elles suivent personnellement chaque personne que nous accompagnons — du premier échange jusqu'au bout de vos démarches.</p>
         </div>
         <div class="grid grid-2">
-          <div class="card"><h3><span aria-hidden="true">⚖️</span> Nos avocat·es spécialisé·es</h3><p>Comprendre vos droits, déposer plainte, être défendu·e. Un accompagnement juridique clair, par des juristes et des avocats spécialisés.</p></div>
-          <div class="card peche"><h3><span aria-hidden="true">🫂</span> Nos psychologues spécialisé·es</h3><p>Un suivi adapté au psychotraumatisme grâce à des psychologues spécialisé·es, pour avancer dans votre reconstruction.</p></div>
+          <div class="card reveal reveal-left"><h3><span aria-hidden="true">⚖️</span> Nos avocat·es spécialisé·es</h3><p>Comprendre vos droits, déposer plainte, être défendu·e. Un accompagnement juridique clair, par des juristes et des avocats spécialisés.</p></div>
+          <div class="card peche reveal reveal-right"><h3><span aria-hidden="true">🫂</span> Nos psychologues spécialisé·es</h3><p>Un suivi adapté au psychotraumatisme grâce à des psychologues spécialisé·es, pour avancer dans votre reconstruction.</p></div>
         </div>
       </div>
     </section>
@@ -117,14 +117,16 @@
       </div>
     </section>
 
-    <section class="section sombre">
+    <section class="section">
       <div class="wrap">
-        <div class="section-head center">
-          <h2 class="titre">Numéros d'urgence</h2>
-          <p class="lead">En cas de danger, ces lignes sont joignables immédiatement.</p>
-        </div>
-        <div class="urgence-grid">
-          {{urgences}}
+        <div class="urgence-panel">
+          <div class="urgence-head">
+            <h2 class="titre">Numéros d'urgence</h2>
+            <span class="urgence-hint">Faites défiler →</span>
+          </div>
+          <div class="urgence-scroll">
+            {{urgences}}
+          </div>
         </div>
       </div>
     </section>

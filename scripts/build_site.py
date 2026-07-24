@@ -127,8 +127,14 @@ def bloc_partenaires():
     return liste + liste
 
 
-def bloc_quotes(temoignages, tag=False):
+def bloc_quotes(temoignages, tag=False, victime=False):
     def item(nom, meta, texte):
+        if victime:
+            return (
+                '<figure class="quote-card tagged victime"><h3 class="q-name">{n} <span class="mark">&rdquo;</span></h3>'
+                '<blockquote><p>{t}</p></blockquote><hr>'
+                '<figcaption class="who"><span class="avatar etu">{i}</span><span class="age">{m}</span></figcaption></figure>'
+            ).format(t=esc(texte), n=esc(nom), m=esc(meta), i=esc(nom[0]))
         if tag:
             classe_tag = "pro" if meta == "Professionnel" else "etu"
             return (
@@ -149,10 +155,10 @@ def bloc_urgences():
     for num, label, desc in URGENCES:
         tel = "tel:" + num.replace(" ", "")
         lignes.append(
-            '<a class="urgence" href="{tel}"><span class="num">{n}</span>'
-            '<span class="txt"><span class="l">{l}</span><span class="d">{d}</span></span></a>'.format(
+            '<a class="urgence-card" href="{tel}"><span class="num">{n}</span>'
+            '<span class="l">{l}</span><span class="d">{d}</span></a>'.format(
                 tel=esc(tel), n=esc(num), l=esc(label), d=esc(desc)))
-    return "\n          ".join(lignes)
+    return "\n            ".join(lignes)
 
 
 def bloc_assos():
@@ -169,11 +175,18 @@ def bloc_articles_cards():
     cartes = []
     for a in ARTICLES:
         cartes.append(
-            '<a class="article-card" data-cat="{cat}" href="articles/{id}.html">'
-            '<span class="cat">{theme}</span><h3>{titre}</h3><p>{extrait}</p>'
+            '<a class="article-card" data-cat="{cat}" data-theme="{theme_attr}" href="articles/{id}.html">'
+            '<span class="cat">{badge}</span><h3>{titre}</h3><p>{extrait}</p>'
             '<span class="meta">{temps} de lecture · Lire →</span></a>'.format(
-                cat=a["cat"], id=a["id"], theme=esc(a["theme"]),
+                cat=a["cat"], id=a["id"], theme_attr=esc(a["theme"]), badge=esc(a["badge"]),
                 titre=esc(a["titre"]), extrait=esc(a["extrait"]), temps=esc(a["temps"])))
+    cartes.append(
+        '<a class="article-card cta-card" href="accompagnement.html#ld-contact-confidentiel">'
+        '<span class="cta-icon" aria-hidden="true">📞</span>'
+        '<span class="cat">Une question, un doute ? Parlons-en · 24h/24</span>'
+        '<h3>Écrivez-nous en confidentialité</h3>'
+        '<p>Un membre de notre équipe d\'accompagnement vous répond, avec douceur et discrétion.</p>'
+        '<span class="meta">Nous contacter →</span></a>')
     return "\n          ".join(cartes)
 
 
@@ -268,7 +281,7 @@ def construire_pages():
         contenu = lire(os.path.join(CONTENU, p["src"]))
         contenu = contenu.replace("{{partenaires}}", bloc_partenaires())
         contenu = contenu.replace("{{temoignages_sensi}}", bloc_quotes(TEMOIGNAGES_SENSI, tag=True))
-        contenu = contenu.replace("{{temoignages_accomp}}", bloc_quotes(TEMOIGNAGES_ACCOMP))
+        contenu = contenu.replace("{{temoignages_accomp}}", bloc_quotes(TEMOIGNAGES_ACCOMP, victime=True))
         contenu = contenu.replace("{{urgences}}", bloc_urgences())
         contenu = contenu.replace("{{articles_cards}}", bloc_articles_cards())
         contenu = contenu.replace("{{assos_cards}}", bloc_assos())
@@ -381,7 +394,7 @@ def main():
     articles = construire_articles()
     legales = construire_legales()
     sitemap = construire_sitemap()
-    total = len(pages) + len(articles) + 1
+    total = len(pages) + len(articles)
     print("Pages principales :", len(pages))
     print("Pages articles    :", len(articles))
     print("Pages legales      :", "traitees" if legales else "deja externalisees")

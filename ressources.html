@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#00008B">
   <link rel="preload" href="fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/spectral-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/site.css?v=60d6149a">
+  <link rel="stylesheet" href="assets/site.css?v=73eb96e4">
 </head>
 <body>
   <header class="site-header">
@@ -70,17 +70,20 @@
 
     <section class="section creme">
       <div class="wrap">
-        <div class="section-head">
-          <h2 class="titre">Expliquez votre situation en quelques mots</h2>
-          <p class="lead">Notre moteur de recherche parcourt nos articles pour vous proposer les ressources les plus pertinentes, en croisant le cadre juridique et la réalité du terrain, pour une information aussi juste que possible.</p>
-        </div>
         <div class="search-box">
+          <div class="search-box-head">
+            <span class="search-icon" aria-hidden="true">✦</span>
+            <div>
+              <h2>Expliquez votre situation en quelques mots</h2>
+              <p>Notre moteur de recherche parcourt nos articles pour vous proposer les ressources les plus pertinentes, en croisant le cadre juridique et la réalité du terrain, pour une information aussi juste que possible.</p>
+            </div>
+          </div>
           <form id="search-form">
             <label class="sr-only" for="search-input">Décrivez votre situation</label>
             <textarea id="search-input" placeholder="Ex. : « J'ai subi des faits il y a longtemps, quand j'étais mineure, je ne sais pas si je peux encore agir. »"></textarea>
             <div class="search-actions">
               <button type="submit" id="search-btn" class="btn btn-primary">Trouver mes ressources →</button>
-              <span class="search-conf">Confidentiel · aucune donnée conservée</span>
+              <span class="search-conf"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00008B" d="M12 1.5l2.45 1.78 3.02-.02 .93 2.87 2.45 1.79-.94 2.86.94 2.86-2.45 1.79-.93 2.87-3.02-.02L12 22.5l-2.45-1.78-3.02.02-.93-2.87-2.45-1.79.94-2.86-.94-2.86 2.45-1.79.93-2.87 3.02.02L12 1.5z"></path><path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.2l2.4 2.4 4.6-4.9"></path></svg>Confidentiel · aucune donnée conservée</span>
             </div>
           </form>
           <div class="search-results" id="search-results" aria-live="polite"></div>
@@ -90,26 +93,38 @@
 
     <section class="section">
       <div class="wrap">
-        <div class="filters" role="group" aria-label="Filtrer les articles">
+        <div class="filters" role="group" aria-label="Filtrer par catégorie">
           <button type="button" class="filter-btn actif" data-filter="all">Tout</button>
           <button type="button" class="filter-btn" data-filter="droit">Droit &amp; procédure</button>
           <button type="button" class="filter-btn" data-filter="psy">Psychologie &amp; soutien</button>
         </div>
+        <div class="filters filters-theme" role="group" aria-label="Filtrer par thème">
+          <span class="filters-label">Thème :</span>
+          <button type="button" class="filter-btn theme-btn actif" data-theme-filter="all" data-cats="all,droit,psy">Tous les thèmes</button>
+          <button type="button" class="filter-btn theme-btn" data-theme-filter="Types de violences" data-cats="all,droit">Types de violences</button>
+          <button type="button" class="filter-btn theme-btn" data-theme-filter="Procédure pénale" data-cats="all,droit">Procédure pénale</button>
+          <button type="button" class="filter-btn theme-btn" data-theme-filter="Procédure civile" data-cats="all,droit">Procédure civile</button>
+          <button type="button" class="filter-btn theme-btn" data-theme-filter="Droits &amp; indemnisation" data-cats="all,droit">Droits &amp; indemnisation</button>
+          <button type="button" class="filter-btn theme-btn" data-theme-filter="Comprendre le trauma" data-cats="all,psy">Comprendre le trauma</button>
+          <button type="button" class="filter-btn theme-btn" data-theme-filter="Se reconstruire" data-cats="all,psy">Se reconstruire</button>
+          <button type="button" class="filter-btn theme-btn" data-theme-filter="Soutenir un proche" data-cats="all,psy">Soutenir un proche</button>
+        </div>
         <div class="articles-grid">
-          <a class="article-card" data-cat="droit" href="articles/types-violences.html"><span class="cat">Types de violences</span><h3>Outrage sexiste, agression, viol : de quoi parle-t-on ?</h3><p>Les mots du droit ont un sens précis. Comprendre les qualifications aide à savoir de quoi l'on parle et quels recours existent.</p><span class="meta">5 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/porter-plainte.html"><span class="cat">Procédure pénale</span><h3>Porter plainte : comment ça se passe, étape par étape</h3><p>Où déposer, ce qu'on vous demande, ce qu'il se passe ensuite. Un repère clair pour aborder la démarche sans appréhension.</p><span class="meta">6 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/classement-sans-suite.html"><span class="cat">Procédure pénale</span><h3>Plainte classée sans suite : quels recours ?</h3><p>Un classement n'est pas la fin du chemin. Trois voies existent pour faire réexaminer votre affaire.</p><span class="meta">5 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/prescription.html"><span class="cat">Procédure pénale</span><h3>Les délais de prescription des violences sexuelles</h3><p>Combien de temps avez-vous pour agir ? Les délais sont longs, et particuliers pour les faits subis pendant l'enfance.</p><span class="meta">5 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/droits-victime.html"><span class="cat">Droits &amp; indemnisation</span><h3>Vos droits en tant que victime pendant la procédure</h3><p>Information, accompagnement, protection, réparation : ce que la loi vous garantit à chaque étape.</p><span class="meta">4 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/procedure-civile.html"><span class="cat">Procédure civile</span><h3>L'ordonnance de protection et les recours au civil</h3><p>Au-delà du pénal, le juge civil peut protéger rapidement et réparer le préjudice. Un levier souvent méconnu.</p><span class="meta">5 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="psy" href="articles/psychotraumatisme.html"><span class="cat">Comprendre le trauma</span><h3>Comprendre le psychotraumatisme et la mémoire traumatique</h3><p>Pourquoi le souvenir revient par flashs, pourquoi le corps réagit seul : des réactions normales à un événement anormal.</p><span class="meta">6 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="psy" href="articles/sideration.html"><span class="cat">Comprendre le trauma</span><h3>La sidération : pourquoi on ne réagit pas toujours sur le moment</h3><p>Ne pas avoir crié, ni fui, ni dit non n'enlève rien à la gravité de ce que vous avez vécu.</p><span class="meta">4 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="psy" href="articles/trouver-psy.html"><span class="cat">Se reconstruire</span><h3>Trouver un·e psychologue spécialisé·e en psychotrauma</h3><p>Vers qui se tourner, comment reconnaître une prise en charge adaptée, et les dispositifs qui peuvent la financer.</p><span class="meta">5 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="psy" href="articles/soutenir-proche.html"><span class="cat">Soutenir un proche</span><h3>Comment soutenir un·e proche victime de violences ?</h3><p>Être là sans s'imposer, croire sans enquêter, accompagner sans décider à sa place : quelques repères pour l'entourage.</p><span class="meta">4 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/domiciliation-adresse.html"><span class="cat">Procédure pénale</span><h3>Votre adresse sur la plainte : comment la protéger</h3><p>Pour éviter que votre agresseur connaisse votre adresse en accédant à son dossier, vous pouvez domicilier votre plainte chez votre avocat ou un tiers de confiance. Un droit prévu par la loi, souvent ignoré.</p><span class="meta">4 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/reflexes-preuves.html"><span class="cat">Procédure pénale</span><h3>Les bons réflexes après une agression, avant toute démarche</h3><p>Certaines actions simples dans les heures ou jours qui suivent une agression peuvent faciliter la suite. Si vous ne les avez pas faites : aucune inquiétude, elles ne conditionnent pas votre droit de poursuivre.</p><span class="meta">5 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/aide-juridictionnelle.html"><span class="cat">Droits &amp; indemnisation</span><h3>Financer son avocat : l'aide juridictionnelle et la protection juridique</h3><p>Deux dispositifs méconnus peuvent prendre en charge tout ou partie des honoraires d'avocat : l'aide juridictionnelle et la garantie protection juridique souvent incluse dans votre assurance habitation.</p><span class="meta">5 min de lecture · Lire →</span></a>
-          <a class="article-card" data-cat="droit" href="articles/aide-urgence-caf.html"><span class="cat">Droits &amp; indemnisation</span><h3>L'aide d'urgence de la CAF pour les victimes de violences conjugales</h3><p>La CAF verse une aide financière d'urgence aux victimes de violences conjugales pour faire face aux dépenses immédiates liées à la séparation. Un dispositif ouvert à toutes et tous, souvent méconnu.</p><span class="meta">4 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Types de violences" href="articles/types-violences.html"><span class="cat">Définitions</span><h3>Outrage sexiste, agression, viol : de quoi parle-t-on ?</h3><p>Les mots du droit ont un sens précis. Comprendre les qualifications aide à savoir de quoi l'on parle et quels recours existent.</p><span class="meta">5 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Procédure pénale" href="articles/porter-plainte.html"><span class="cat">Procédure pénale</span><h3>Porter plainte : comment ça se passe, étape par étape</h3><p>Où déposer, ce qu'on vous demande, ce qu'il se passe ensuite. Un repère clair pour aborder la démarche sans appréhension.</p><span class="meta">6 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Procédure pénale" href="articles/classement-sans-suite.html"><span class="cat">Procédure pénale</span><h3>Plainte classée sans suite : quels recours ?</h3><p>Un classement n'est pas la fin du chemin. Trois voies existent pour faire réexaminer votre affaire.</p><span class="meta">5 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Procédure pénale" href="articles/prescription.html"><span class="cat">Procédure pénale</span><h3>Les délais de prescription des violences sexuelles</h3><p>Combien de temps avez-vous pour agir ? Les délais sont longs, et particuliers pour les faits subis pendant l'enfance.</p><span class="meta">5 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Droits &amp; indemnisation" href="articles/droits-victime.html"><span class="cat">Droits des victimes</span><h3>Vos droits en tant que victime pendant la procédure</h3><p>Information, accompagnement, protection, réparation : ce que la loi vous garantit à chaque étape.</p><span class="meta">4 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Procédure civile" href="articles/procedure-civile.html"><span class="cat">Procédure civile</span><h3>L'ordonnance de protection et les recours au civil</h3><p>Au-delà du pénal, le juge civil peut protéger rapidement et réparer le préjudice. Un levier souvent méconnu.</p><span class="meta">5 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="psy" data-theme="Comprendre le trauma" href="articles/psychotraumatisme.html"><span class="cat">Psychologie</span><h3>Comprendre le psychotraumatisme et la mémoire traumatique</h3><p>Pourquoi le souvenir revient par flashs, pourquoi le corps réagit seul : des réactions normales à un événement anormal.</p><span class="meta">6 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="psy" data-theme="Comprendre le trauma" href="articles/sideration.html"><span class="cat">Psychologie</span><h3>La sidération : pourquoi on ne réagit pas toujours sur le moment</h3><p>Ne pas avoir crié, ni fui, ni dit non n'enlève rien à la gravité de ce que vous avez vécu.</p><span class="meta">4 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="psy" data-theme="Se reconstruire" href="articles/trouver-psy.html"><span class="cat">Soutien</span><h3>Trouver un·e psychologue spécialisé·e en psychotrauma</h3><p>Vers qui se tourner, comment reconnaître une prise en charge adaptée, et les dispositifs qui peuvent la financer.</p><span class="meta">5 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="psy" data-theme="Soutenir un proche" href="articles/soutenir-proche.html"><span class="cat">Proches</span><h3>Comment soutenir un·e proche victime de violences ?</h3><p>Être là sans s'imposer, croire sans enquêter, accompagner sans décider à sa place : quelques repères pour l'entourage.</p><span class="meta">4 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Procédure pénale" href="articles/domiciliation-adresse.html"><span class="cat">Procédure pénale</span><h3>Votre adresse sur la plainte : comment la protéger</h3><p>Pour éviter que votre agresseur connaisse votre adresse en accédant à son dossier, vous pouvez domicilier votre plainte chez votre avocat ou un tiers de confiance. Un droit prévu par la loi, souvent ignoré.</p><span class="meta">4 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Procédure pénale" href="articles/reflexes-preuves.html"><span class="cat">Procédure pénale</span><h3>Les bons réflexes après une agression, avant toute démarche</h3><p>Certaines actions simples dans les heures ou jours qui suivent une agression peuvent faciliter la suite. Si vous ne les avez pas faites : aucune inquiétude, elles ne conditionnent pas votre droit de poursuivre.</p><span class="meta">5 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Droits &amp; indemnisation" href="articles/aide-juridictionnelle.html"><span class="cat">Droits &amp; indemnisation</span><h3>Financer son avocat : l'aide juridictionnelle et la protection juridique</h3><p>Deux dispositifs méconnus peuvent prendre en charge tout ou partie des honoraires d'avocat : l'aide juridictionnelle et la garantie protection juridique souvent incluse dans votre assurance habitation.</p><span class="meta">5 min de lecture · Lire →</span></a>
+          <a class="article-card" data-cat="droit" data-theme="Droits &amp; indemnisation" href="articles/aide-urgence-caf.html"><span class="cat">Droits &amp; indemnisation</span><h3>L'aide d'urgence de la CAF pour les victimes de violences conjugales</h3><p>La CAF verse une aide financière d'urgence aux victimes de violences conjugales pour faire face aux dépenses immédiates liées à la séparation. Un dispositif ouvert à toutes et tous, souvent méconnu.</p><span class="meta">4 min de lecture · Lire →</span></a>
+          <a class="article-card cta-card" href="accompagnement.html#ld-contact-confidentiel"><span class="cta-icon" aria-hidden="true">📞</span><span class="cat">Une question, un doute ? Parlons-en · 24h/24</span><h3>Écrivez-nous en confidentialité</h3><p>Un membre de notre équipe d'accompagnement vous répond, avec douceur et discrétion.</p><span class="meta">Nous contacter →</span></a>
         </div>
       </div>
     </section>
@@ -203,7 +218,7 @@
     </button>
   </div>
 
-  <script src="assets/main.js?v=db9031ee" defer></script>
+  <script src="assets/main.js?v=86837a36" defer></script>
   <script src="assets/search.js?v=e27c27f4" defer></script>
 </body>
 </html>

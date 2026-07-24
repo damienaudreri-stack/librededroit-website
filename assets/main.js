@@ -118,19 +118,44 @@
     if (defaut) majDon(defaut);
   }
 
-  // --- Filtres articles (Ressources) ---
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  if (filterBtns.length) {
+  // --- Filtres articles (Ressources) : catégorie + thème ---
+  var catBtns = document.querySelectorAll('[data-filter]');
+  var themeBtns = document.querySelectorAll('[data-theme-filter]');
+  if (catBtns.length) {
     var cards = document.querySelectorAll('.article-card[data-cat]');
-    filterBtns.forEach(function (btn) {
+
+    function appliquerFiltres() {
+      var catActive = document.querySelector('[data-filter].actif');
+      var themeActive = document.querySelector('[data-theme-filter].actif');
+      var cat = catActive ? catActive.getAttribute('data-filter') : 'all';
+      var theme = themeActive ? themeActive.getAttribute('data-theme-filter') : 'all';
+      cards.forEach(function (card) {
+        var okCat = cat === 'all' || card.getAttribute('data-cat') === cat;
+        var okTheme = theme === 'all' || card.getAttribute('data-theme') === theme;
+        card.style.display = (okCat && okTheme) ? '' : 'none';
+      });
+    }
+
+    catBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var cat = btn.getAttribute('data-filter');
-        filterBtns.forEach(function (b) { b.classList.remove('actif'); });
+        catBtns.forEach(function (b) { b.classList.remove('actif'); });
         btn.classList.add('actif');
-        cards.forEach(function (card) {
-          var show = cat === 'all' || card.getAttribute('data-cat') === cat;
-          card.style.display = show ? '' : 'none';
+        themeBtns.forEach(function (tb) {
+          tb.classList.remove('actif');
+          if (tb.getAttribute('data-theme-filter') === 'all') tb.classList.add('actif');
+          var cats = (tb.getAttribute('data-cats') || '').split(',');
+          tb.style.display = cats.indexOf(cat) !== -1 ? '' : 'none';
         });
+        appliquerFiltres();
+      });
+    });
+
+    themeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        themeBtns.forEach(function (b) { b.classList.remove('actif'); });
+        btn.classList.add('actif');
+        appliquerFiltres();
       });
     });
   }
