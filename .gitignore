@@ -1,5 +1,8 @@
 # Local Netlify folder
 .netlify
 
+# macOS
+.DS_Store
+
 # Photos en attente de confirmation du droit à l'image (voir HISTORY.md)
 /img/

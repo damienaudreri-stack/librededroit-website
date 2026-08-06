@@ -76,6 +76,8 @@ input, select, textarea, button { font-family: var(--sans); font-size: 1rem; }
 .slot.portrait { aspect-ratio: 1 / 1; border-radius: 16px; }
 .slot-collectif { width: 100%; }
 .slot-team { width: 120px; height: 120px; margin: 0 auto 14px; }
+.atelier-photo { width: 100%; height: auto; border-radius: 16px; display: block; }
+.ateliers-grid { align-items: center; }
 
 /* --- Kicker / accents --- */
 .kicker {
@@ -147,15 +149,17 @@ input, select, textarea, button { font-family: var(--sans); font-size: 1rem; }
   gap: 18px; height: 68px;
 }
 .brand { display: flex; align-items: center; gap: 10px; }
+.brand-text { line-height: 1; }
 .brand:hover { text-decoration: none; }
 .brand .logo {
   width: 34px; height: 34px; border-radius: 50%;
   background: var(--marine); color: var(--creme);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-weight: 700; font-size: 15px;
+  padding: 5px; flex: 0 0 auto;
 }
+.brand .logo img { width: 100%; height: 100%; object-fit: contain; }
 .brand .name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--texte); line-height: 1; }
-.brand .sub { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--gris3); }
+.brand .sub { display: inline-block; margin-top: 2px; line-height: 1; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--gris3); }
 .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
 .nav-links a {
   display: inline-block; padding: 8px 12px; border-radius: 8px;
@@ -347,7 +351,7 @@ h3 { font-size: 20px; }
 .public-card hr { border: none; border-top: 1px solid rgba(0,0,0,.08); margin: 20px 0 16px; }
 .public-card .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .public-card .chip { background: rgba(255,255,255,.6); border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; }
-.public-card.lavande { background: var(--lavande); }
+.public-card.lavande { background: var(--lavande); border: 2px solid var(--marine); }
 .public-card.lavande h3 { color: var(--marine); }
 .public-card.lavande .chip { color: var(--marine); }
 .public-card.peche { background: var(--peche); }
@@ -406,12 +410,25 @@ h3 { font-size: 20px; }
   background: var(--marine-fonce); color: var(--creme);
   border-radius: 20px; padding: 40px;
 }
-.encart.marine { background: var(--marine); }
+.encart.marine { background: var(--marine-fonce); }
 .encart .lead { color: rgba(252,250,245,.85); }
 .encart .lead.dim { color: rgba(252,250,245,.55); }
 .encart .lead strong { color: #fff; font-weight: 700; }
-.encart-quote { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.3; margin-top: 14px; color: var(--creme); }
-.encart.grid-2col-head { margin-bottom: 0; }
+.encart-quote { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.3; margin-top: 10px; color: var(--creme); }
+.encart.grid-2col-head { margin-bottom: 0; grid-template-columns: 1.3fr 1fr; align-items: center; gap: 16px 56px; }
+.encart.grid-2col-head > div + div {
+  border-left: 1px solid rgba(255,255,255,.15);
+  padding-left: 40px;
+  position: relative;
+}
+.encart.grid-2col-head > div + div::before {
+  content: '\201C';
+  font-family: var(--serif); font-weight: 700; font-size: 64px; line-height: 1;
+  color: var(--dore); display: block; margin-bottom: 4px;
+}
+@media (max-width: 860px) {
+  .encart.grid-2col-head > div + div { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,.15); padding-top: 28px; margin-top: 8px; }
+}
 .don-band { background: linear-gradient(180deg,var(--peche),#F7EEE4); border: 1px solid #E9D3C4; border-radius: 20px; padding: 44px; text-align: center; }
 .don-band h2 { color: var(--marine); }
 .don-cta-band { background: var(--marine); border-radius: 20px; padding: 38px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
@@ -428,10 +445,11 @@ h3 { font-size: 20px; }
 .valeur-col.terracotta-clair { border-color: #E0967B; }
 .valeur-col.terracotta-clair .kicker { color: #E0967B; }
 .team-member .role { color: var(--marine); font-weight: 400; font-size: 14px; margin-top: 2px; }
+#ld-contact-confidentiel.marine { background: var(--marine-fonce); }
 .confid-note {
   display: flex; gap: 10px; align-items: flex-start;
-  background: rgba(252,250,245,.1); border: 1px solid rgba(252,250,245,.25);
-  border-radius: 12px; padding: 14px 16px; font-size: 14px; color: rgba(252,250,245,.9);
+  background: var(--lavande); border: 1px solid var(--bord-lavande);
+  border-radius: 12px; padding: 14px 16px; font-size: 14px; color: var(--gris);
   margin: 18px 0;
 }
 
@@ -450,10 +468,8 @@ h3 { font-size: 20px; }
    Numeros d'urgence (encart carrousel)
    ========================================================================== */
 .urgence-panel { background: var(--marine-fonce); border-radius: 18px; padding: 32px; }
-.urgence-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+.urgence-head { margin-bottom: 20px; }
 .urgence-head h2 { color: var(--creme); margin: 0; }
-.urgence-hint { font-size: 16px; font-weight: 400; color: rgba(236,236,245,.85); white-space: nowrap; }
-.urgence-scroll { display: flex; gap: 14px; overflow-x: auto; padding: 0 0 8px; }
 .urgence-card {
   flex: 0 0 auto; width: 200px; background: #26265C; border-radius: 13px;
   padding: 18px; color: #fff; text-decoration: none; display: block;
@@ -461,7 +477,7 @@ h3 { font-size: 20px; }
 .urgence-card .num { display: block; font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--dore); margin-bottom: 10px; }
 .urgence-card .l { display: block; font-size: 13.5px; font-weight: 600; color: #fff; margin-bottom: 4px; }
 .urgence-card .d { display: block; font-size: 12.5px; color: rgba(236,236,245,.7); }
-@media (max-width: 700px) { .urgence-panel { padding: 24px 20px; } .urgence-hint { display: none; } }
+@media (max-width: 700px) { .urgence-panel { padding: 24px 20px; } }
 
 /* ==========================================================================
    Formulaires
@@ -569,24 +585,17 @@ h3 { font-size: 20px; }
 /* ==========================================================================
    Don — simulateur
    ========================================================================== */
-.don-sim-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: stretch; }
+.don-sim-grid { display: grid; grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
 .don-sim-left { background: var(--creme); border: 1px solid var(--bord-lavande); border-radius: 20px; padding: 32px; }
-.don-sim-right { background: var(--marine); border-radius: 20px; padding: 32px; }
-.don-sim-right p { font-size: 15.5px; color: #C6C6DD; margin: 0; }
 .don-amounts { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
 .don-amount { flex: 1 1 100px; background: var(--creme); border: 1.5px solid var(--bord-lavande); border-radius: 14px; padding: 16px 10px; text-align: center; cursor: pointer; }
 .don-amount .da-num { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--texte); }
-.don-amount .da-sub { display: block; font-size: 12px; color: var(--texte); opacity: .7; margin-top: 4px; }
 .don-amount.actif { border-color: var(--marine); background: var(--marine); }
-.don-amount.actif .da-num, .don-amount.actif .da-sub { color: var(--creme); }
-.don-recap-row { display: flex; align-items: baseline; gap: 12px; margin: 12px 0 16px; }
-.don-recap-big { font-family: var(--serif); font-size: 54px; font-weight: 600; color: var(--creme); }
-.don-recap-txt { font-size: 16px; color: #BFBFDB; }
+.don-amount.actif .da-num { color: var(--creme); }
 .info-encart { background: var(--lavande); border-radius: 18px; padding: 32px; display: flex; align-items: flex-start; gap: 22px; }
 .info-encart .info-star { font-size: 34px; color: var(--marine); line-height: 1; }
 .info-encart h3 { margin-bottom: 8px; }
 .info-encart p { color: var(--gris); font-size: 15.5px; margin: 0; }
-@media (max-width: 860px) { .don-sim-grid { grid-template-columns: 1fr; } }
 
 /* ==========================================================================
    FOOTER
@@ -627,7 +636,7 @@ h3 { font-size: 20px; }
 @keyframes ldLogoShine { 0% { transform: translate(-75%, 75%); opacity: 0; } 6% { opacity: 1; } 32% { transform: translate(75%, -75%); opacity: 1; } 33% { opacity: 0; } 100% { transform: translate(75%, -75%); opacity: 0; } }
 @keyframes ldLogoGlow { 0%, 100% { filter: drop-shadow(0 8px 16px rgba(0,0,139,0.10)); } 50% { filter: drop-shadow(0 12px 24px rgba(0,0,139,0.18)); } }
 
-.caret { display: inline-block; width: 2px; height: 0.9em; background: currentColor; margin-left: 2px; vertical-align: text-bottom; animation: ldCaret 1s step-end infinite; }
+.caret { display: inline-block; width: 2px; height: 0.72em; background: currentColor; margin-left: 2px; vertical-align: middle; animation: ldCaret 1s step-end infinite; }
 
 /* Utilitaires d'espacement (evitent les attributs style= interdits par la CSP) */
 .mt-8 { margin-top: 8px; }

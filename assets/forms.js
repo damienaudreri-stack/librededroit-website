@@ -70,4 +70,18 @@
   }
 
   document.querySelectorAll('form.js-contact-form').forEach(brancher);
+
+  // Formulaire d'aide : le champ « prétexte SMS » n'apparaît et n'est
+  // obligatoire que si la personne choisit d'être recontactée par SMS discret.
+  var recontact = document.getElementById('aide-recontact');
+  var pretexteWrap = document.getElementById('aide-sms-pretexte-wrap');
+  var pretexteInput = document.getElementById('aide-sms-pretexte');
+  if (recontact && pretexteWrap && pretexteInput) {
+    recontact.addEventListener('change', function () {
+      var smsChoisi = valeurChamp(recontact) === 'Par SMS discret';
+      pretexteWrap.hidden = !smsChoisi;
+      pretexteInput.required = smsChoisi;
+      if (!smsChoisi) pretexteInput.value = '';
+    });
+  }
 })();

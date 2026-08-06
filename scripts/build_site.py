@@ -67,14 +67,14 @@ PARTENAIRES = [
 ]
 
 TEMOIGNAGES_SENSI = [
-    ("Sophie L.", "Professionnel", "L'atelier a mis des mots sur des situations qu'on banalisait au bureau. On a revu nos réflexes d'équipe dès le lendemain."),
-    ("Karim B.", "Professionnel", "Concret, sans jugement. J'ai compris comment réagir quand un·e élève se confie, et vers qui orienter."),
-    ("Inès M.", "Étudiant", "On a parlé de consentement avec des exemples qui nous ressemblent. Ça change des cours magistraux."),
-    ("Thomas R.", "Professionnel", "Format vivant et bienveillant. Toute mon équipe est ressortie avec des repères clairs sur le cadre légal."),
-    ("Lucas D.", "Étudiant", "Je pensais connaître le sujet. L'atelier m'a fait réaliser tout ce qu'on laisse passer entre potes."),
-    ("Awa F.", "Professionnel", "Des intervenant·es à l'écoute, des situations réalistes. On se sent enfin outillé·es pour agir."),
-    ("Camille P.", "Étudiant", "Le moment d'échange à la fin valait à lui seul la séance. On a osé poser nos vraies questions."),
-    ("Nadia E.", "Professionnel", "Pertinent et bien rythmé. Nos agents savent désormais reconnaître et signaler une situation à risque."),
+    ("Sophie L.", "Professionnel", "J'ai appris à repérer des signaux que je laissais passer avant. Les mises en situation m'ont vraiment aidée à savoir quoi dire."),
+    ("Karim B.", "Professionnel", "J'ai pu m'entraîner sur des cas concrets. Je sais maintenant comment réagir si un·e élève se confie à moi, et vers qui l'orienter."),
+    ("Inès M.", "Étudiant", "J'ai enfin mis des mots sur le consentement, avec des exemples qui me parlent. Je regarde certaines situations différemment maintenant."),
+    ("Thomas R.", "Professionnel", "J'ai pratiqué des mises en situation qui m'ont bousculé. J'en ressors avec des repères clairs sur ce que dit la loi."),
+    ("Lucas D.", "Étudiant", "Je pensais connaître le sujet. J'ai réalisé tout ce que je laissais passer entre potes, sans même m'en rendre compte."),
+    ("Awa F.", "Professionnel", "J'ai pu poser mes questions sans filtre. Je me sens enfin outillée pour agir si une situation se présente."),
+    ("Camille P.", "Étudiant", "Les mises en situation m'ont permis de m'entraîner à réagir. J'en ressors plus vigilante face à ce qui m'entoure."),
+    ("Nadia E.", "Professionnel", "J'ai appris à reconnaître les signaux faibles. Je sais désormais comment signaler une situation à risque."),
 ]
 
 TEMOIGNAGES_ACCOMP = [
@@ -158,7 +158,10 @@ def bloc_urgences():
             '<a class="urgence-card" href="{tel}"><span class="num">{n}</span>'
             '<span class="l">{l}</span><span class="d">{d}</span></a>'.format(
                 tel=esc(tel), n=esc(num), l=esc(label), d=esc(desc)))
-    return "\n            ".join(lignes)
+    bloc = "\n            ".join(lignes)
+    # Double pour un defilement infini fluide (translateX -50%), comme les
+    # partenaires et les temoignages.
+    return bloc + "\n            " + bloc
 
 
 def bloc_assos():
@@ -232,14 +235,13 @@ def rendre_page(root, actif, title, description, canonical, ogtype, contenu, scr
 V_CSS = hash_court(os.path.join(RACINE, "assets", "site.css"))
 V_MAIN = hash_court(os.path.join(RACINE, "assets", "main.js"))
 V_FORMS = hash_court(os.path.join(RACINE, "assets", "forms.js"))
-V_SEARCH = hash_court(os.path.join(RACINE, "assets", "search.js"))
 
 
 PAGES = [
     {
         "fichier": "index.html", "actif": "accueil", "src": "accueil.html",
         "title": "LibredeDroit — Contre les violences sexistes et sexuelles, à Bordeaux",
-        "description": "Association bordelaise reconnue d'intérêt général : prévention par la sensibilisation et accompagnement juridique et psychologique des victimes de violences sexistes et sexuelles.",
+        "description": "Association bordelaise de prévention par la sensibilisation et d'accompagnement juridique et psychologique des victimes de violences sexistes et sexuelles.",
         "loc": "/", "scripts": "",
     },
     {
@@ -256,9 +258,9 @@ PAGES = [
     },
     {
         "fichier": "ressources.html", "actif": "ressources", "src": "ressources.html",
-        "title": "Ressources — Comprendre vos droits et trouver de l'aide | LibredeDroit",
-        "description": "Une bibliothèque d'articles vérifiés par des juristes et des professionnels de santé pour comprendre vos droits, les procédures et les mécanismes du psychotraumatisme.",
-        "loc": "/ressources.html", "scripts": f'  <script src="assets/search.js?v={V_SEARCH}" defer></script>',
+        "title": "Ressources — Bientôt disponible | LibredeDroit",
+        "description": "Notre bibliothèque d'articles vérifiés par des juristes et des professionnels de santé arrive bientôt. En attendant, contactez-nous directement pour être accompagné·e.",
+        "loc": "/ressources.html", "scripts": "",
     },
     {
         "fichier": "apropos.html", "actif": "apropos", "src": "apropos.html",
@@ -268,8 +270,8 @@ PAGES = [
     },
     {
         "fichier": "don.html", "actif": "don", "src": "don.html",
-        "title": "Faire un don — Soutenez notre action, déductible à 60 % | LibredeDroit",
-        "description": "LibredeDroit étant reconnue d'intérêt général, votre don ouvre droit à une réduction d'impôt de 60 %. Un don de 50 € ne vous coûte réellement que 20 €.",
+        "title": "Faire un don — Soutenez notre action | LibredeDroit",
+        "description": "Chaque don finance nos ateliers de sensibilisation et l'accompagnement gratuit des victimes de violences sexistes et sexuelles.",
         "loc": "/don.html", "scripts": "",
     },
 ]

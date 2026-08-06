@@ -95,20 +95,15 @@
     setTimeout(taper, 300);
   });
 
-  // --- Simulateur de don ---
+  // --- Selecteur de montant de don ---
   var donButtons = document.querySelectorAll('.don-amount');
   if (donButtons.length) {
-    var recapMontant = document.getElementById('don-recap-montant');
-    var recapReel = document.getElementById('don-recap-reel');
     var donCta = document.getElementById('don-cta');
     function majDon(btn) {
       var montant = parseInt(btn.getAttribute('data-montant'), 10) || 0;
-      var reel = Math.round(montant * 0.4);
       donButtons.forEach(function (b) { b.classList.remove('actif'); b.setAttribute('aria-pressed', 'false'); });
       btn.classList.add('actif');
       btn.setAttribute('aria-pressed', 'true');
-      if (recapMontant) recapMontant.textContent = montant + ' €';
-      if (recapReel) recapReel.textContent = reel + ' €';
       if (donCta) donCta.textContent = 'Faire un don de ' + montant + ' € →';
     }
     donButtons.forEach(function (btn) {
