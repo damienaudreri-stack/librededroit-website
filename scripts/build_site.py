@@ -52,18 +52,19 @@ def hash_court(chemin):
 # --------------------------------------------------------------------------
 
 PARTENAIRES = [
-    ("Le Hibou", "https://www.instagram.com/lecerledeshiboux"),
-    ("Just'Act", "https://www.instagram.com/justact.bordeaux"),
-    ("Lysias — Bordeaux", "https://www.instagram.com/lysiasbordeaux"),
-    ("Le Club AES", "https://www.instagram.com/club_aes_bdx"),
-    ("BDE Blue Lions Bordeaux", "https://www.instagram.com/bdebluelions"),
-    ("Réseau des Amis Européens", "https://www.instagram.com/reseaudesamiseuropeens"),
-    ("Master Droit Pénal Approfondi — Bordeaux", "https://www.instagram.com/m2_dpa"),
-    ("Journal « Le SCRUB »", "https://www.instagram.com/m2_dpa"),
-    ("RES PUBLICA — Master Droit Public Approfondi", "https://www.instagram.com/respublica_bdx"),
-    ("Master Droit de la Vigne et du Vin — Bordeaux", "https://www.instagram.com/droitdebouchon"),
-    ("Master Ingénierie Juridique et Financière des Sociétés", "https://www.instagram.com/ijfsbordeaux"),
-    ("La Kaz", "https://www.instagram.com/lakaz_bdx"),
+    ("Le Hibou", "https://www.instagram.com/lecercledeshiboux", "le-hibou.png"),
+    ("Just'Act", "https://www.instagram.com/justact.bordeaux", "just-act.png"),
+    ("Lysias — Bordeaux", "https://www.instagram.com/lysiasbordeaux", "lysias.png"),
+    ("Le Club AES", "https://www.instagram.com/club_aes_bdx", "aes.png"),
+    ("BDE Blue Lions Bordeaux", "https://www.instagram.com/bdebluelions", "blue-lions.png"),
+    ("Réseau des Amis Européens", "https://www.instagram.com/reseaudesamiseuropeens", "rae.png"),
+    ("Master Droit Pénal Approfondi — Bordeaux", "https://www.instagram.com/m2_dpa", "droit-penal-approfondi.png"),
+    ("Journal « Le SCRUB »", "https://www.instagram.com/le.scrub", "le-scrub.png"),
+    ("RES PUBLICA — Master Droit Public Approfondi", "https://www.instagram.com/respublica_bdx", "respublica.png"),
+    ("Master Droit de la Vigne et du Vin — Bordeaux", "https://www.instagram.com/droitdebouchon", "droit-de-bouchon.png"),
+    ("Master Ingénierie Juridique et Financière des Sociétés", "https://www.instagram.com/ijfsbordeaux", "ijfs.png"),
+    ("La Kaz", "https://www.instagram.com/lakaz_bdx", "la-kaz.png"),
+    ("La Tribune Montesquieu", "https://www.instagram.com/latribunemontesquieu", "la-tribune-montesquieu.png"),
 ]
 
 TEMOIGNAGES_SENSI = [
@@ -117,12 +118,12 @@ def esc(t):
 # --------------------------------------------------------------------------
 
 def bloc_partenaires():
-    def item(nom, url):
+    def item(nom, url, logo):
         return (
             '<a class="partner" href="{u}" target="_blank" rel="noopener noreferrer">'
-            '<span class="plogo" aria-hidden="true"></span>{n}</a>'
-        ).format(u=esc(url), n=esc(nom))
-    liste = "".join(item(n, u) for n, u in PARTENAIRES)
+            '<span class="plogo"><img src="assets/img/partenaires/{l}" alt="" loading="lazy"></span>{n}</a>'
+        ).format(u=esc(url), n=esc(nom), l=esc(logo))
+    liste = "".join(item(n, u, l) for n, u, l in PARTENAIRES)
     # Double pour un defilement infini fluide (translateX -50%).
     return liste + liste
 
