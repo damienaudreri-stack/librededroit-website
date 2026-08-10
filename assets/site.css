@@ -234,6 +234,9 @@ h3 { font-size: 20px; }
 .reveal.visible { opacity: 1; transform: none; animation: ldFade .6s ease; }
 .reveal-left { transform: translate(-28px, 8px) scale(.96); }
 .reveal-right { transform: translate(28px, 8px) scale(.96); }
+.asso-grid .asso-card:nth-child(1) { transition-delay: 0s, 0s, 0s; }
+.asso-grid .asso-card:nth-child(2) { transition-delay: .5s, 0s, 0s; }
+.asso-grid .asso-card:nth-child(3) { transition-delay: 1s, 0s, 0s; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; }
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
@@ -346,22 +349,6 @@ h3 { font-size: 20px; }
 .reason-card.dore { border-top-color: var(--dore); }
 .reason-card.dore .reason-num { background: #F3E7C9; color: #8A6A1E; }
 
-.public-card { position: relative; border-radius: 16px; padding: 28px; overflow: hidden; }
-.public-card .pnum { position: absolute; top: 18px; right: 22px; font-family: var(--serif); font-weight: 700; font-size: 46px; opacity: .18; line-height: 1; }
-.public-card h3 { margin: 4px 0 10px; position: relative; }
-.public-card p { color: var(--gris); font-size: 15px; position: relative; }
-.public-card hr { border: none; border-top: 1px solid rgba(0,0,0,.08); margin: 20px 0 16px; }
-.public-card .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.public-card .chip { background: rgba(255,255,255,.6); border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; }
-.public-card.lavande { background: var(--lavande); border: 2px solid var(--marine); }
-.public-card.lavande h3 { color: var(--marine); }
-.public-card.lavande .chip { color: var(--marine); }
-.public-card.peche { background: var(--peche); }
-.public-card.peche h3 { color: var(--terracotta); }
-.public-card.peche .chip { color: var(--terracotta); }
-.public-card.tan { background: #F3ECD9; }
-.public-card.tan h3 { color: #8A6A1E; }
-.public-card.tan .chip { color: #8A6A1E; }
 
 /* --- Meta bandeau --- */
 .meta-band { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; text-align: center; }
@@ -584,9 +571,28 @@ h3 { font-size: 20px; }
    Assos partenaires (Ressources)
    ========================================================================== */
 .asso-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.asso-card { background: var(--creme); border: 1px solid var(--bord-beige); border-radius: 14px; padding: 22px; }
+.asso-card {
+  background: var(--creme); border: 1px solid var(--bord-beige);
+  border-radius: 14px; padding: 22px;
+  display: block; text-decoration: none; color: inherit;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.asso-card:hover { transform: scale(1.03); box-shadow: 0 14px 30px rgba(0,0,0,.1); text-decoration: none; }
+.asso-card:hover h3, .asso-card:hover p { text-decoration: none; }
+.asso-card:hover .card-link { background: var(--marine); color: var(--creme); }
 .asso-card h3 { font-size: 17px; margin-bottom: 8px; }
 .asso-card p { color: var(--gris); font-size: 14px; margin-bottom: 12px; }
+.asso-card .reel-cover { width: 100%; height: auto; border-radius: 10px; display: block; margin-bottom: 14px; }
+.asso-grid .asso-card {
+  transition-property: opacity, transform, box-shadow;
+  transition-duration: 3s, .3s, .3s;
+  transition-timing-function: ease;
+}
+.linkedin-cover {
+  aspect-ratio: 480 / 853; background: #0A66C2;
+  display: flex; align-items: center; justify-content: center;
+}
+.linkedin-cover svg { width: 30%; height: 30%; fill: #fff; }
 @media (max-width: 860px) { .asso-grid { grid-template-columns: 1fr; } }
 
 /* ==========================================================================
