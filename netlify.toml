@@ -1,5 +1,10 @@
 [build]
   functions = "netlify/functions"
+  # EMAIL_DESTINATION est l'adresse de contact publique du site (footer, page
+  # contact) : sa présence en clair dans le HTML est volontaire, pas une fuite.
+  # Sans cette ligne, le scanner de secrets de Netlify bloque le build.
+  [build.environment]
+    SECRETS_SCAN_OMIT_KEYS = "EMAIL_DESTINATION"
 
 # En-tetes de securite appliques a toutes les pages.
 # CSP stricte sans 'unsafe-inline' : tout le CSS et le JS sont dans des
