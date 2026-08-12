@@ -50,18 +50,39 @@
   function runCount(el) {
     var cible = parseInt(el.getAttribute('data-count'), 10) || 0;
     var plus = el.hasAttribute('data-count-plus');
-    var texteFinal = (plus ? '+ de ' : '') + cible.toLocaleString('fr-FR');
+    var suffixe = el.getAttribute('data-count-suffix') || '';
+    var texteFinal = (plus ? '+ de ' : '') + cible.toLocaleString('fr-FR') + suffixe;
     if (reduceMotion) { el.textContent = texteFinal; return; }
-    var duree = Math.min(1800 + Math.sqrt(cible) * 6, 3400), debut = null;
-    function pas(ts) {
+
+    function afficher(v, estFinal) {
+      el.textContent = estFinal ? texteFinal : v.toLocaleString('fr-FR') + suffixe;
+    }
+
+    // 5 derniers chiffres affichés un par un, 0,5s d'intervalle
+    function phaseLente(v) {
+      if (v >= cible) { afficher(cible, true); return; }
+      afficher(v, false);
+      setTimeout(function () { phaseLente(v + 1); }, 500);
+    }
+
+    var seuil = Math.max(cible - 5, 0);
+    if (seuil <= 0) { phaseLente(0); return; }
+
+    // Montee rapide jusqu'au seuil, puis relais vers la phase lente
+    var duree = Math.min(900 + Math.sqrt(seuil) * 5, 2200), debut = null;
+    function phaseRapide(ts) {
       if (!debut) debut = ts;
       var p = Math.min((ts - debut) / duree, 1);
-      var eased = 1 - Math.pow(1 - p, 5);
-      var val = Math.round(eased * cible);
-      el.textContent = (p >= 1) ? texteFinal : val.toLocaleString('fr-FR');
-      if (p < 1) requestAnimationFrame(pas);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(eased * seuil);
+      if (p < 1) {
+        afficher(val, false);
+        requestAnimationFrame(phaseRapide);
+      } else {
+        phaseLente(seuil);
+      }
     }
-    requestAnimationFrame(pas);
+    requestAnimationFrame(phaseRapide);
   }
   if (counters.length) {
     if (!('IntersectionObserver' in window)) {
