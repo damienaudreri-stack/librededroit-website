@@ -97,24 +97,6 @@
     setTimeout(taper, 300);
   });
 
-  // --- Selecteur de montant de don ---
-  var donButtons = document.querySelectorAll('.don-amount');
-  if (donButtons.length) {
-    var donCta = document.getElementById('don-cta');
-    function majDon(btn) {
-      var montant = parseInt(btn.getAttribute('data-montant'), 10) || 0;
-      donButtons.forEach(function (b) { b.classList.remove('actif'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('actif');
-      btn.setAttribute('aria-pressed', 'true');
-      if (donCta) donCta.textContent = 'Faire un don de ' + montant + ' € →';
-    }
-    donButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () { majDon(btn); });
-    });
-    var defaut = document.querySelector('.don-amount[data-montant="50"]') || donButtons[0];
-    if (defaut) majDon(defaut);
-  }
-
   // --- Filtres articles (Ressources) : catégorie + thème ---
   var catBtns = document.querySelectorAll('[data-filter]');
   var themeBtns = document.querySelectorAll('[data-theme-filter]');
