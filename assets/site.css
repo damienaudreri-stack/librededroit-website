@@ -193,6 +193,7 @@ input, select, textarea, button { font-family: var(--sans); font-size: 1rem; }
 }
 .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
 .mobile-menu a { display: block; padding: 12px 8px; font-weight: 500; color: var(--texte); border-bottom: 1px solid var(--bord-beige); }
+.mobile-menu a.mobile-cta { display: flex; justify-content: center; padding: 13px 22px; border-bottom: none; margin-top: 10px; color: var(--creme); }
 
 @media (max-width: 900px) {
   .nav-links, .nav-cta .besoin-aide { display: none; }
@@ -389,6 +390,7 @@ h3 { font-size: 20px; }
 .meta-band .m .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(252,250,245,.6); }
 .meta-band .m .v { font-family: var(--serif); font-size: 20px; margin-top: 6px; color: var(--creme); }
 @media (max-width: 860px) { .meta-band { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .meta-band { grid-template-columns: 1fr; } }
 
 /* ==========================================================================
    Marquee (carrousels infinis)
@@ -456,7 +458,8 @@ h3 { font-size: 20px; }
   color: var(--dore); display: block; margin-bottom: 4px;
 }
 @media (max-width: 860px) {
-  .encart.grid-2col-head > div + div { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,.15); padding-top: 28px; margin-top: 8px; }
+  .encart.grid-2col-head > div + div { border-left: none; padding-left: 0; order: 1; }
+  .encart.grid-2col-head > div:first-child { order: 2; border-top: 1px solid rgba(255,255,255,.15); padding-top: 28px; margin-top: 8px; }
 }
 .don-band { background: linear-gradient(180deg,var(--peche),#F7EEE4); border: 1px solid #E9D3C4; border-radius: 20px; padding: 44px; text-align: center; }
 .don-band h2 { color: var(--marine); }

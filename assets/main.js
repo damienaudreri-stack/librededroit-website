@@ -52,11 +52,12 @@
     var plus = el.hasAttribute('data-count-plus');
     var texteFinal = (plus ? '+ de ' : '') + cible.toLocaleString('fr-FR');
     if (reduceMotion) { el.textContent = texteFinal; return; }
-    var duree = 1400, debut = null;
+    var duree = 1800, debut = null;
     function pas(ts) {
       if (!debut) debut = ts;
       var p = Math.min((ts - debut) / duree, 1);
-      var val = Math.round(p * cible);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(eased * cible);
       el.textContent = (p >= 1) ? texteFinal : val.toLocaleString('fr-FR');
       if (p < 1) requestAnimationFrame(pas);
     }
