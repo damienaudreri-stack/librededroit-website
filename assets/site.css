@@ -76,6 +76,7 @@ input, select, textarea, button { font-family: var(--sans); font-size: 1rem; }
 .slot.portrait { aspect-ratio: 1 / 1; border-radius: 16px; }
 .slot-collectif { width: 100%; }
 .slot-team { width: 120px; height: 120px; margin: 0 auto 14px; }
+.team-photo { width: 120px; height: 120px; margin: 0 auto 14px; border-radius: 16px; object-fit: cover; display: block; }
 .atelier-photo { width: 100%; height: auto; border-radius: 16px; display: block; }
 .ateliers-grid { align-items: center; }
 
@@ -227,6 +228,8 @@ main { display: block; }
 h2.titre { font-size: clamp(26px, 4vw, 38px); margin-bottom: 14px; }
 h3 { font-size: 20px; }
 .lead { color: var(--gris); font-size: 18px; }
+.lead-justifie { text-align: justify; text-justify: inter-word; hyphens: none; overflow-wrap: normal; word-break: keep-all; }
+.lead + .lead { margin-top: 16px; }
 .section.sombre .lead, .section.marine .lead { color: rgba(252,250,245,.82); }
 
 /* --- Reveal au scroll --- */
@@ -311,6 +314,16 @@ h3 { font-size: 20px; }
 .stat { text-align: center; padding: 26px 22px; background: var(--creme); border: 1px solid var(--bord-beige); border-radius: 16px; }
 .stat .num { font-family: var(--serif); font-size: clamp(38px, 6vw, 56px); font-weight: 700; color: var(--marine); line-height: 1; }
 .stat .lbl { color: var(--gris); font-size: 15px; margin-top: 8px; }
+.stat .note { color: var(--gris3); font-size: 12px; margin-top: 4px; }
+.stats-source { text-align: center; font-style: italic; font-size: 12px; color: var(--gris3); margin-top: 14px; }
+.stats-source-logo { display: inline-block; height: 16px; width: auto; vertical-align: middle; margin-right: 6px; border-radius: 2px; }
+.chiffres-carre { aspect-ratio: 1 / 1; width: 100%; background: linear-gradient(160deg, var(--marine) 0%, var(--marine-fonce) 100%); border-radius: 24px; padding: 36px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+.chiffres-carre .kicker-dore { text-align: center; letter-spacing: .14em; }
+.chiffres-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.chiffres-grid .cc-item { text-align: center; background: rgba(252,250,245,.06); border: 1px solid rgba(252,250,245,.14); border-radius: 16px; padding: 20px 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; transition: background .2s ease, border-color .2s ease; }
+.chiffres-grid .cc-item:hover { background: rgba(252,250,245,.1); border-color: rgba(252,250,245,.22); }
+.chiffres-grid .cc-num { font-family: var(--serif); font-size: clamp(26px, 3.4vw, 36px); font-weight: 700; color: var(--creme); line-height: 1; }
+.chiffres-grid .cc-lbl { font-size: 12px; color: rgba(252,250,245,.72); line-height: 1.35; }
 @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
 /* --- Etapes numerotees --- */
@@ -439,6 +452,16 @@ h3 { font-size: 20px; }
 .valeur-col.terracotta-clair { border-color: #E0967B; }
 .valeur-col.terracotta-clair .kicker { color: #E0967B; }
 .team-member .role { color: var(--marine); font-weight: 400; font-size: 14px; margin-top: 2px; }
+.team-bands { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 8px; }
+.team-band { display: flex; min-height: 230px; background: var(--marine); border-radius: 18px; overflow: hidden; }
+.team-band .team-band-photo { flex: 0 0 40%; overflow: hidden; }
+.team-band .team-band-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-band .team-band-info { flex: 1; padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; color: var(--creme); }
+.team-band .team-band-info h3 { color: var(--creme); font-size: 19px; }
+.team-band .team-band-info .role { color: rgba(252,250,245,.78); font-size: 14px; line-height: 1.4; margin: 0; }
+@media (max-width: 700px) {
+  .team-bands { grid-template-columns: 1fr; }
+}
 #ld-contact-confidentiel.marine { background: var(--marine-fonce); }
 .confid-note {
   display: flex; gap: 10px; align-items: flex-start;

@@ -49,13 +49,15 @@
   var counters = document.querySelectorAll('[data-count]');
   function runCount(el) {
     var cible = parseInt(el.getAttribute('data-count'), 10) || 0;
-    if (reduceMotion) { el.textContent = String(cible); return; }
+    var plus = el.hasAttribute('data-count-plus');
+    var texteFinal = (plus ? '+ de ' : '') + cible.toLocaleString('fr-FR');
+    if (reduceMotion) { el.textContent = texteFinal; return; }
     var duree = 1400, debut = null;
     function pas(ts) {
       if (!debut) debut = ts;
       var p = Math.min((ts - debut) / duree, 1);
       var val = Math.round(p * cible);
-      el.textContent = String(val);
+      el.textContent = (p >= 1) ? texteFinal : val.toLocaleString('fr-FR');
       if (p < 1) requestAnimationFrame(pas);
     }
     requestAnimationFrame(pas);

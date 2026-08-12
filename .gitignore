@@ -6,3 +6,7 @@
 
 # Photos en attente de confirmation du droit à l'image (voir HISTORY.md)
 /img/
+
+# Photos brutes non recadrées de l'équipe (originaux haute résolution) : seules
+# les versions recadrées dans assets/img/equipe/ sont destinées au site public.
+/assets/img/Photos site internet*
