@@ -1,0 +1,10 @@
+#ld-cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#1B1B4D;color:#FCFAF5;padding:18px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;font-family:"Hanken Grotesk",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;box-shadow:0 -4px 20px rgba(0,0,0,.18);}
+#ld-cookie-banner p{margin:0;max-width:640px;line-height:1.5;}
+#ld-cookie-banner .ld-actions{display:flex;gap:10px;flex-shrink:0;}
+#ld-cookie-banner button{font-family:inherit;font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;}
+#ld-cookie-banner .ld-accepter{background:#C99A3F;color:#3a2c07;}
+#ld-cookie-banner .ld-accepter:hover{box-shadow:0 8px 20px rgba(201,154,63,.3);}
+#ld-cookie-banner .ld-refuser{background:transparent;color:#FCFAF5;border-color:#FCFAF5;}
+#ld-cookie-banner .ld-refuser:hover{background:rgba(255,255,255,.1);}
+#ld-cookie-banner .ld-lien-savoir-plus{color:#FCFAF5;text-decoration:underline;}
+.ld-gerer-cookies{margin-left:8px;}
