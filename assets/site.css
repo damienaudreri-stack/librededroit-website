@@ -50,7 +50,7 @@ body {
 }
 img { max-width: 100%; display: block; }
 p { hyphens: none; overflow-wrap: normal; word-break: keep-all; }
-.faq details p, .valeur-col p, .article-body p { text-align: justify; text-justify: inter-word; }
+.valeur-col p, .article-body p { text-align: justify; text-justify: inter-word; }
 a { color: var(--marine); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; color: var(--texte); }
