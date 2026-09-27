@@ -28,30 +28,59 @@
               <input type="text" id="aide-site" name="site" class="honeypot-field" tabindex="-1" autocomplete="off">
             </div>
             <div class="field">
-              <label for="aide-prenom">Prénom ou pseudo</label>
-              <input type="text" id="aide-prenom" data-label="Prénom ou pseudo" placeholder="Prénom ou pseudo">
+              <label for="aide-prenom">Prénom ou pseudo *</label>
+              <input type="text" id="aide-prenom" data-label="Prénom ou pseudo" placeholder="Prénom ou pseudo" required>
             </div>
             <div class="field">
-              <label for="aide-contact">Email ou téléphone pour vous répondre</label>
-              <input type="text" id="aide-contact" data-label="Email ou téléphone" placeholder="Email ou téléphone pour vous répondre">
+              <label for="aide-region">Région de résidence</label>
+              <select id="aide-region" data-label="Région de résidence">
+                <option value="" disabled selected>Région de résidence</option>
+                <option>Auvergne-Rhône-Alpes</option>
+                <option>Bourgogne-Franche-Comté</option>
+                <option>Bretagne</option>
+                <option>Centre-Val de Loire</option>
+                <option>Corse</option>
+                <option>Grand Est</option>
+                <option>Hauts-de-France</option>
+                <option>Île-de-France</option>
+                <option>Normandie</option>
+                <option>Nouvelle-Aquitaine</option>
+                <option>Occitanie</option>
+                <option>Pays de la Loire</option>
+                <option>Provence-Alpes-Côte d'Azur</option>
+                <option>Guadeloupe</option>
+                <option>Martinique</option>
+                <option>Guyane</option>
+                <option>La Réunion</option>
+                <option>Mayotte</option>
+                <option>Hors de France</option>
+              </select>
             </div>
             <div class="field">
-              <label for="aide-recontact">Comment préférez-vous être recontacté·e ?</label>
-              <select id="aide-recontact" data-label="Mode de recontact préféré">
+              <label for="aide-contact">Email *</label>
+              <input type="email" id="aide-contact" data-label="Email" placeholder="Email" required>
+            </div>
+            <div class="field">
+              <label for="aide-recontact">Comment préférez-vous être recontacté·e ? *</label>
+              <select id="aide-recontact" data-label="Mode de recontact préféré" required>
                 <option value="" disabled selected>Comment préférez-vous être recontacté·e ?</option>
                 <option>Par email</option>
                 <option>Par téléphone</option>
                 <option>Par SMS discret</option>
               </select>
             </div>
+            <div class="field" id="aide-telephone-wrap" hidden>
+              <label for="aide-telephone">Votre numéro de téléphone *</label>
+              <input type="tel" id="aide-telephone" data-label="Numéro de téléphone" placeholder="Votre numéro de téléphone">
+            </div>
             <div class="field" id="aide-sms-pretexte-wrap" hidden>
-              <label for="aide-sms-pretexte">Sous quel nom ou quel prétexte pouvons-nous vous recontacter par SMS ?</label>
+              <label for="aide-sms-pretexte">Sous quel nom ou quel prétexte pouvons-nous vous recontacter par SMS ? *</label>
               <input type="text" id="aide-sms-pretexte" data-label="Prétexte SMS discret" placeholder="Ex. : « C'est Camille pour ton rendez-vous », « Livraison de commande »…">
               <p class="search-conf mt-8">Ce que vous indiquez ici sera utilisé mot pour mot.</p>
             </div>
             <div class="field">
-              <label for="aide-besoin">De quelle aide avez-vous besoin ?</label>
-              <select id="aide-besoin" data-label="Aide souhaitée">
+              <label for="aide-besoin">De quelle aide avez-vous besoin ? *</label>
+              <select id="aide-besoin" data-label="Aide souhaitée" required>
                 <option value="" disabled selected>De quelle aide avez-vous besoin ?</option>
                 <option>Aide juridique</option>
                 <option>Aide psychologique</option>
@@ -60,8 +89,8 @@
               </select>
             </div>
             <div class="field">
-              <label for="aide-message">Votre message</label>
-              <textarea id="aide-message" data-label="Message" placeholder="Vous pouvez écrire ce que vous voulez."></textarea>
+              <label for="aide-message">Votre message *</label>
+              <textarea id="aide-message" data-label="Message" placeholder="Vous pouvez écrire ce que vous voulez." required></textarea>
             </div>
             <button type="submit" class="btn btn-terracotta btn-lg">Envoyer en confidentialité</button>
             <p class="form-status" role="alert" aria-live="polite"></p>
