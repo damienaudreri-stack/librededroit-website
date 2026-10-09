@@ -73,7 +73,8 @@
 
   // Formulaire d'aide : le champ « prétexte SMS » n'apparaît et n'est
   // obligatoire que si la personne choisit d'être recontactée par SMS discret.
-  // Le champ « numéro de téléphone » suit la même logique pour « Par téléphone ».
+  // Le champ « numéro de téléphone » est obligatoire pour « Par téléphone » et
+  // pour « Par SMS discret » (il faut un numéro pour envoyer le SMS).
   var recontact = document.getElementById('aide-recontact');
   var pretexteWrap = document.getElementById('aide-sms-pretexte-wrap');
   var pretexteInput = document.getElementById('aide-sms-pretexte');
@@ -91,7 +92,7 @@
       }
 
       if (telephoneWrap && telephoneInput) {
-        var telChoisi = choix === 'Par téléphone';
+        var telChoisi = choix === 'Par téléphone' || choix === 'Par SMS discret';
         telephoneWrap.hidden = !telChoisi;
         telephoneInput.required = telChoisi;
         if (!telChoisi) telephoneInput.value = '';
