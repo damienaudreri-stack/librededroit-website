@@ -1043,6 +1043,7 @@ h1, h2.titre { text-wrap: balance; }
 .etape-n { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--chaud); color: var(--terracotta); font-family: var(--serif); font-weight: 700; font-size: 17px; display: flex; align-items: center; justify-content: center; }
 .etapes strong { display: block; font-size: 17px; font-weight: 600; line-height: 1.35; }
 .etapes p { color: var(--gris); font-size: 15.5px; margin-top: 2px; }
+.etapes-marine .etape-n { background: var(--lavande); color: var(--marine); }
 .confid-note { align-items: center; }
 .confid-picto { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--marine); stroke-width: 1.7; stroke-linecap: round; }
 @media (max-width: 960px) { .confid-grid { grid-template-columns: 1fr; } .confid-intro { position: static; } }
