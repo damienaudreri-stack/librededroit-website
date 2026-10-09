@@ -117,9 +117,11 @@ ASSOS = [
 PHOTOS_ACCUEIL = [
     ("atelier-1.jpg", 1160, 672, "Atelier de sensibilisation LibredeDroit auprès d'étudiants"),
     ("accueil/photo-02.jpg", 560, 560, "Un bénévole échange avec des étudiants pendant un atelier en amphithéâtre"),
+    ("accueil/photo-08.jpg", 997, 560, "Un entretien d'accompagnement avec des membres de LibredeDroit"),
     ("accueil/photo-05.jpg", 996, 560, "Un amphithéâtre d'étudiants pendant une intervention de LibredeDroit"),
     ("atelier-2.jpg", 824, 672, "Une bénévole échange avec des étudiants pendant un atelier de sensibilisation en amphithéâtre"),
     ("accueil/photo-06.jpg", 420, 560, "Le stand de LibredeDroit à la rencontre des étudiants"),
+    ("accueil/photo-08.jpg", 997, 560, "Un entretien d'accompagnement avec des membres de LibredeDroit"),
     ("accueil/photo-07.jpg", 842, 560, "Une bénévole anime un échange avec des étudiants pendant un atelier"),
 ]
 
