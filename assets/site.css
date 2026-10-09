@@ -1141,30 +1141,41 @@ h1, h2.titre { text-wrap: balance; }
    notre histoire
    ========================================================================== */
 
-/* --- Accueil : logo en filigrane derriere le bloc titre, battement lent --- */
+/* --- Accueil : logo d'ouverture. Il part petit, grossit, bat deux fois,
+   puis se range en petit embleme au-dessus du surtitre (jamais derriere le texte). --- */
 .hero-centre { position: relative; isolation: isolate; }
+.hero-embleme { display: block; position: relative; height: 72px; margin: 0 auto 14px; }
 .hero-filigrane { display: none; }
 @supports ((-webkit-mask-image: url('img/logo-icon.png')) or (mask-image: url('img/logo-icon.png'))) {
   .hero-filigrane {
     display: block; position: absolute; z-index: -1; pointer-events: none;
-    left: 50%; top: 50%; translate: -50% -50%;
-    width: min(720px, 100vw); aspect-ratio: 1386 / 924;
-    background: var(--marine); opacity: .065;
+    left: 50%; top: 50%; width: 108px; aspect-ratio: 1386 / 924;
+    transform: translate(-50%, -50%); transform-origin: 50% 50%;
+    background: var(--marine); opacity: .22;
     -webkit-mask: url('img/logo-icon.png') center / contain no-repeat;
     mask: url('img/logo-icon.png') center / contain no-repeat;
   }
 }
-@keyframes ldBattement {
-  0% { transform: scale(1); }
-  9% { transform: scale(1.05); }
-  18% { transform: scale(1.005); }
-  27% { transform: scale(1.04); }
-  40% { transform: scale(1); }
-  100% { transform: scale(1); }
+@keyframes ldLogoOuverture {
+  0%   { transform: translate(-50%, -50%) scale(.6);  opacity: 0; }
+  28%  { transform: translate(-50%, 40%) scale(3.4);  opacity: .14; }
+  40%  { transform: translate(-50%, 40%) scale(3.75); opacity: .16; }
+  48%  { transform: translate(-50%, 40%) scale(3.4);  opacity: .14; }
+  56%  { transform: translate(-50%, 40%) scale(3.7);  opacity: .16; }
+  66%  { transform: translate(-50%, 40%) scale(3.4);  opacity: .14; }
+  100% { transform: translate(-50%, -50%) scale(1);   opacity: .22; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-filigrane { animation: ldBattement 4.6s ease-in-out infinite; }
+  .hero-filigrane { animation: ldLogoOuverture 1.9s cubic-bezier(.45,0,.25,1) both; }
+  /* Le texte du hero attend la fin du battement pour ne pas se superposer au grand logo */
+  .hero-accueil .texte-degrade { animation-delay: 1.35s, 2.4s; }
+  .hero-accueil .titre-mots > .mot:nth-child(1) { animation-delay: 1.45s; }
+  .hero-accueil .titre-mots > .mot:nth-child(2) { animation-delay: 1.53s; }
+  .hero-accueil .titre-mots em .mot:nth-child(1) { animation-delay: 1.63s; }
+  .hero-accueil .titre-mots em .mot:nth-child(2) { animation-delay: 1.71s; }
+  .hero-accueil .hero-intro { animation-delay: 1.8s; }
 }
+@media (max-width: 700px) { .hero-embleme { height: 56px; } .hero-filigrane { width: 84px; } }
 
 /* --- Accueil : bande de photos defilante (droite vers gauche, sans pause) --- */
 .section-bande { padding: clamp(48px, 7vw, 88px) 0 clamp(72px, 10vw, 128px); }
