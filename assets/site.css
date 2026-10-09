@@ -1451,3 +1451,15 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .section.sombre.chiffres { padding-top: clamp(48px, 6vw, 80px); }
 /* « Notre vision » après les chiffres : marge haute normale, et la bande photos rejoint les chiffres */
 .section.sombre.chiffres + .section.vision { padding-top: clamp(56px, 7vw, 96px); }
+/* Chiffres : ligne pleine largeur sous les quatre chiffres */
+.stat-ligne { display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 6px 18px; margin: clamp(28px, 4vw, 44px) 0 0; padding-top: clamp(24px, 3vw, 32px); border-top: 1px solid rgba(252,250,245,.16); text-align: center; }
+.stat-ligne .num { font-family: var(--serif); font-size: clamp(44px, 6vw, 72px); font-weight: 500; letter-spacing: -0.02em; color: var(--dore); line-height: 1; white-space: nowrap; }
+.stat-ligne-texte { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 32px); color: var(--creme); }
+
+/* Notre vision : fond distinct des sections Accompagner / Sensibiliser qui suivent */
+.section.vision { background: linear-gradient(180deg, #F6EAE2 0%, #FBF4EF 100%); }
+/* Citation sur une seule ligne sur grand écran */
+.vision-citation { max-width: none; }
+@media (min-width: 1100px) {
+  .vision-citation p { font-size: clamp(22px, 2.05vw, 30px); white-space: nowrap; }
+}
