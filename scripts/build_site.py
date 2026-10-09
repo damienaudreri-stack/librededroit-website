@@ -113,13 +113,17 @@ ASSOS = [
 # assets/img/accueil/) : /Users/damienaudrerie/Documents/JARVIS/Photos site/Accueil - défilement/
 # Une ligne = une photo : (nom de fichier relatif a assets/img/, texte alternatif).
 # Fichier None = emplacement provisoire « Photo à venir ».
+# (fichier dans assets/img/, largeur, hauteur, texte alternatif)
 PHOTOS_ACCUEIL = [
-    ("atelier-1.jpg", "Atelier de sensibilisation LibredeDroit auprès d'étudiants"),
-    ("atelier-2.jpg", "Une bénévole échange avec des étudiants pendant un atelier de sensibilisation en amphithéâtre"),
-    (None, ""),
-    (None, ""),
-    (None, ""),
-    (None, ""),
+    ("accueil/photo-01.jpg", 420, 560, "Les membres de LibredeDroit réunis lors d'un événement de l'association"),
+    ("atelier-1.jpg", 1160, 672, "Atelier de sensibilisation LibredeDroit auprès d'étudiants"),
+    ("accueil/photo-02.jpg", 560, 560, "Un bénévole échange avec des étudiants pendant un atelier en amphithéâtre"),
+    ("accueil/photo-03.jpg", 550, 560, "Intervention d'un membre de LibredeDroit lors d'une conférence"),
+    ("accueil/photo-05.jpg", 996, 560, "Un amphithéâtre d'étudiants pendant une intervention de LibredeDroit"),
+    ("accueil/photo-04.jpg", 315, 560, "Une intervenante prend la parole au micro"),
+    ("atelier-2.jpg", 824, 672, "Une bénévole échange avec des étudiants pendant un atelier de sensibilisation en amphithéâtre"),
+    ("accueil/photo-06.jpg", 420, 560, "Le stand de LibredeDroit à la rencontre des étudiants"),
+    ("accueil/photo-07.jpg", 842, 560, "Une bénévole anime un échange avec des étudiants pendant un atelier"),
 ]
 
 
@@ -196,12 +200,13 @@ SVG_PHOTO = ('<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" widt
 
 def bloc_photos_accueil():
     def item(photo, cache):
-        fichier, alt = photo
+        fichier, larg, haut, alt = photo
         attrs = ' aria-hidden="true"' if cache else ""
         dup = " dup" if cache else ""
         if fichier:
-            return ('<figure class="bande-item{d}"{h}><img src="assets/img/{f}" alt="{a}"></figure>'
-                    ).format(d=dup, h=attrs, f=esc(fichier), a="" if cache else esc(alt))
+            # Dimensions en attributs : la bande se mesure avant le chargement des images.
+            return ('<figure class="bande-item{d}"{h}><img src="assets/img/{f}" width="{w}" height="{ht}" alt="{a}"></figure>'
+                    ).format(d=dup, h=attrs, f=esc(fichier), w=larg, ht=haut, a="" if cache else esc(alt))
         return ('<figure class="bande-item bande-slot slot{d}"{h}>{svg}<span>Photo à venir</span></figure>'
                 ).format(d=dup, h=attrs, svg=SVG_PHOTO)
     return boucle_defilante(PHOTOS_ACCUEIL, item, minimum=10)
