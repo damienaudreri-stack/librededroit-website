@@ -5,24 +5,22 @@
         <p class="intro">Nous accompagnons toute personne victime de violences sexuelles, conjugales, et/ou intrafamiliales, sans distinction.</p>
         <div class="hero-cta">
           <a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">Écrire en confidentialité <span class="fleche" aria-hidden="true">›</span></a>
-          <a class="btn btn-ghost btn-lg" href="ressources.html">S'informer sur mes droits →</a>
         </div>
-        <p class="hero-urgence"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.3a10.5 10.5 0 0 0 6.7 6.7L16 14l4 1.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg><span>En danger immédiat : <a href="tel:17">17</a> (police), <a href="tel:3919">3919</a> (Violences Femmes Info)</span></p>
       </div>
     </section>
 
     <section class="section section-confidentiel" id="ld-contact-confidentiel">
-      <div class="wrap confid-grid">
+      <div class="wrap">
+        <div class="section-head confid-head">
+          <h2 class="titre titre-formulaire"><span class="texte-degrade">Formulaire confidentiel</span></h2>
+          <p class="delai-24h">Notre équipe d'accompagnement revient vers vous sous 24 heures.</p>
+        </div>
+      <div class="confid-grid">
         <div class="confid-intro">
-          <div class="section-head">
-            <span class="kicker">Formulaire confidentiel</span>
-            <h2 class="titre">Nous écrire, en confiance</h2>
-            <p class="lead">Ce message arrive directement à notre équipe d'accompagnement.<br>Notre équipe d'accompagnement revient vers vous sous 24h.</p>
-          </div>
           <h3 class="etapes-titre">Comment ça se passe</h3>
           <ol class="etapes">
             <li><span class="etape-n" aria-hidden="true">1</span><div><strong>Vous nous écrivez</strong><p>Via le formulaire confidentiel de cette page.</p></div></li>
-            <li><span class="etape-n" aria-hidden="true">2</span><div><strong>Une personne de l'équipe vous répond</strong><p>Dès que possible, avec douceur et discrétion.</p></div></li>
+            <li><span class="etape-n" aria-hidden="true">2</span><div><strong>Une personne de l'équipe vous répond</strong><p>Sous 24 heures, avec douceur et discrétion.</p></div></li>
             <li><span class="etape-n" aria-hidden="true">3</span><div><strong>Nous avançons ensemble</strong><p>Nous construisons ensemble votre accompagnement juridique et psychologique.</p></div></li>
           </ol>
         </div>
@@ -106,16 +104,17 @@
           </form>
           <div class="form-success" id="aide-succes" role="status" hidden>
             <strong>Message reçu. ✓</strong><br>
-            Merci pour votre confiance. Une personne de l'équipe vous répond dès que possible, avec douceur et discrétion. Si vous êtes en danger immédiat, composez le 17.
+            Merci pour votre confiance. Une personne de l'équipe vous répond sous 24 heures, avec douceur et discrétion. Si vous êtes en danger immédiat, composez le 17.
           </div>
         </div>
+      </div>
       </div>
     </section>
 
     <section class="section creme" id="ld-accompagnement-juridique">
       <div class="wrap">
-        <div class="section-head center">
-          <h2 class="titre">Ce que nos avocats partenaires peuvent faire pour vous</h2>
+        <div class="section-head center section-head-avocats">
+          <h2 class="titre titre-avocats">Ce que nos avocats et psychologues partenaires<br class="br-bureau"> spécialisés peuvent faire pour vous</h2>
         </div>
         <div class="onglets" data-onglets>
           <div class="onglets-liste" role="tablist" aria-label="Types d'accompagnement" hidden>
@@ -180,14 +179,10 @@
           <p class="lead">Ce que nous avons pu mettre en place, à leurs côtés.<br><em class="search-conf">Prénoms modifiés pour préserver la sécurité des personnes.</em></p>
         </div>
       </div>
-      <div class="defile" data-defile>
-        <div class="wrap defile-commandes" hidden>
-          <button type="button" class="defile-btn" data-defile-prec aria-label="Témoignages précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <button type="button" class="defile-btn" data-defile-suiv aria-label="Témoignages suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-        </div>
-        <ul class="defile-piste" tabindex="0" aria-label="Témoignages de personnes accompagnées">
+      <div class="marquee marquee-manuel marquee-temoignages" tabindex="0" role="region" aria-label="Témoignages de personnes accompagnées, défilement automatique mis en pause au survol et au focus">
+        <div class="marquee-track left">
           {{temoignages_accomp}}
-        </ul>
+        </div>
       </div>
     </section>
 
@@ -198,7 +193,6 @@
           <span class="kicker">Idées reçues</span>
           <h2 class="titre">Démêler le vrai du faux.</h2>
           <p class="lead">Trois idées reçues qui empêchent parfois de demander de l'aide,<br>et ce qu'il faut vraiment savoir.</p>
-          <p class="mt-14"><a class="btn btn-ghost" href="ressources.html">S'informer sur mes droits →</a></p>
         </div>
         <div class="faq">
           <details><summary>« J'attends d'avoir déposé plainte pour demander de l'aide »</summary><p>Au contraire, nous vous conseillons de nous demander de l'aide avant même de déposer plainte. Déposer plainte n'est pas un acte simple : cela peut raviver des traumatismes, vous faire attendre des heures, ou encore provoquer une victimisation secondaire.</p><p>Nous vous accompagnons gratuitement dans la préparation et le dépôt de votre plainte, à la fois pour vous protéger au mieux de la violence judiciaire, et pour favoriser les chances que votre plainte déclenche des actes d'enquête utiles et favorables à la suite de votre procédure.</p></details>

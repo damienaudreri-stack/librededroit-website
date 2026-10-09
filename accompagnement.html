@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/spectral-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/site.css?v=61cd49be">
+  <link rel="stylesheet" href="assets/site.css?v=abac0820">
 </head>
 <body>
   <header class="site-header">
@@ -35,7 +35,6 @@
         <li><a href="index.html" class="">Accueil</a></li>
         <li><a href="sensibilisation.html" class="">Sensibilisation</a></li>
         <li><a href="accompagnement.html" class="actif">Accompagnement</a></li>
-        <li><a href="ressources.html" class="">Ressources</a></li>
         <li class="nav-dropdown">
           <a href="notre-histoire.html" class="" aria-haspopup="true">À propos</a>
           <ul class="dropdown-menu">
@@ -58,7 +57,6 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="sensibilisation.html">Sensibilisation</a></li>
         <li><a href="accompagnement.html">Accompagnement</a></li>
-        <li><a href="ressources.html">Ressources</a></li>
         <li><a href="notre-histoire.html">Notre histoire</a></li>
         <li><a href="nous-rejoindre.html">Nous rejoindre</a></li>
         <li><a href="don.html">Faire un don</a></li>
@@ -75,24 +73,22 @@
         <p class="intro">Nous accompagnons toute personne victime de violences sexuelles, conjugales, et/ou intrafamiliales, sans distinction.</p>
         <div class="hero-cta">
           <a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">Écrire en confidentialité <span class="fleche" aria-hidden="true">›</span></a>
-          <a class="btn btn-ghost btn-lg" href="ressources.html">S'informer sur mes droits →</a>
         </div>
-        <p class="hero-urgence"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.3a10.5 10.5 0 0 0 6.7 6.7L16 14l4 1.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg><span>En danger immédiat : <a href="tel:17">17</a> (police), <a href="tel:3919">3919</a> (Violences Femmes Info)</span></p>
       </div>
     </section>
 
     <section class="section section-confidentiel" id="ld-contact-confidentiel">
-      <div class="wrap confid-grid">
+      <div class="wrap">
+        <div class="section-head confid-head">
+          <h2 class="titre titre-formulaire"><span class="texte-degrade">Formulaire confidentiel</span></h2>
+          <p class="delai-24h">Notre équipe d'accompagnement revient vers vous sous 24 heures.</p>
+        </div>
+      <div class="confid-grid">
         <div class="confid-intro">
-          <div class="section-head">
-            <span class="kicker">Formulaire confidentiel</span>
-            <h2 class="titre">Nous écrire, en confiance</h2>
-            <p class="lead">Ce message arrive directement à notre équipe d'accompagnement.<br>Notre équipe d'accompagnement revient vers vous sous 24h.</p>
-          </div>
           <h3 class="etapes-titre">Comment ça se passe</h3>
           <ol class="etapes">
             <li><span class="etape-n" aria-hidden="true">1</span><div><strong>Vous nous écrivez</strong><p>Via le formulaire confidentiel de cette page.</p></div></li>
-            <li><span class="etape-n" aria-hidden="true">2</span><div><strong>Une personne de l'équipe vous répond</strong><p>Dès que possible, avec douceur et discrétion.</p></div></li>
+            <li><span class="etape-n" aria-hidden="true">2</span><div><strong>Une personne de l'équipe vous répond</strong><p>Sous 24 heures, avec douceur et discrétion.</p></div></li>
             <li><span class="etape-n" aria-hidden="true">3</span><div><strong>Nous avançons ensemble</strong><p>Nous construisons ensemble votre accompagnement juridique et psychologique.</p></div></li>
           </ol>
         </div>
@@ -176,16 +172,17 @@
           </form>
           <div class="form-success" id="aide-succes" role="status" hidden>
             <strong>Message reçu. ✓</strong><br>
-            Merci pour votre confiance. Une personne de l'équipe vous répond dès que possible, avec douceur et discrétion. Si vous êtes en danger immédiat, composez le 17.
+            Merci pour votre confiance. Une personne de l'équipe vous répond sous 24 heures, avec douceur et discrétion. Si vous êtes en danger immédiat, composez le 17.
           </div>
         </div>
+      </div>
       </div>
     </section>
 
     <section class="section creme" id="ld-accompagnement-juridique">
       <div class="wrap">
-        <div class="section-head center">
-          <h2 class="titre">Ce que nos avocats partenaires peuvent faire pour vous</h2>
+        <div class="section-head center section-head-avocats">
+          <h2 class="titre titre-avocats">Ce que nos avocats et psychologues partenaires<br class="br-bureau"> spécialisés peuvent faire pour vous</h2>
         </div>
         <div class="onglets" data-onglets>
           <div class="onglets-liste" role="tablist" aria-label="Types d'accompagnement" hidden>
@@ -250,17 +247,25 @@
           <p class="lead">Ce que nous avons pu mettre en place, à leurs côtés.<br><em class="search-conf">Prénoms modifiés pour préserver la sécurité des personnes.</em></p>
         </div>
       </div>
-      <div class="defile" data-defile>
-        <div class="wrap defile-commandes" hidden>
-          <button type="button" class="defile-btn" data-defile-prec aria-label="Témoignages précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <button type="button" class="defile-btn" data-defile-suiv aria-label="Témoignages suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="marquee marquee-manuel marquee-temoignages" tabindex="0" role="region" aria-label="Témoignages de personnes accompagnées, défilement automatique mis en pause au survol et au focus">
+        <div class="marquee-track left">
+          <figure class="quote-card tagged victime"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure>
+          <figure class="quote-card tagged victime dup" aria-hidden="true" tabindex="-1"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure>
         </div>
-        <ul class="defile-piste" tabindex="0" aria-label="Témoignages de personnes accompagnées">
-          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure></li>
-        </ul>
       </div>
     </section>
 
@@ -271,7 +276,6 @@
           <span class="kicker">Idées reçues</span>
           <h2 class="titre">Démêler le vrai du faux.</h2>
           <p class="lead">Trois idées reçues qui empêchent parfois de demander de l'aide,<br>et ce qu'il faut vraiment savoir.</p>
-          <p class="mt-14"><a class="btn btn-ghost" href="ressources.html">S'informer sur mes droits →</a></p>
         </div>
         <div class="faq">
           <details><summary>« J'attends d'avoir déposé plainte pour demander de l'aide »</summary><p>Au contraire, nous vous conseillons de nous demander de l'aide avant même de déposer plainte. Déposer plainte n'est pas un acte simple : cela peut raviver des traumatismes, vous faire attendre des heures, ou encore provoquer une victimisation secondaire.</p><p>Nous vous accompagnons gratuitement dans la préparation et le dépôt de votre plainte, à la fois pour vous protéger au mieux de la violence judiciaire, et pour favoriser les chances que votre plainte déclenche des actes d'enquête utiles et favorables à la suite de votre procédure.</p></details>
@@ -335,7 +339,6 @@
             <li><a href="index.html">Accueil</a></li>
             <li><a href="sensibilisation.html">Sensibilisation</a></li>
             <li><a href="accompagnement.html">Accompagnement</a></li>
-            <li><a href="ressources.html">Ressources</a></li>
             <li><a href="notre-histoire.html">Notre histoire</a></li>
             <li><a href="nous-rejoindre.html">Nous rejoindre</a></li>
             <li><a href="don.html">Faire un don</a></li>

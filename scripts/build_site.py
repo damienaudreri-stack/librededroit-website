@@ -108,6 +108,21 @@ ASSOS = [
 ]
 
 
+# Bande de photos defilante de l'accueil (sous le hero), de droite a gauche.
+# Dossier source des vraies photos (a recadrer/compresser puis copier dans
+# assets/img/accueil/) : /Users/damienaudrerie/Documents/JARVIS/Photos site/Accueil - défilement/
+# Une ligne = une photo : (nom de fichier relatif a assets/img/, texte alternatif).
+# Fichier None = emplacement provisoire « Photo à venir ».
+PHOTOS_ACCUEIL = [
+    ("atelier-1.jpg", "Atelier de sensibilisation LibredeDroit auprès d'étudiants"),
+    ("atelier-2.jpg", "Une bénévole échange avec des étudiants pendant un atelier de sensibilisation en amphithéâtre"),
+    (None, ""),
+    (None, ""),
+    (None, ""),
+    (None, ""),
+]
+
+
 def esc(t):
     return (t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
              .replace('"', "&quot;"))
@@ -160,6 +175,50 @@ def bloc_equipe_bandeau():
     # Deuxième passage masqué aux lecteurs d'écran : il ne sert qu'à la boucle infinie.
     return ("".join(item(n, r, ph, False) for n, r, ph in EQUIPE_BANDEAU)
             + "".join(item(n, r, ph, True) for n, r, ph in EQUIPE_BANDEAU))
+
+
+def boucle_defilante(items, rendre, minimum=10):
+    """Piste de defilement infini (translateX -50%) : la liste reelle, puis des
+    copies masquees aux lecteurs d'ecran (aria-hidden, classe dup) jusqu'a
+    remplir au moins `minimum` elements par moitie, puis la moitie entiere
+    recopiee. `rendre(item, cache)` produit le HTML d'un element."""
+    n = max(1, -(-minimum // max(1, len(items))))  # arrondi superieur
+    moitie = [rendre(it, False) for it in items]
+    for _ in range(n - 1):
+        moitie += [rendre(it, True) for it in items]
+    copie = [rendre(it, True) for it in items] * n
+    return "\n          ".join(moitie + copie)
+
+
+SVG_PHOTO = ('<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/>'
+             '<circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5.5-5L6 19"/></svg>')
+
+
+def bloc_photos_accueil():
+    def item(photo, cache):
+        fichier, alt = photo
+        attrs = ' aria-hidden="true"' if cache else ""
+        dup = " dup" if cache else ""
+        if fichier:
+            return ('<figure class="bande-item{d}"{h}><img src="assets/img/{f}" alt="{a}"></figure>'
+                    ).format(d=dup, h=attrs, f=esc(fichier), a="" if cache else esc(alt))
+        return ('<figure class="bande-item bande-slot slot{d}"{h}>{svg}<span>Photo à venir</span></figure>'
+                ).format(d=dup, h=attrs, svg=SVG_PHOTO)
+    return boucle_defilante(PHOTOS_ACCUEIL, item, minimum=10)
+
+
+def bloc_temoignages_defilants(temoignages):
+    """Temoignages de l'accompagnement en defilement automatique lent (pause au
+    survol et au focus). Copies de boucle masquees et hors tabulation."""
+    def item(t, cache):
+        nom, meta, texte = t
+        return (
+            '<figure class="quote-card tagged victime{d}"{h}><h3 class="q-name">{n} <span class="mark">&rdquo;</span></h3>'
+            '<blockquote><p>{t}</p></blockquote><hr>'
+            '<figcaption class="who"><span class="avatar etu">{i}</span><span class="age">{m}</span></figcaption></figure>'
+        ).format(d=" dup" if cache else "", h=' aria-hidden="true" tabindex="-1"' if cache else "",
+                 t=esc(texte), n=esc(nom), m=esc(meta), i=esc(nom[0]))
+    return boucle_defilante(temoignages, item, minimum=8)
 
 
 def bloc_quotes(temoignages, tag=False, victime=False):
@@ -238,7 +297,7 @@ NAV = lire(os.path.join(TPL, "nav.html"))
 FOOTER = lire(os.path.join(TPL, "footer.html"))
 ARTICLE_TPL = lire(os.path.join(TPL, "article.html"))
 
-ACTIFS = ["accueil", "sensi", "accomp", "ressources", "histoire", "rejoindre", "don"]
+ACTIFS = ["accueil", "sensi", "accomp", "histoire", "rejoindre", "don"]
 GROUPE_APROPOS = ("histoire", "rejoindre")
 
 
@@ -295,12 +354,6 @@ PAGES = [
         "loc": "/accompagnement.html", "scripts": f'  <script src="assets/forms.js?v={V_FORMS}" defer></script>',
     },
     {
-        "fichier": "ressources.html", "actif": "ressources", "src": "ressources.html",
-        "title": "Ressources, bientôt disponible | LibredeDroit",
-        "description": "Notre bibliothèque d'articles vérifiés par des juristes et des professionnels de santé arrive bientôt. En attendant, contactez-nous directement pour être accompagné·e.",
-        "loc": "/ressources.html", "scripts": "",
-    },
-    {
         "fichier": "notre-histoire.html", "actif": "histoire", "src": "notre-histoire.html",
         "title": "Notre histoire, notre association et notre engagement | LibredeDroit",
         "description": "LibredeDroit est une association loi 1901 née à Bordeaux, portée par une quinzaine de bénévoles, qui agit contre les violences sexistes et sexuelles, des causes aux conséquences.",
@@ -327,7 +380,8 @@ def construire_pages():
         contenu = lire(os.path.join(CONTENU, p["src"]))
         contenu = contenu.replace("{{partenaires}}", bloc_partenaires())
         contenu = contenu.replace("{{temoignages_sensi}}", bloc_quotes(TEMOIGNAGES_SENSI, tag=True))
-        contenu = contenu.replace("{{temoignages_accomp}}", bloc_quotes(TEMOIGNAGES_ACCOMP, victime=True))
+        contenu = contenu.replace("{{temoignages_accomp}}", bloc_temoignages_defilants(TEMOIGNAGES_ACCOMP))
+        contenu = contenu.replace("{{photos_accueil}}", bloc_photos_accueil())
         contenu = contenu.replace("{{urgences}}", bloc_urgences())
         contenu = contenu.replace("{{equipe_bandeau}}", bloc_equipe_bandeau())
         contenu = contenu.replace("{{articles_cards}}", bloc_articles_cards())
@@ -351,7 +405,7 @@ def construire_articles():
         corps = corps.replace("{{corps}}", a["corps"].strip())
         canonical = BASE_URL + "/articles/" + a["id"] + ".html"
         title = a["titre"] + " | LibredeDroit"
-        html = rendre_page("../", "ressources", title, a["extrait"],
+        html = rendre_page("../", "accomp", title, a["extrait"],
                            canonical, "article", corps, "")
         chemin = os.path.join(RACINE, "articles", a["id"] + ".html")
         ecrire(chemin, html)

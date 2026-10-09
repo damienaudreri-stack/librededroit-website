@@ -24,3 +24,9 @@
   from = "/apropos.html"
   to = "/notre-histoire.html"
   status = 301
+
+# La page « Ressources » a été retirée (10/2026) : les anciens liens mènent à l'accompagnement.
+[[redirects]]
+  from = "/ressources.html"
+  to = "/accompagnement.html"
+  status = 301
