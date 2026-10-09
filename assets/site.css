@@ -936,7 +936,9 @@ h1, h2.titre { text-wrap: balance; }
 .choix-picto svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .choix-titre { display: block; font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-weight: 500; line-height: 1.1; letter-spacing: -.01em; }
 .choix-texte { display: block; margin: 12px auto 0; color: var(--gris); font-size: 17px; line-height: 1.55; max-width: 40ch; }
-.choix-pied { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.choix-pied { margin-top: auto; padding-top: 28px; padding-bottom: 30px; position: relative; display: flex; flex-direction: column; align-items: center; }
+/* Mention sous le bouton sortie du flux : les boutons des deux cartes restent à la même hauteur */
+.choix-pied .choix-note { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); white-space: nowrap; }
 .choix-note { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gris); }
 .choix-note svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
 .choix-carte .fleche { display: inline-block; transition: transform .35s var(--ease-out); }
