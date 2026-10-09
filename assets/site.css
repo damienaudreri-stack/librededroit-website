@@ -888,7 +888,7 @@ h1, h2.titre { text-wrap: balance; }
 /* ==========================================================================
    ACCUEIL
    ========================================================================== */
-.hero-accueil { padding: clamp(56px, 8vw, 104px) 0 0; }
+.hero-accueil { padding: clamp(24px, 3.5vw, 48px) 0 0; }
 .hero-accueil h1 { margin: 6px auto 24px; }
 .kicker-anime { display: block; font-size: clamp(20px, 2.6vw, 30px); font-weight: 600; line-height: 1.25; letter-spacing: .005em; margin-bottom: 18px; }
 /* Texte en degrade anime (surtitre de l'accueil, titre du formulaire d'accompagnement) */
