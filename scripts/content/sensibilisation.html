@@ -1,7 +1,7 @@
-    <section class="hero hero-sensi">
-      <div class="wrap hero-duo">
-        <div class="hero-duo-texte">
-          <span class="kicker">Mission · Prévenir</span>
+    <section class="hero hero-sensi hero-page">
+      <div class="wrap">
+        <div class="hero-page-texte">
+          <p class="kicker kicker-page"><span class="texte-degrade">Mission · Prévenir</span></p>
           <h1>Parler des violences, c'est déjà commencer à les arrêter.</h1>
           <p class="intro">Nous concevons et animons des ateliers pour reconnaître, nommer et prévenir les violences sexistes et sexuelles.<br>Adaptés à chaque public, ancrés dans le concret.</p>
           <div class="hero-cta">
@@ -9,7 +9,7 @@
             <a class="btn btn-ghost btn-lg" href="#ld-deroule">Voir le déroulé</a>
           </div>
         </div>
-        <figure class="hero-duo-image">
+        <figure class="hero-page-photo">
           <img src="assets/img/atelier-1.jpg" width="1160" height="672" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en salle de classe">
           <figcaption>Images prises au cours de nos ateliers de sensibilisation auprès des étudiants de l'Université de Bordeaux.</figcaption>
         </figure>
@@ -70,11 +70,40 @@
           <p class="lead">Une progression pensée pour favoriser l'échange et le transmission.</p>
           <img class="atelier-photo deroule-photo" src="assets/img/atelier-2.jpg" width="824" height="672" loading="lazy" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en amphithéâtre">
         </div>
-        <div class="timeline frise">
-          <div class="step reveal"><div class="n">1</div><div class="step-body"><h3>Briser la glace</h3><p>On installe un cadre de confiance et de non-jugement.</p></div></div>
-          <div class="step reveal"><div class="n">2</div><div class="step-body"><h3>Nommer les violences</h3><p>Définitions, mécanismes, idées reçues : on pose des mots clairs sur des réalités souvent tues.</p></div></div>
-          <div class="step reveal"><div class="n">3</div><div class="step-body"><h3>Situations concrètes personnalisées</h3><p>À partir de cas réels et de mises en situation adaptées au public, on apprend à repérer et à réagir.</p></div></div>
-          <div class="step reveal"><div class="n">4</div><div class="step-body"><h3>Ressources &amp; relais</h3><p>On repart avec les bons réflexes et les bons contacts :<br>qui alerter, où trouver de l'aide.</p></div></div>
+        <div class="temps" data-temps>
+          <div class="temps-onglets" role="tablist" aria-label="Les quatre temps de l'atelier">
+            <button class="temps-onglet" type="button" role="tab" id="temps-tab-1" aria-controls="temps-1" aria-selected="true"><span class="temps-n">1</span><span class="temps-t">Briser la glace</span><span class="temps-barre" aria-hidden="true"></span></button>
+            <button class="temps-onglet" type="button" role="tab" id="temps-tab-2" aria-controls="temps-2" aria-selected="false"><span class="temps-n">2</span><span class="temps-t">Nommer les violences</span><span class="temps-barre" aria-hidden="true"></span></button>
+            <button class="temps-onglet" type="button" role="tab" id="temps-tab-3" aria-controls="temps-3" aria-selected="false"><span class="temps-n">3</span><span class="temps-t">Situations concrètes personnalisées</span><span class="temps-barre" aria-hidden="true"></span></button>
+            <button class="temps-onglet" type="button" role="tab" id="temps-tab-4" aria-controls="temps-4" aria-selected="false"><span class="temps-n">4</span><span class="temps-t">Ressources &amp; relais</span><span class="temps-barre" aria-hidden="true"></span></button>
+          </div>
+          <div class="temps-panneaux">
+            <div class="temps-panneau" role="tabpanel" id="temps-1" aria-labelledby="temps-tab-1">
+              <span class="temps-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6.5h11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-4 3.5v-3.5H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2Z"/><path d="M19 9.5h1a2 2 0 0 1 2 2v4.5a2 2 0 0 1-2 2v2.5l-3-2.5h-4"/></svg></span>
+              <span class="temps-etiquette">Temps 1 sur 4</span>
+              <h3>Briser la glace</h3>
+              <p>On installe un cadre de confiance et de non-jugement.</p>
+            </div>
+            <div class="temps-panneau" role="tabpanel" id="temps-2" aria-labelledby="temps-tab-2">
+              <span class="temps-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5h14v15H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></svg></span>
+              <span class="temps-etiquette">Temps 2 sur 4</span>
+              <h3>Nommer les violences</h3>
+              <p>Définitions, mécanismes, idées reçues : on pose des mots clairs sur des réalités souvent tues.</p>
+            </div>
+            <div class="temps-panneau" role="tabpanel" id="temps-3" aria-labelledby="temps-tab-3">
+              <span class="temps-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="7.5" r="2.6"/><circle cx="16" cy="7.5" r="2.6"/><path d="M3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"/></svg></span>
+              <span class="temps-etiquette">Temps 3 sur 4</span>
+              <h3>Situations concrètes personnalisées</h3>
+              <p>À partir de cas réels et de mises en situation adaptées au public, on apprend à repérer et à réagir.</p>
+            </div>
+            <div class="temps-panneau" role="tabpanel" id="temps-4" aria-labelledby="temps-tab-4">
+              <span class="temps-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a10 10 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z"/></svg></span>
+              <span class="temps-etiquette">Temps 4 sur 4</span>
+              <h3>Ressources &amp; relais</h3>
+              <p>On repart avec les bons réflexes et les bons contacts :<br>qui alerter, où trouver de l'aide.</p>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </section>
@@ -96,7 +125,8 @@
     </section>
 
     <section class="section section-confidentiel" id="ld-sensi-form">
-      <div class="wrap confid-grid">
+      <div class="wrap">
+      <div class="cadre-formulaire confid-grid">
         <div class="confid-intro">
           <div class="section-head">
             <span class="kicker">Formulaire</span>
@@ -168,6 +198,7 @@
             ✓ Merci, votre demande est bien reçue. Un membre de l'équipe vous recontacte très vite à l'adresse indiquée.
           </div>
         </div>
+      </div>
       </div>
     </section>
 

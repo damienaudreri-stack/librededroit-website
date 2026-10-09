@@ -1284,3 +1284,71 @@ h1, h2.titre { text-wrap: balance; }
   .pratique:last-child { grid-column: 1 / -1; border-top: 1px solid var(--ligne); padding-top: 18px; }
   .pratique:nth-child(n+3):not(:last-child) { border-top: 1px solid var(--ligne); }
 }
+
+/* --- En-tête des pages Sensibilisation et Accompagnement : centré comme l'accueil,
+   surtitre en dégradé animé, grande photo panoramique dessous. --- */
+.hero-page { padding: clamp(28px, 4vw, 56px) 0 clamp(56px, 7vw, 96px); }
+.hero-page-texte { text-align: center; max-width: 860px; margin: 0 auto; }
+.hero-page .kicker-page { display: block; font-size: clamp(17px, 1.8vw, 21px); font-weight: 600; margin-bottom: 14px; }
+.hero-page h1 { max-width: 22ch; margin: 0 auto 20px; }
+.hero-page p.intro { margin: 0 auto 28px; max-width: 640px; }
+.hero-page .hero-cta { justify-content: center; }
+.hero-page-photo { margin: clamp(36px, 5vw, 60px) auto 0; max-width: 1120px; }
+.hero-page-photo img { width: 100%; height: auto; aspect-ratio: 21 / 9; object-fit: cover; border-radius: 28px; box-shadow: 0 30px 70px -36px rgba(22,22,63,.45); }
+.hero-page-photo figcaption { margin-top: 12px; text-align: center; font-size: 14px; color: var(--gris); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-page .kicker-page, .hero-page h1, .hero-page p.intro, .hero-page .hero-cta { animation: ldMonte .9s var(--ease-out) both; }
+  .hero-page h1 { animation-delay: .12s; }
+  .hero-page p.intro { animation-delay: .24s; }
+  .hero-page .hero-cta { animation-delay: .34s; }
+  .hero-page-photo { animation: ldPhotoEntree 1.2s var(--ease-out) .3s both; }
+  @supports (animation-timeline: view()) {
+    .hero-page-photo img { animation: ldPhotoZoom linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+  }
+}
+@keyframes ldPhotoEntree { from { opacity: 0; transform: translateY(28px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes ldPhotoZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+.hero-page-photo { overflow: visible; }
+.hero-page-photo img { transform-origin: 50% 40%; }
+@media (max-width: 700px) {
+  .hero-page h1 { max-width: none; }
+  .hero-page-photo img { aspect-ratio: 4 / 3; border-radius: 20px; }
+}
+/* La fiche pratique chevauche le bas de la photo */
+.hero-sensi.hero-page { padding-bottom: clamp(72px, 8vw, 112px); }
+
+/* --- Sensibilisation : cadre distinct autour de la section formulaire --- */
+.cadre-formulaire { background: linear-gradient(180deg, #EEEEF8 0%, #F6F4FB 100%); border: 1px solid var(--bord-lavande); border-radius: 32px; padding: clamp(24px, 4vw, 56px); }
+.cadre-formulaire .form-card { box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 18px 44px -22px rgba(22,22,63,.28); }
+.cadre-formulaire .etapes li { box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+
+/* --- Sensibilisation : les quatre temps en déroulé interactif --- */
+.temps { display: grid; gap: 18px; align-content: start; }
+.temps-onglets { display: none; }
+.temps-panneau { background: var(--surface); border-radius: 22px; box-shadow: var(--ombre); padding: clamp(24px, 3vw, 36px); }
+.temps-js .temps-onglets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.temps-onglet { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-align: left; padding: 14px 14px 18px; border-radius: 16px; border: 1px solid var(--ligne); background: var(--surface); color: var(--gris); cursor: pointer; transition: background .3s ease, color .3s ease, transform .3s var(--ease-out), box-shadow .3s ease; font: inherit; }
+.temps-onglet:hover { transform: translateY(-2px); box-shadow: var(--ombre); }
+.temps-onglet[aria-selected="true"] { background: var(--marine); color: var(--creme); border-color: var(--marine); box-shadow: 0 14px 30px -16px rgba(0,0,139,.55); }
+.temps-n { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 600; font-size: 16px; background: var(--lavande); color: var(--marine); transition: background .3s ease, color .3s ease; }
+.temps-onglet[aria-selected="true"] .temps-n { background: var(--creme); color: var(--marine); }
+.temps-t { font-size: 14.5px; font-weight: 600; line-height: 1.3; }
+.temps-barre { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--dore); transform: scaleX(0); transform-origin: left; }
+.temps-onglet.en-cours .temps-barre { animation: ldTempsBarre 6s linear forwards; }
+@keyframes ldTempsBarre { to { transform: scaleX(1); } }
+.temps-js .temps-panneaux { position: relative; }
+.temps-js .temps-panneau { min-height: 250px; }
+.temps-picto { width: 52px; height: 52px; border-radius: 16px; background: var(--lavande); color: var(--marine); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.temps-picto svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.temps-etiquette { display: block; font-size: 14px; font-weight: 600; color: var(--marine); margin-bottom: 6px; }
+.temps-panneau h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15; margin-bottom: 12px; }
+.temps-panneau p { color: var(--gris); font-size: 18px; max-width: 46ch; }
+@media (prefers-reduced-motion: no-preference) {
+  .temps-js .temps-panneau:not([hidden]) { animation: ldTempsEntree .55s var(--ease-out) both; }
+  .temps-js .temps-panneau:not([hidden]) .temps-picto { animation: ldPicto .6s var(--ease-out) .08s both; }
+}
+@keyframes ldTempsEntree { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (max-width: 700px) {
+  .temps-js .temps-onglets { grid-template-columns: repeat(2, 1fr); }
+  .temps-js .temps-panneau { min-height: 0; }
+}

@@ -292,4 +292,53 @@
       });
     });
   }
+
+  // --- Deroule interactif de l'atelier (4 temps) : clic, fleches clavier, defilement
+  // automatique doux tant que la personne n'a pas choisi (coupe si mouvement reduit).
+  // Sans JS : les 4 temps restent affiches les uns sous les autres.
+  document.querySelectorAll('[data-temps]').forEach(function (boite) {
+    var onglets = Array.prototype.slice.call(boite.querySelectorAll('[role="tab"]'));
+    var panneaux = onglets.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+    var actif = 0, minuteur = null, choisi = false, DUREE = 6000;
+    var calme = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    boite.classList.add('temps-js');
+    function montrer(i, focus) {
+      actif = i;
+      onglets.forEach(function (t, j) {
+        var on = j === i;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        t.classList.remove('en-cours');
+        panneaux[j].hidden = !on;
+      });
+      if (focus) onglets[i].focus();
+      if (!choisi && !calme) {
+        void onglets[i].offsetWidth;
+        onglets[i].classList.add('en-cours');
+      }
+    }
+    function suivant() { montrer((actif + 1) % onglets.length); }
+    function demarrer() { if (choisi || calme || minuteur) return; minuteur = setInterval(suivant, DUREE); onglets[actif].classList.add('en-cours'); }
+    function arreter() { clearInterval(minuteur); minuteur = null; onglets.forEach(function (t) { t.classList.remove('en-cours'); }); }
+    onglets.forEach(function (t, i) {
+      t.addEventListener('click', function () { choisi = true; arreter(); montrer(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = onglets.length, c = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') c = (i + 1) % n;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') c = (i - 1 + n) % n;
+        else if (e.key === 'Home') c = 0;
+        else if (e.key === 'End') c = n - 1;
+        if (c !== null) { e.preventDefault(); choisi = true; arreter(); montrer(c, true); }
+      });
+    });
+    boite.addEventListener('mouseenter', arreter);
+    boite.addEventListener('mouseleave', function () { if (!choisi) { demarrer(); } });
+    boite.addEventListener('focusin', arreter);
+    montrer(0);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) demarrer(); else arreter(); });
+      }, { threshold: 0.4 }).observe(boite);
+    }
+  });
 })();
