@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/spectral-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/site.css?v=2f2dbe09">
+  <link rel="stylesheet" href="assets/site.css?v=06e9c269">
 </head>
 <body>
   <header class="site-header">
@@ -84,15 +84,35 @@
       </div>
     </section>
 
-    <section class="section sombre bande">
+    <section class="section-pratique" aria-label="Informations pratiques">
       <div class="wrap">
-        <div class="meta-band">
-          <div class="m"><div class="k">Durée</div><div class="v">1h30 à 4h</div></div>
-          <div class="m"><div class="k">Groupe</div><div class="v">10 à 30 personnes</div></div>
-          <div class="m"><div class="k">Lieu</div><div class="v">Chez vous</div></div>
-          <div class="m"><div class="k">Animation</div><div class="v">2 à 4 animateur·ices</div></div>
-          <div class="m"><div class="k">Tarif</div><div class="v">Adapté à chaque intervention</div></div>
-        </div>
+        <ul class="pratiques">
+          <li class="pratique reveal" data-delay="0">
+            <span class="pratique-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+            <span class="pratique-k">Durée</span>
+            <span class="pratique-v">1h30&nbsp;à&nbsp;4h</span>
+          </li>
+          <li class="pratique reveal" data-delay="1">
+            <span class="pratique-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.6 14.2a4.5 4.5 0 0 1 5.4 4.3"/></svg></span>
+            <span class="pratique-k">Groupe</span>
+            <span class="pratique-v">10&nbsp;à&nbsp;30 personnes</span>
+          </li>
+          <li class="pratique reveal" data-delay="2">
+            <span class="pratique-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+            <span class="pratique-k">Lieu</span>
+            <span class="pratique-v">Chez vous</span>
+          </li>
+          <li class="pratique reveal" data-delay="3">
+            <span class="pratique-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6.5h11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-4 3.5v-3.5H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2Z"/><path d="M19 9.5h1a2 2 0 0 1 2 2v4.5a2 2 0 0 1-2 2v2.5l-3-2.5h-4"/></svg></span>
+            <span class="pratique-k">Animation</span>
+            <span class="pratique-v">2&nbsp;à&nbsp;4 animateur·ices</span>
+          </li>
+          <li class="pratique reveal" data-delay="4">
+            <span class="pratique-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 12.6V5a1.5 1.5 0 0 1 1.5-1.5h7.6L21 11.9a1.5 1.5 0 0 1 0 2.1l-7 7a1.5 1.5 0 0 1-2.1 0Z"/><circle cx="8" cy="8" r="1.6"/></svg></span>
+            <span class="pratique-k">Tarif</span>
+            <span class="pratique-v">Adapté à chaque intervention</span>
+          </li>
+        </ul>
       </div>
     </section>
 

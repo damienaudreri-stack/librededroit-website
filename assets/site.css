@@ -1259,3 +1259,28 @@ h1, h2.titre { text-wrap: balance; }
   .positionnement-grid, .valeurs { grid-template-columns: 1fr; }
   .positionnement-texte p { font-size: 18px; }
 }
+
+/* --- Sensibilisation : fiche pratique (durée, groupe, lieu, animation, tarif) ---
+   Carte blanche qui chevauche le bas du hero, 5 colonnes séparées par des filets,
+   apparition en cascade et pictogramme qui se pose au survol. */
+.section-pratique { position: relative; z-index: 2; margin-top: clamp(-72px, -5vw, -40px); padding-bottom: clamp(40px, 6vw, 72px); }
+.pratiques { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); background: var(--surface); border-radius: 24px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 24px 60px -24px rgba(22,22,63,.22); padding: clamp(22px, 2.6vw, 34px) clamp(8px, 1.4vw, 18px); }
+.pratique { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 6px clamp(10px, 1.6vw, 22px); }
+.pratique + .pratique { border-left: 1px solid var(--ligne); }
+.pratique-picto { width: 46px; height: 46px; border-radius: 14px; background: var(--lavande); color: var(--marine); display: flex; align-items: center; justify-content: center; margin-bottom: 8px; transition: transform .4s var(--ease-out), background .3s ease; }
+.pratique-picto svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.pratique:hover .pratique-picto { transform: translateY(-3px) rotate(-4deg); background: #DCDCF0; }
+.pratique-k { font-size: 14px; font-weight: 600; color: var(--marine); }
+.pratique-v { font-family: var(--serif); font-size: clamp(19px, 1.6vw, 23px); font-weight: 500; line-height: 1.2; color: var(--texte); }
+@media (prefers-reduced-motion: no-preference) {
+  .pratique.reveal.visible .pratique-picto { animation: ldPicto .7s var(--ease-out) calc(var(--d, 0) * 90ms + 120ms) both; }
+}
+@keyframes ldPicto { from { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } to { transform: none; } }
+@media (max-width: 960px) {
+  .pratiques { grid-template-columns: repeat(2, 1fr); row-gap: 8px; }
+  .pratique + .pratique { border-left: none; }
+  .pratique { padding: 14px 10px; }
+  .pratique:nth-child(even) { border-left: 1px solid var(--ligne); }
+  .pratique:last-child { grid-column: 1 / -1; border-top: 1px solid var(--ligne); padding-top: 18px; }
+  .pratique:nth-child(n+3):not(:last-child) { border-top: 1px solid var(--ligne); }
+}
