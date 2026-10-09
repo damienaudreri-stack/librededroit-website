@@ -54,14 +54,14 @@ def hash_court(chemin):
 PARTENAIRES = [
     ("Le Hibou", "https://www.instagram.com/lecercledeshiboux", "le-hibou.png"),
     ("Just'Act", "https://www.instagram.com/justact.bordeaux", "just-act.png"),
-    ("Lysias — Bordeaux", "https://www.instagram.com/lysiasbordeaux", "lysias.png"),
+    ("Lysias, Bordeaux", "https://www.instagram.com/lysiasbordeaux", "lysias.png"),
     ("Le Club AES", "https://www.instagram.com/club_aes_bdx", "aes.png"),
     ("BDE Blue Lions Bordeaux", "https://www.instagram.com/bdebluelions", "blue-lions.png"),
     ("Réseau des Amis Européens", "https://www.instagram.com/reseaudesamiseuropeens", "rae.png"),
-    ("Master Droit Pénal Approfondi — Bordeaux", "https://www.instagram.com/m2_dpa", "droit-penal-approfondi.png"),
+    ("Master Droit Pénal Approfondi, Bordeaux", "https://www.instagram.com/m2_dpa", "droit-penal-approfondi.png"),
     ("Journal « Le SCRUB »", "https://www.instagram.com/le.scrub", "le-scrub.png"),
-    ("RES PUBLICA — Master Droit Public Approfondi", "https://www.instagram.com/respublica_bdx", "respublica.png"),
-    ("Master Droit de la Vigne et du Vin — Bordeaux", "https://www.instagram.com/droitdebouchon", "droit-de-bouchon.png"),
+    ("RES PUBLICA, Master Droit Public Approfondi", "https://www.instagram.com/respublica_bdx", "respublica.png"),
+    ("Master Droit de la Vigne et du Vin, Bordeaux", "https://www.instagram.com/droitdebouchon", "droit-de-bouchon.png"),
     ("Master Ingénierie Juridique et Financière des Sociétés", "https://www.instagram.com/ijfsbordeaux", "ijfs.png"),
     ("La Kaz", "https://www.instagram.com/lakaz_bdx", "la-kaz.png"),
     ("La Tribune Montesquieu", "https://www.instagram.com/latribunemontesquieu", "la-tribune-montesquieu.png"),
@@ -86,14 +86,14 @@ TEMOIGNAGES_ACCOMP = [
 ]
 
 URGENCES = [
-    ("17", "Police secours", "Danger immédiat — 24h/24"),
+    ("17", "Police secours", "Danger immédiat, 24h/24"),
     ("15", "SAMU", "Urgence médicale"),
     ("112", "Urgence européenne", "Depuis toute l'Europe"),
     ("114", "Urgence par SMS", "Sourds & malentendants"),
     ("3919", "Violences Femmes Info", "Anonyme & gratuit, 24h/24"),
     ("0 800 05 95 95", "Viols Femmes Info", "Collectif Féministe Contre le Viol"),
-    ("3018", "Violences numériques", "Cyberharcèlement — gratuit"),
-    ("116 006", "Aide aux victimes", "France Victimes — 7j/7"),
+    ("3018", "Violences numériques", "Cyberharcèlement, gratuit"),
+    ("116 006", "Aide aux victimes", "France Victimes, 7j/7"),
     ("119", "Enfance en danger", "Anonyme & gratuit, 24h/24"),
     ("3114", "Prévention du suicide", "Écoute 24h/24, gratuit"),
 ]
@@ -124,8 +124,11 @@ def bloc_partenaires():
             '<span class="plogo"><img src="assets/img/partenaires/{l}" alt="" loading="lazy"></span>{n}</a>'
         ).format(u=esc(url), n=esc(nom), l=esc(logo))
     liste = "".join(item(n, u, l) for n, u, l in PARTENAIRES)
-    # Double pour un defilement infini fluide (translateX -50%).
-    return liste + liste
+    # Double pour un defilement infini fluide (translateX -50%). La copie est
+    # masquee aux lecteurs d'ecran et sortie de l'ordre de tabulation ; sous
+    # prefers-reduced-motion elle est retiree (classe dup) et la liste devient statique.
+    copie = liste.replace('<a class="partner" ', '<a class="partner dup" aria-hidden="true" tabindex="-1" ')
+    return liste + copie
 
 
 # Bénévoles du bandeau défilant de Notre histoire (Damien et Zoé ont leurs fiches fixes au-dessus).
@@ -149,10 +152,10 @@ def bloc_equipe_bandeau():
         src = photo or "anonyme-portrait.svg"
         alt = "Portrait de " + nom if photo else "Portrait non communiqué"
         return (
-            '<div class="team-card"{h}><div class="team-card-photo">'
+            '<div class="team-card{d}"{h}><div class="team-card-photo">'
             '<img src="assets/img/equipe/{s}" alt="{a}"></div>'
             '<div class="team-card-info"><h3>{n}</h3><p class="role">{r}</p></div></div>'
-        ).format(h=' aria-hidden="true"' if cache else "", s=src,
+        ).format(h=' aria-hidden="true"' if cache else "", d=" dup" if cache else "", s=src,
                  a="" if cache else esc(alt), n=esc(nom), r=esc(role))
     # Deuxième passage masqué aux lecteurs d'écran : il ne sert qu'à la boucle infinie.
     return ("".join(item(n, r, ph, False) for n, r, ph in EQUIPE_BANDEAU)
@@ -178,8 +181,10 @@ def bloc_quotes(temoignages, tag=False, victime=False):
             '<figure class="quote-card"><blockquote><p>{t}</p></blockquote>'
             '<figcaption class="who">{n} <span>· {m}</span></figcaption></figure>'
         ).format(t=esc(texte), n=esc(nom), m=esc(meta))
-    liste = "".join(item(n, m, t) for n, m, t in temoignages)
-    return liste + liste
+    # Rangee a defilement manuel (scroll-snap) : une seule occurrence de chaque
+    # temoignage, chacun dans un element de liste.
+    return "\n          ".join('<li class="defile-item">' + item(n, m, t) + '</li>'
+                              for n, m, t in temoignages)
 
 
 def bloc_urgences():
@@ -187,13 +192,12 @@ def bloc_urgences():
     for num, label, desc in URGENCES:
         tel = "tel:" + num.replace(" ", "")
         lignes.append(
-            '<a class="urgence-card" href="{tel}"><span class="num">{n}</span>'
-            '<span class="l">{l}</span><span class="d">{d}</span></a>'.format(
+            '<li><a class="urgence-card" href="{tel}"><span class="num">{n}</span>'
+            '<span class="l">{l}</span><span class="d">{d}</span></a></li>'.format(
                 tel=esc(tel), n=esc(num), l=esc(label), d=esc(desc)))
-    bloc = "\n            ".join(lignes)
-    # Double pour un defilement infini fluide (translateX -50%), comme les
-    # partenaires et les temoignages.
-    return bloc + "\n            " + bloc
+    # Grille statique : les numeros d'urgence restent toujours visibles et
+    # lisibles (aucun defilement automatique).
+    return "\n            ".join(lignes)
 
 
 def bloc_assos():
@@ -274,43 +278,43 @@ V_FORMS = hash_court(os.path.join(RACINE, "assets", "forms.js"))
 PAGES = [
     {
         "fichier": "index.html", "actif": "accueil", "src": "accueil.html",
-        "title": "LibredeDroit — Contre les violences sexistes et sexuelles, à Bordeaux",
+        "title": "LibredeDroit | Contre les violences sexistes et sexuelles, à Bordeaux",
         "description": "Association bordelaise de prévention par la sensibilisation et d'accompagnement juridique et psychologique des victimes de violences sexistes et sexuelles.",
         "loc": "/", "scripts": "",
     },
     {
         "fichier": "sensibilisation.html", "actif": "sensi", "src": "sensibilisation.html",
-        "title": "Sensibilisation aux violences sexistes et sexuelles — Ateliers | LibredeDroit",
+        "title": "Sensibilisation aux violences sexistes et sexuelles, ateliers | LibredeDroit",
         "description": "Nous concevons et animons des ateliers de prévention des violences sexistes et sexuelles, adaptés aux étudiants, professionnels et agents publics, partout en Gironde.",
         "loc": "/sensibilisation.html", "scripts": f'  <script src="assets/forms.js?v={V_FORMS}" defer></script>',
     },
     {
         "fichier": "accompagnement.html", "actif": "accomp", "src": "accompagnement.html",
-        "title": "Accompagnement des victimes — Aide juridique et psychologique | LibredeDroit",
+        "title": "Accompagnement des victimes, aide juridique et psychologique | LibredeDroit",
         "description": "Un accompagnement confidentiel et gratuit pour toute personne victime de violences sexuelles, conjugales ou intrafamiliales : avocats et psychologues spécialisés à vos côtés.",
         "loc": "/accompagnement.html", "scripts": f'  <script src="assets/forms.js?v={V_FORMS}" defer></script>',
     },
     {
         "fichier": "ressources.html", "actif": "ressources", "src": "ressources.html",
-        "title": "Ressources — Bientôt disponible | LibredeDroit",
+        "title": "Ressources, bientôt disponible | LibredeDroit",
         "description": "Notre bibliothèque d'articles vérifiés par des juristes et des professionnels de santé arrive bientôt. En attendant, contactez-nous directement pour être accompagné·e.",
         "loc": "/ressources.html", "scripts": "",
     },
     {
         "fichier": "notre-histoire.html", "actif": "histoire", "src": "notre-histoire.html",
-        "title": "Notre histoire — Notre association et notre engagement | LibredeDroit",
+        "title": "Notre histoire, notre association et notre engagement | LibredeDroit",
         "description": "LibredeDroit est une association loi 1901 née à Bordeaux, portée par une quinzaine de bénévoles, qui agit contre les violences sexistes et sexuelles, des causes aux conséquences.",
         "loc": "/notre-histoire.html", "scripts": "",
     },
     {
         "fichier": "nous-rejoindre.html", "actif": "rejoindre", "src": "nous-rejoindre.html",
-        "title": "Nous rejoindre — Devenir bénévole | LibredeDroit",
+        "title": "Nous rejoindre, devenir bénévole | LibredeDroit",
         "description": "LibredeDroit cherche de nouveaux bénévoles pour ses pôles sensibilisation, aide aux victimes, partenariats, communication et coordination. Aucune expérience requise, nous te formons.",
         "loc": "/nous-rejoindre.html", "scripts": "",
     },
     {
         "fichier": "don.html", "actif": "don", "src": "don.html",
-        "title": "Faire un don — Soutenez notre action | LibredeDroit",
+        "title": "Faire un don, soutenez notre action | LibredeDroit",
         "description": "Chaque don finance nos ateliers de sensibilisation et l'accompagnement gratuit des victimes de violences sexistes et sexuelles.",
         "loc": "/don.html", "scripts": "",
     },
@@ -400,7 +404,7 @@ def construire_legales():
             ecrits.append(css_path)
         else:
             # Deja externalise : on regenere seulement le CSS a partir de la source
-            # si besoin (idempotence) — rien a changer dans le HTML.
+            # si besoin (idempotence) : rien a changer dans le HTML.
             pass
     return ecrits
 

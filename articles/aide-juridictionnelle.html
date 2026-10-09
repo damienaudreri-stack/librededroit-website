@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/spectral-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/site.css?v=7fdeb595">
+  <link rel="stylesheet" href="../assets/site.css?v=61cd49be">
 </head>
 <body>
   <header class="site-header">
@@ -46,7 +46,8 @@
         <li><a href="../don.html" class="don-pill ">Faire un don</a></li>
       </ul>
       <div class="nav-cta">
-        <a class="btn btn-terracotta besoin-aide" href="../accompagnement.html">Besoin d'aide</a>
+        <a class="btn btn-contour nav-btn atelier-nav" href="../sensibilisation.html#ld-sensi-form">Organiser un atelier</a>
+        <a class="btn btn-terracotta nav-btn besoin-aide" href="../accompagnement.html#ld-contact-confidentiel">J'ai besoin d'aide</a>
         <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -61,7 +62,7 @@
         <li><a href="../notre-histoire.html">Notre histoire</a></li>
         <li><a href="../nous-rejoindre.html">Nous rejoindre</a></li>
         <li><a href="../don.html">Faire un don</a></li>
-        <li><a href="../accompagnement.html" class="btn btn-terracotta mobile-cta">Besoin d'aide</a></li>
+        <li class="mobile-ctas"><a href="../sensibilisation.html#ld-sensi-form" class="btn btn-contour mobile-cta">Organiser un atelier</a><a href="../accompagnement.html#ld-contact-confidentiel" class="btn btn-terracotta mobile-cta">J'ai besoin d'aide</a></li>
       </ul>
     </div>
   </header>
@@ -95,7 +96,7 @@
         <div class="article-cta">
           <h2>Besoin d'en parler ?</h2>
           <p>Nous vous accompagnons, gratuitement et en confiance.</p>
-          <a class="btn btn-clair btn-lg" href="../accompagnement.html">Demander de l'aide →</a>
+          <a class="btn btn-clair btn-lg" href="../accompagnement.html#ld-contact-confidentiel">Demander de l'aide →</a>
         </div>
       </div>
     </article>
@@ -154,6 +155,11 @@
     </div>
   </footer>
 
+  <div class="cta-bar" id="cta-bar">
+    <a class="btn btn-contour" href="../sensibilisation.html#ld-sensi-form">Organiser un atelier</a>
+    <a class="btn btn-terracotta" href="../accompagnement.html#ld-contact-confidentiel">J'ai besoin d'aide</a>
+  </div>
+
   <div class="floaters">
     <button class="quick-exit" id="quick-exit" type="button" aria-label="Quitter rapidement le site">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -161,7 +167,7 @@
     </button>
   </div>
 
-  <script src="../assets/main.js?v=aeca6471" defer></script>
+  <script src="../assets/main.js?v=0bf9c973" defer></script>
 
   <script src="../assets/cookies.js" defer></script>
 </body>

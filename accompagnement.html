@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Accompagnement des victimes — Aide juridique et psychologique | LibredeDroit</title>
+  <title>Accompagnement des victimes, aide juridique et psychologique | LibredeDroit</title>
   <meta name="description" content="Un accompagnement confidentiel et gratuit pour toute personne victime de violences sexuelles, conjugales ou intrafamiliales : avocats et psychologues spécialisés à vos côtés.">
   <link rel="canonical" href="https://librededroit.co/accompagnement.html">
-  <meta property="og:title" content="Accompagnement des victimes — Aide juridique et psychologique | LibredeDroit">
+  <meta property="og:title" content="Accompagnement des victimes, aide juridique et psychologique | LibredeDroit">
   <meta property="og:description" content="Un accompagnement confidentiel et gratuit pour toute personne victime de violences sexuelles, conjugales ou intrafamiliales : avocats et psychologues spécialisés à vos côtés.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://librededroit.co/accompagnement.html">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="LibredeDroit">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Accompagnement des victimes — Aide juridique et psychologique | LibredeDroit">
+  <meta name="twitter:title" content="Accompagnement des victimes, aide juridique et psychologique | LibredeDroit">
   <meta name="twitter:description" content="Un accompagnement confidentiel et gratuit pour toute personne victime de violences sexuelles, conjugales ou intrafamiliales : avocats et psychologues spécialisés à vos côtés.">
   <meta name="theme-color" content="#00008B">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/spectral-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/site.css?v=7fdeb595">
+  <link rel="stylesheet" href="assets/site.css?v=61cd49be">
 </head>
 <body>
   <header class="site-header">
@@ -46,7 +46,8 @@
         <li><a href="don.html" class="don-pill ">Faire un don</a></li>
       </ul>
       <div class="nav-cta">
-        <a class="btn btn-terracotta besoin-aide" href="accompagnement.html">Besoin d'aide</a>
+        <a class="btn btn-contour nav-btn atelier-nav" href="sensibilisation.html#ld-sensi-form">Organiser un atelier</a>
+        <a class="btn btn-terracotta nav-btn besoin-aide" href="accompagnement.html#ld-contact-confidentiel">J'ai besoin d'aide</a>
         <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -61,34 +62,43 @@
         <li><a href="notre-histoire.html">Notre histoire</a></li>
         <li><a href="nous-rejoindre.html">Nous rejoindre</a></li>
         <li><a href="don.html">Faire un don</a></li>
-        <li><a href="accompagnement.html" class="btn btn-terracotta mobile-cta">Besoin d'aide</a></li>
+        <li class="mobile-ctas"><a href="sensibilisation.html#ld-sensi-form" class="btn btn-contour mobile-cta">Organiser un atelier</a><a href="accompagnement.html#ld-contact-confidentiel" class="btn btn-terracotta mobile-cta">J'ai besoin d'aide</a></li>
       </ul>
     </div>
   </header>
 
   <main id="contenu">
-    <section class="hero">
+    <section class="hero hero-accomp">
       <div class="wrap">
         <span class="kicker">Vous n'êtes pas seul·e</span>
         <h1>Quoi qu'il vous soit arrivé, vous avez le droit d'être écouté·e.</h1>
         <p class="intro">Nous accompagnons toute personne victime de violences sexuelles, conjugales, et/ou intrafamiliales, sans distinction.</p>
         <div class="hero-cta">
+          <a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">Écrire en confidentialité <span class="fleche" aria-hidden="true">›</span></a>
           <a class="btn btn-ghost btn-lg" href="ressources.html">S'informer sur mes droits →</a>
-          <a class="btn btn-urgence btn-lg" href="tel:3919">Urgence · 3919</a>
         </div>
+        <p class="hero-urgence"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.3a10.5 10.5 0 0 0 6.7 6.7L16 14l4 1.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg><span>En danger immédiat : <a href="tel:17">17</a> (police), <a href="tel:3919">3919</a> (Violences Femmes Info)</span></p>
       </div>
     </section>
 
-    <section class="section marine" id="ld-contact-confidentiel">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="kicker kicker-clair">Formulaire confidentiel</span>
-          <h2 class="titre" data-type="Nous écrire, en confiance">Nous écrire, en confiance</h2>
-          <p class="lead">Ce message arrive directement à notre équipe d'accompagnement.<br>Notre équipe d'accompagnement revient vers vous sous 24h.</p>
+    <section class="section section-confidentiel" id="ld-contact-confidentiel">
+      <div class="wrap confid-grid">
+        <div class="confid-intro">
+          <div class="section-head">
+            <span class="kicker">Formulaire confidentiel</span>
+            <h2 class="titre">Nous écrire, en confiance</h2>
+            <p class="lead">Ce message arrive directement à notre équipe d'accompagnement.<br>Notre équipe d'accompagnement revient vers vous sous 24h.</p>
+          </div>
+          <h3 class="etapes-titre">Comment ça se passe</h3>
+          <ol class="etapes">
+            <li><span class="etape-n" aria-hidden="true">1</span><div><strong>Vous nous écrivez</strong><p>Via le formulaire confidentiel de cette page.</p></div></li>
+            <li><span class="etape-n" aria-hidden="true">2</span><div><strong>Une personne de l'équipe vous répond</strong><p>Dès que possible, avec douceur et discrétion.</p></div></li>
+            <li><span class="etape-n" aria-hidden="true">3</span><div><strong>Nous avançons ensemble</strong><p>Nous construisons ensemble votre accompagnement juridique et psychologique.</p></div></li>
+          </ol>
         </div>
         <div class="form-card form-panel">
           <div class="confid-note">
-            <span aria-hidden="true">🔒</span>
+            <svg class="confid-picto" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
             <span>Vos informations restent strictement confidentielles. Pensez à utiliser un appareil et une adresse auxquels vous seul·e avez accès.</span>
           </div>
           <form class="js-contact-form" id="form-aide" data-formulaire="aide" data-succes="aide-succes" novalidate>
@@ -172,65 +182,67 @@
       </div>
     </section>
 
-    <section class="section" id="ld-accompagnement-juridique">
+    <section class="section creme" id="ld-accompagnement-juridique">
       <div class="wrap">
         <div class="section-head center">
           <h2 class="titre">Ce que nos avocats partenaires peuvent faire pour vous</h2>
         </div>
-        <div class="section-head wide">
-          <span class="kicker">Violences sexuelles</span>
-          <h2 class="titre">Faire reconnaître ses droits, jusqu'au bout.</h2>
-          <p class="lead">Nos juristes et nos avocats spécialisés dans les violences sexistes et sexuelles suivent personnellement chaque personne que nous accompagnons. Ils vous aident à comprendre vos droits, à déposer plainte dans de bonnes conditions, ou encore à faire des recours : ils se tiennent à vos côtés jusqu'au bout.</p>
+        <div class="onglets" data-onglets>
+          <div class="onglets-liste" role="tablist" aria-label="Types d'accompagnement" hidden>
+            <button type="button" role="tab" id="tab-sexuelles" aria-controls="ld-violences-sexuelles" aria-selected="true">Violences sexuelles</button>
+            <button type="button" role="tab" id="tab-conjugales" aria-controls="ld-violences-conjugales" aria-selected="false" tabindex="-1">Violences conjugales</button>
+            <button type="button" role="tab" id="tab-psy" aria-controls="ld-accompagnement-psychologique" aria-selected="false" tabindex="-1">Accompagnement psychologique</button>
+          </div>
+        <div class="onglet-panneau" id="ld-violences-sexuelles" data-onglet-tab="tab-sexuelles">
+          <div class="section-head wide">
+            <span class="kicker panneau-kicker">Violences sexuelles</span>
+            <h3 class="titre titre-panneau">Faire reconnaître ses droits, jusqu'au bout.</h3>
+            <p class="lead">Nos juristes et nos avocats spécialisés dans les violences sexistes et sexuelles suivent personnellement chaque personne que nous accompagnons. Ils vous aident à comprendre vos droits, à déposer plainte dans de bonnes conditions, ou encore à faire des recours : ils se tiennent à vos côtés jusqu'au bout.</p>
+          </div>
+  <div class="grid grid-3 reason-cards">
+            <div class="reason-card marine reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><h3>Dépôt de plainte</h3><p>Préparation et accompagnement au dépôt de plainte, pour vous protéger au mieux de la violence judiciaire.</p></div>
+            <div class="reason-card verte reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 10h18"/></svg></span><h3>Suivi du dossier pénal</h3><p>Récupération et analyse de votre dossier pénal : auditions, actes d'enquête, rapports médicaux, à chaque étape de la procédure.</p></div>
+            <div class="reason-card dore reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 11a7.5 7.5 0 0 1 13.4-3.9L20 9"/><path d="M20 4.5V9h-4.5"/><path d="M19.5 13a7.5 7.5 0 0 1-13.4 3.9L4 15"/><path d="M4 19.5V15h4.5"/></svg></span><h3>Recours aux classements sans suite</h3><p>Un classement sans suite n'est ni un jugement, ni la fin de la procédure. Avec nos avocats, nous engageons les recours qui s'offrent à vous.</p></div>
+            <div class="reason-card marine reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M8 20h8M5 7h14"/><path d="M5 7l-2.5 6h5z"/><path d="M19 7l-2.5 6h5z"/></svg></span><h3>Constitution de partie civile</h3><p>Représentation devant les juridictions pénales et civiles, jusqu'au procès de votre agresseur.</p></div>
+            <div class="reason-card verte reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5"/><path d="M5.5 10v7.5M10 10v7.5M14 10v7.5M18.5 10v7.5"/><path d="M3 20h18"/></svg></span><h3>Citation directe</h3><p>Quand les preuves le permettent, citer directement l'auteur devant le tribunal correctionnel, sans attendre l'issue d'une instruction classique.</p></div>
+            <div class="reason-card dore reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.6a4.2 4.2 0 1 0 0 6.8"/><path d="M7.5 11h6M7.5 13.3h5"/></svg></span><h3>Solution financière</h3><p>L'association prend en charge une partie des frais de procédure, et nous trouvons ensemble des solutions pour que l'argent ne soit jamais un frein à la justice.</p></div>
+          </div>
+          <p class="panneau-cta"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide <span class="fleche" aria-hidden="true">›</span></a></p>
         </div>
-        <div class="grid grid-3 reason-cards">
-          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">📝</span><h3>Dépôt de plainte</h3><p>Préparation et accompagnement au dépôt de plainte, pour vous protéger au mieux de la violence judiciaire.</p></div>
-          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">📁</span><h3>Suivi du dossier pénal</h3><p>Récupération et analyse de votre dossier pénal : auditions, actes d'enquête, rapports médicaux, à chaque étape de la procédure.</p></div>
-          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">🔁</span><h3>Recours aux classements sans suite</h3><p>Un classement sans suite n'est ni un jugement, ni la fin de la procédure. Avec nos avocats, nous engageons les recours qui s'offrent à vous.</p></div>
-          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">⚖️</span><h3>Constitution de partie civile</h3><p>Représentation devant les juridictions pénales et civiles, jusqu'au procès de votre agresseur.</p></div>
-          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🏛️</span><h3>Citation directe</h3><p>Quand les preuves le permettent, citer directement l'auteur devant le tribunal correctionnel, sans attendre l'issue d'une instruction classique.</p></div>
-          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">💶</span><h3>Solution financière</h3><p>L'association prend en charge une partie des frais de procédure, et nous trouvons ensemble des solutions pour que l'argent ne soit jamais un frein à la justice.</p></div>
+        <div class="onglet-panneau" id="ld-violences-conjugales" data-onglet-tab="tab-conjugales">
+          <div class="section-head wide">
+            <span class="kicker panneau-kicker">Violences conjugales</span>
+            <h3 class="titre titre-panneau">Sortir d'une relation violente, en sécurité.</h3>
+            <p class="lead">Les violences conjugales exigent une réponse rapide et adaptée, mais elles ne sauraient se satisfaire d'une seule réponse. Nos juristes et nos avocats vous accompagnent sur le chemin du droit pénal et du droit civil. Nos bénévoles sont à votre écoute et vous suivent réellement au jour le jour, afin de s'assurer que vous n'êtes pas en danger et afin que nous puissions anticiper et réagir face à ce danger.</p>
+          </div>
+  <div class="grid grid-3 reason-cards">
+            <div class="reason-card marine reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><h3>Plainte pour violences conjugales</h3><p>Un dépôt de plainte adapté aux violences conjugales, y compris en cas de faits répétés.</p></div>
+            <div class="reason-card verte reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Ordonnance de protection</h3><p>Une procédure d'urgence devant le juge aux affaires familiales, pour vous protéger sans attendre une décision pénale.</p></div>
+            <div class="reason-card dore reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/></svg></span><h3>Téléphone grave danger</h3><p>Un dispositif d'alerte immédiate relié aux forces de l'ordre, pour les situations de danger avéré.</p></div>
+            <div class="reason-card marine reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.8"/><path d="M8.6 8.6a4.8 4.8 0 0 0 0 6.8M15.4 8.6a4.8 4.8 0 0 1 0 6.8M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><h3>Bracelet anti-rapprochement</h3><p>Un bracelet électronique porté par l'auteur des violences, qui déclenche une alerte s'il s'approche de vous en dessous d'une distance fixée par le juge.</p></div>
+            <div class="reason-card verte reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></svg></span><h3>Sécurisation de l'adresse du domicile</h3><p>Déclarer une adresse de domiciliation (celle de votre avocat ou d'un tiers de confiance) à la place de votre domicile réel dans le dossier, pour que votre agresseur ne puisse pas vous retrouver.</p></div>
+            <div class="reason-card dore reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21v-7"/><path d="M12 14L6.5 6.5M12 14l5.5-7.5"/><path d="M6 10.5V6h4.5M18 10.5V6h-4.5"/></svg></span><h3>Divorce et séparation protectrice</h3><p>Un accompagnement du divorce ou de la séparation qui tient compte des violences subies, pas seulement de la rupture.</p></div>
+          </div>
+          <p class="panneau-cta"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide <span class="fleche" aria-hidden="true">›</span></a></p>
         </div>
-        <p class="lead center mt-24">En parallèle de ce suivi juridique, nos <strong>psychologues spécialisé·es</strong> dans le psychotraumatisme vous accompagnent dans votre reconstruction.</p>
-        <p class="mt-14 center"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide →</a></p>
+        <div class="onglet-panneau" id="ld-accompagnement-psychologique" data-onglet-tab="tab-psy">
+          <div class="section-head wide">
+            <span class="kicker panneau-kicker">Accompagnement psychologique</span>
+            <h3 class="titre titre-panneau">Se reconstruire, avec des professionnels des violences.</h3>
+            <p class="lead">Parce que la justice ne répare pas tout, nos psychologues partenaires vous accompagnent dans votre reconstruction, à votre rythme. Ils et elles sont issu·es du CAUVA de Bordeaux, le centre d'accueil en urgence des victimes d'agressions du CHU, et sont spécialisé·es dans la prise en charge des violences.</p>
+          </div>
+  <div class="grid grid-3 reason-cards">
+            <div class="reason-card marine reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M12 8v8M8 12h8"/></svg></span><h3>Issu·es du CAUVA de Bordeaux</h3><p>Des psychologues qui viennent d'un service hospitalier dédié à l'accueil des victimes d'agressions, et qui connaissent la réalité de ce que vous traversez.</p></div>
+            <div class="reason-card verte reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-11 6.6L4 19.5l1.4-4.5A7.5 7.5 0 1 1 20 11.5z"/></svg></span><h3>Spécialisé·es dans les violences</h3><p>Une prise en charge adaptée aux violences sexistes, sexuelles et conjugales, et à leurs conséquences sur le long terme.</p></div>
+            <div class="reason-card dore reveal reveal-fondu"><span class="reason-num picto" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.6a4.2 4.2 0 1 0 0 6.8"/><path d="M7.5 11h6M7.5 13.3h5"/></svg></span><h3>Un tarif préférentiel</h3><p>Nos psychologues partenaires proposent des séances à un tarif préférentiel aux personnes que nous accompagnons, pour que le coût ne soit pas un frein.</p></div>
+          </div>
+          <p class="panneau-cta"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide <span class="fleche" aria-hidden="true">›</span></a></p>
+        </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="ld-violences-conjugales">
-      <div class="wrap">
-        <div class="section-head wide">
-          <span class="kicker">Violences conjugales</span>
-          <h2 class="titre">Sortir d'une relation violente, en sécurité.</h2>
-          <p class="lead">Les violences conjugales exigent une réponse rapide et adaptée, mais elles ne sauraient se satisfaire d'une seule réponse. Nos juristes et nos avocats vous accompagnent sur le chemin du droit pénal et du droit civil. Nos bénévoles sont à votre écoute et vous suivent réellement au jour le jour, afin de s'assurer que vous n'êtes pas en danger et afin que nous puissions anticiper et réagir face à ce danger.</p>
-        </div>
-        <div class="grid grid-3 reason-cards">
-          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">⚖️</span><h3>Plainte pour violences conjugales</h3><p>Un dépôt de plainte adapté aux violences conjugales, y compris en cas de faits répétés.</p></div>
-          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🛡️</span><h3>Ordonnance de protection</h3><p>Une procédure d'urgence devant le juge aux affaires familiales, pour vous protéger sans attendre une décision pénale.</p></div>
-          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">📱</span><h3>Téléphone grave danger</h3><p>Un dispositif d'alerte immédiate relié aux forces de l'ordre, pour les situations de danger avéré.</p></div>
-          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">📡</span><h3>Bracelet anti-rapprochement</h3><p>Un bracelet électronique porté par l'auteur des violences, qui déclenche une alerte s'il s'approche de vous en dessous d'une distance fixée par le juge.</p></div>
-          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🏠</span><h3>Sécurisation de l'adresse du domicile</h3><p>Déclarer une adresse de domiciliation (celle de votre avocat ou d'un tiers de confiance) à la place de votre domicile réel dans le dossier, pour que votre agresseur ne puisse pas vous retrouver.</p></div>
-          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">📄</span><h3>Divorce et séparation protectrice</h3><p>Un accompagnement du divorce ou de la séparation qui tient compte des violences subies, pas seulement de la rupture.</p></div>
-        </div>
-        <p class="mt-24 center"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide →</a></p>
-      </div>
-    </section>
-
-    <section class="section" id="ld-accompagnement-psychologique">
-      <div class="wrap">
-        <div class="section-head wide">
-          <span class="kicker">Accompagnement psychologique</span>
-          <h2 class="titre">Se reconstruire, avec des professionnels des violences.</h2>
-          <p class="lead">Parce que la justice ne répare pas tout, nos psychologues partenaires vous accompagnent dans votre reconstruction, à votre rythme. Ils et elles sont issu·es du CAUVA de Bordeaux, le centre d'accueil en urgence des victimes d'agressions du CHU, et sont spécialisé·es dans la prise en charge des violences.</p>
-        </div>
-        <div class="grid grid-3 reason-cards">
-          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">🏥</span><h3>Issu·es du CAUVA de Bordeaux</h3><p>Des psychologues qui viennent d'un service hospitalier dédié à l'accueil des victimes d'agressions, et qui connaissent la réalité de ce que vous traversez.</p></div>
-          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🧠</span><h3>Spécialisé·es dans les violences</h3><p>Une prise en charge adaptée aux violences sexistes, sexuelles et conjugales, et à leurs conséquences sur le long terme.</p></div>
-          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">💶</span><h3>Un tarif préférentiel</h3><p>Nos psychologues partenaires proposent des séances à un tarif préférentiel aux personnes que nous accompagnons, pour que le coût ne soit pas un frein.</p></div>
-        </div>
-        <p class="mt-24 center"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide →</a></p>
-      </div>
-    </section>
-
-    <section class="section lavande">
+    <section class="section">
       <div class="wrap">
         <div class="section-head center">
           <span class="kicker">Après notre accompagnement</span>
@@ -238,15 +250,22 @@
           <p class="lead">Ce que nous avons pu mettre en place, à leurs côtés.<br><em class="search-conf">Prénoms modifiés pour préserver la sécurité des personnes.</em></p>
         </div>
       </div>
-      <div class="marquee" aria-label="Témoignages de personnes accompagnées">
-        <div class="marquee-track left">
-          <figure class="quote-card tagged victime"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure><figure class="quote-card tagged victime"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure><figure class="quote-card tagged victime"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure><figure class="quote-card tagged victime"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure><figure class="quote-card tagged victime"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure><figure class="quote-card tagged victime"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure><figure class="quote-card tagged victime"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure><figure class="quote-card tagged victime"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure>
+      <div class="defile" data-defile>
+        <div class="wrap defile-commandes" hidden>
+          <button type="button" class="defile-btn" data-defile-prec aria-label="Témoignages précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" class="defile-btn" data-defile-suiv aria-label="Témoignages suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
         </div>
+        <ul class="defile-piste" tabindex="0" aria-label="Témoignages de personnes accompagnées">
+          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Marie <span class="mark">&rdquo;</span></h3><blockquote><p>Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">42 ans</span></figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Chloé <span class="mark">&rdquo;</span></h3><blockquote><p>Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span><span class="age">22 ans</span></figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Yasmine <span class="mark">&rdquo;</span></h3><blockquote><p>Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">Y</span><span class="age">19 ans</span></figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged victime"><h3 class="q-name">Maylis <span class="mark">&rdquo;</span></h3><blockquote><p>Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">M</span><span class="age">25 ans</span></figcaption></figure></li>
+        </ul>
       </div>
     </section>
 
 
-    <section class="section">
+    <section class="section creme">
       <div class="wrap">
         <div class="section-head center">
           <span class="kicker">Idées reçues</span>
@@ -269,30 +288,18 @@
           <div class="urgence-head">
             <h2 class="titre">Numéros d'urgence</h2>
           </div>
-          <div class="marquee" aria-label="Numéros d'urgence">
-            <div class="marquee-track left">
-              <a class="urgence-card" href="tel:17"><span class="num">17</span><span class="l">Police secours</span><span class="d">Danger immédiat — 24h/24</span></a>
-            <a class="urgence-card" href="tel:15"><span class="num">15</span><span class="l">SAMU</span><span class="d">Urgence médicale</span></a>
-            <a class="urgence-card" href="tel:112"><span class="num">112</span><span class="l">Urgence européenne</span><span class="d">Depuis toute l'Europe</span></a>
-            <a class="urgence-card" href="tel:114"><span class="num">114</span><span class="l">Urgence par SMS</span><span class="d">Sourds &amp; malentendants</span></a>
-            <a class="urgence-card" href="tel:3919"><span class="num">3919</span><span class="l">Violences Femmes Info</span><span class="d">Anonyme &amp; gratuit, 24h/24</span></a>
-            <a class="urgence-card" href="tel:0800059595"><span class="num">0 800 05 95 95</span><span class="l">Viols Femmes Info</span><span class="d">Collectif Féministe Contre le Viol</span></a>
-            <a class="urgence-card" href="tel:3018"><span class="num">3018</span><span class="l">Violences numériques</span><span class="d">Cyberharcèlement — gratuit</span></a>
-            <a class="urgence-card" href="tel:116006"><span class="num">116 006</span><span class="l">Aide aux victimes</span><span class="d">France Victimes — 7j/7</span></a>
-            <a class="urgence-card" href="tel:119"><span class="num">119</span><span class="l">Enfance en danger</span><span class="d">Anonyme &amp; gratuit, 24h/24</span></a>
-            <a class="urgence-card" href="tel:3114"><span class="num">3114</span><span class="l">Prévention du suicide</span><span class="d">Écoute 24h/24, gratuit</span></a>
-            <a class="urgence-card" href="tel:17"><span class="num">17</span><span class="l">Police secours</span><span class="d">Danger immédiat — 24h/24</span></a>
-            <a class="urgence-card" href="tel:15"><span class="num">15</span><span class="l">SAMU</span><span class="d">Urgence médicale</span></a>
-            <a class="urgence-card" href="tel:112"><span class="num">112</span><span class="l">Urgence européenne</span><span class="d">Depuis toute l'Europe</span></a>
-            <a class="urgence-card" href="tel:114"><span class="num">114</span><span class="l">Urgence par SMS</span><span class="d">Sourds &amp; malentendants</span></a>
-            <a class="urgence-card" href="tel:3919"><span class="num">3919</span><span class="l">Violences Femmes Info</span><span class="d">Anonyme &amp; gratuit, 24h/24</span></a>
-            <a class="urgence-card" href="tel:0800059595"><span class="num">0 800 05 95 95</span><span class="l">Viols Femmes Info</span><span class="d">Collectif Féministe Contre le Viol</span></a>
-            <a class="urgence-card" href="tel:3018"><span class="num">3018</span><span class="l">Violences numériques</span><span class="d">Cyberharcèlement — gratuit</span></a>
-            <a class="urgence-card" href="tel:116006"><span class="num">116 006</span><span class="l">Aide aux victimes</span><span class="d">France Victimes — 7j/7</span></a>
-            <a class="urgence-card" href="tel:119"><span class="num">119</span><span class="l">Enfance en danger</span><span class="d">Anonyme &amp; gratuit, 24h/24</span></a>
-            <a class="urgence-card" href="tel:3114"><span class="num">3114</span><span class="l">Prévention du suicide</span><span class="d">Écoute 24h/24, gratuit</span></a>
-            </div>
-          </div>
+          <ul class="urgence-grid" aria-label="Numéros d'urgence">
+            <li><a class="urgence-card" href="tel:17"><span class="num">17</span><span class="l">Police secours</span><span class="d">Danger immédiat, 24h/24</span></a></li>
+            <li><a class="urgence-card" href="tel:15"><span class="num">15</span><span class="l">SAMU</span><span class="d">Urgence médicale</span></a></li>
+            <li><a class="urgence-card" href="tel:112"><span class="num">112</span><span class="l">Urgence européenne</span><span class="d">Depuis toute l'Europe</span></a></li>
+            <li><a class="urgence-card" href="tel:114"><span class="num">114</span><span class="l">Urgence par SMS</span><span class="d">Sourds &amp; malentendants</span></a></li>
+            <li><a class="urgence-card" href="tel:3919"><span class="num">3919</span><span class="l">Violences Femmes Info</span><span class="d">Anonyme &amp; gratuit, 24h/24</span></a></li>
+            <li><a class="urgence-card" href="tel:0800059595"><span class="num">0 800 05 95 95</span><span class="l">Viols Femmes Info</span><span class="d">Collectif Féministe Contre le Viol</span></a></li>
+            <li><a class="urgence-card" href="tel:3018"><span class="num">3018</span><span class="l">Violences numériques</span><span class="d">Cyberharcèlement, gratuit</span></a></li>
+            <li><a class="urgence-card" href="tel:116006"><span class="num">116 006</span><span class="l">Aide aux victimes</span><span class="d">France Victimes, 7j/7</span></a></li>
+            <li><a class="urgence-card" href="tel:119"><span class="num">119</span><span class="l">Enfance en danger</span><span class="d">Anonyme &amp; gratuit, 24h/24</span></a></li>
+            <li><a class="urgence-card" href="tel:3114"><span class="num">3114</span><span class="l">Prévention du suicide</span><span class="d">Écoute 24h/24, gratuit</span></a></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -351,6 +358,11 @@
     </div>
   </footer>
 
+  <div class="cta-bar" id="cta-bar">
+    <a class="btn btn-contour" href="sensibilisation.html#ld-sensi-form">Organiser un atelier</a>
+    <a class="btn btn-terracotta" href="accompagnement.html#ld-contact-confidentiel">J'ai besoin d'aide</a>
+  </div>
+
   <div class="floaters">
     <button class="quick-exit" id="quick-exit" type="button" aria-label="Quitter rapidement le site">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -358,7 +370,7 @@
     </button>
   </div>
 
-  <script src="assets/main.js?v=aeca6471" defer></script>
+  <script src="assets/main.js?v=0bf9c973" defer></script>
   <script src="assets/forms.js?v=55cbabdd" defer></script>
   <script src="assets/cookies.js" defer></script>
 </body>

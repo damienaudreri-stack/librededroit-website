@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sensibilisation aux violences sexistes et sexuelles — Ateliers | LibredeDroit</title>
+  <title>Sensibilisation aux violences sexistes et sexuelles, ateliers | LibredeDroit</title>
   <meta name="description" content="Nous concevons et animons des ateliers de prévention des violences sexistes et sexuelles, adaptés aux étudiants, professionnels et agents publics, partout en Gironde.">
   <link rel="canonical" href="https://librededroit.co/sensibilisation.html">
-  <meta property="og:title" content="Sensibilisation aux violences sexistes et sexuelles — Ateliers | LibredeDroit">
+  <meta property="og:title" content="Sensibilisation aux violences sexistes et sexuelles, ateliers | LibredeDroit">
   <meta property="og:description" content="Nous concevons et animons des ateliers de prévention des violences sexistes et sexuelles, adaptés aux étudiants, professionnels et agents publics, partout en Gironde.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://librededroit.co/sensibilisation.html">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="LibredeDroit">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Sensibilisation aux violences sexistes et sexuelles — Ateliers | LibredeDroit">
+  <meta name="twitter:title" content="Sensibilisation aux violences sexistes et sexuelles, ateliers | LibredeDroit">
   <meta name="twitter:description" content="Nous concevons et animons des ateliers de prévention des violences sexistes et sexuelles, adaptés aux étudiants, professionnels et agents publics, partout en Gironde.">
   <meta name="theme-color" content="#00008B">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/spectral-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/site.css?v=7fdeb595">
+  <link rel="stylesheet" href="assets/site.css?v=61cd49be">
 </head>
 <body>
   <header class="site-header">
@@ -46,7 +46,8 @@
         <li><a href="don.html" class="don-pill ">Faire un don</a></li>
       </ul>
       <div class="nav-cta">
-        <a class="btn btn-terracotta besoin-aide" href="accompagnement.html">Besoin d'aide</a>
+        <a class="btn btn-contour nav-btn atelier-nav" href="sensibilisation.html#ld-sensi-form">Organiser un atelier</a>
+        <a class="btn btn-terracotta nav-btn besoin-aide" href="accompagnement.html#ld-contact-confidentiel">J'ai besoin d'aide</a>
         <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -61,24 +62,31 @@
         <li><a href="notre-histoire.html">Notre histoire</a></li>
         <li><a href="nous-rejoindre.html">Nous rejoindre</a></li>
         <li><a href="don.html">Faire un don</a></li>
-        <li><a href="accompagnement.html" class="btn btn-terracotta mobile-cta">Besoin d'aide</a></li>
+        <li class="mobile-ctas"><a href="sensibilisation.html#ld-sensi-form" class="btn btn-contour mobile-cta">Organiser un atelier</a><a href="accompagnement.html#ld-contact-confidentiel" class="btn btn-terracotta mobile-cta">J'ai besoin d'aide</a></li>
       </ul>
     </div>
   </header>
 
   <main id="contenu">
-    <section class="hero section lavande">
-      <div class="wrap">
-        <span class="kicker">Mission · Prévenir</span>
-        <h1>Parler des violences, c'est déjà commencer à les arrêter.</h1>
-        <p class="intro">Nous concevons et animons des ateliers pour reconnaître, nommer et prévenir les violences sexistes et sexuelles.<br>Adaptés à chaque public, ancrés dans le concret.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="#ld-sensi-form">Demander une intervention →</a>
+    <section class="hero hero-sensi">
+      <div class="wrap hero-duo">
+        <div class="hero-duo-texte">
+          <span class="kicker">Mission · Prévenir</span>
+          <h1>Parler des violences, c'est déjà commencer à les arrêter.</h1>
+          <p class="intro">Nous concevons et animons des ateliers pour reconnaître, nommer et prévenir les violences sexistes et sexuelles.<br>Adaptés à chaque public, ancrés dans le concret.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#ld-sensi-form">Demander un atelier <span class="fleche" aria-hidden="true">›</span></a>
+            <a class="btn btn-ghost btn-lg" href="#ld-deroule">Voir le déroulé</a>
+          </div>
         </div>
+        <figure class="hero-duo-image">
+          <img src="assets/img/atelier-1.jpg" width="1160" height="672" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en salle de classe">
+          <figcaption>Images prises au cours de nos ateliers de sensibilisation auprès des étudiants de l'Université de Bordeaux.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="section sombre">
+    <section class="section sombre bande">
       <div class="wrap">
         <div class="meta-band">
           <div class="m"><div class="k">Durée</div><div class="v">1h30 à 4h</div></div>
@@ -90,14 +98,29 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section-serree">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="kicker">Les publics</span>
+          <h2 class="titre">Pour qui ?</h2>
+        </div>
+        <div class="grid grid-3 publics">
+          <div class="public-carte reveal"><h3>Étudiants</h3><ul><li>Associations étudiantes</li><li>Collèges</li><li>Lycées</li><li>Écoles privées</li></ul></div>
+          <div class="public-carte reveal" data-delay="1"><h3>Professionnels</h3><ul><li>Syndicats</li><li>TPE et PME</li><li>Groupes et grandes entreprises</li></ul></div>
+          <div class="public-carte reveal" data-delay="2"><h3>Agents publics</h3><ul><li>Municipalités</li><li>Collectivités</li><li>Régions et départements</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section creme" id="ld-deroule">
       <div class="wrap grid-timeline">
         <div class="section-head sticky-head">
           <span class="kicker">Le déroulé</span>
           <h2 class="titre">Un atelier, quatre temps.</h2>
           <p class="lead">Une progression pensée pour favoriser l'échange et le transmission.</p>
+          <img class="atelier-photo deroule-photo" src="assets/img/atelier-2.jpg" width="824" height="672" loading="lazy" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en amphithéâtre">
         </div>
-        <div class="timeline">
+        <div class="timeline frise">
           <div class="step reveal"><div class="n">1</div><div class="step-body"><h3>Briser la glace</h3><p>On installe un cadre de confiance et de non-jugement.</p></div></div>
           <div class="step reveal"><div class="n">2</div><div class="step-body"><h3>Nommer les violences</h3><p>Définitions, mécanismes, idées reçues : on pose des mots clairs sur des réalités souvent tues.</p></div></div>
           <div class="step reveal"><div class="n">3</div><div class="step-body"><h3>Situations concrètes personnalisées</h3><p>À partir de cas réels et de mises en situation adaptées au public, on apprend à repérer et à réagir.</p></div></div>
@@ -108,7 +131,7 @@
 
     <section class="section">
       <div class="wrap">
-        <div class="encart marine grid-2col-head">
+        <div class="encart marine grid-2col-head reveal">
           <div>
             <p class="lead">Les synthèses scientifiques francophones, notamment celles de l'<strong>Institut national de santé publique du Québec</strong> convergent vers la même direction. Les programmes de sensibilisation améliorent nettement les <strong>connaissances, les attitudes et les réflexes de protection</strong>, et peuvent réduire plusieurs formes de victimisation sexuelle.</p>
             <p class="lead">Mieux informées, les victimes <strong>identifient plus vite ce qu'elles ont subi et en parlent plus tôt.</strong> Un entourage formé sait également mieux les soutenir lors d'un dévoilement.</p>
@@ -122,54 +145,11 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head center">
-          <span class="kicker">Ils ont suivi nos ateliers</span>
-          <h2 class="titre">Ce qu'en disent professionnels et étudiants.</h2>
-        </div>
-      </div>
-      <div class="marquee" aria-label="Témoignages d'ateliers">
-        <div class="marquee-track left">
-          <figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à repérer des signaux que je laissais passer avant. Les mises en situation m'ont vraiment aidée à savoir quoi dire.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">S</span>Sophie L.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu m'entraîner sur des cas concrets. Je sais maintenant comment réagir si un·e élève se confie à moi, et vers qui l'orienter.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">K</span>Karim B.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>J'ai enfin mis des mots sur le consentement, avec des exemples qui me parlent. Je regarde certaines situations différemment maintenant.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">I</span>Inès M.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pratiqué des mises en situation qui m'ont bousculé. J'en ressors avec des repères clairs sur ce que dit la loi.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">T</span>Thomas R.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Je pensais connaître le sujet. J'ai réalisé tout ce que je laissais passer entre potes, sans même m'en rendre compte.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">L</span>Lucas D.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu poser mes questions sans filtre. Je me sens enfin outillée pour agir si une situation se présente.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">A</span>Awa F.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Les mises en situation m'ont permis de m'entraîner à réagir. J'en ressors plus vigilante face à ce qui m'entoure.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span>Camille P.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à reconnaître les signaux faibles. Je sais désormais comment signaler une situation à risque.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">N</span>Nadia E.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à repérer des signaux que je laissais passer avant. Les mises en situation m'ont vraiment aidée à savoir quoi dire.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">S</span>Sophie L.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu m'entraîner sur des cas concrets. Je sais maintenant comment réagir si un·e élève se confie à moi, et vers qui l'orienter.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">K</span>Karim B.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>J'ai enfin mis des mots sur le consentement, avec des exemples qui me parlent. Je regarde certaines situations différemment maintenant.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">I</span>Inès M.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pratiqué des mises en situation qui m'ont bousculé. J'en ressors avec des repères clairs sur ce que dit la loi.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">T</span>Thomas R.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Je pensais connaître le sujet. J'ai réalisé tout ce que je laissais passer entre potes, sans même m'en rendre compte.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">L</span>Lucas D.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu poser mes questions sans filtre. Je me sens enfin outillée pour agir si une situation se présente.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">A</span>Awa F.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Les mises en situation m'ont permis de m'entraîner à réagir. J'en ressors plus vigilante face à ce qui m'entoure.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span>Camille P.</figcaption></figure><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à reconnaître les signaux faibles. Je sais désormais comment signaler une situation à risque.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">N</span>Nadia E.</figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section lavande">
-      <div class="wrap">
-        <div class="grid-2col-head">
-          <div>
-            <span class="kicker">Pourquoi c'est essentiel</span>
-            <h2 class="titre">On ne combat pas ce qu'on ne sait pas <em class="accent-marine">nommer.</em></h2>
-          </div>
-          <div>
-            <p class="lead">La plupart des violences sexistes et sexuelles restent invisibles, d'abord parce qu'elles prennent naissance dans des actes et des réflexions banalisées, et ensuite parce qu'elles arrivent le plus souvent dans des milieux privés, à l'abri des regards, là où les preuves matérielles se font rares.</p>
-            <p class="lead">Sensibiliser, c'est donner à chacun·e les mots et les repères pour identifier ces violences, comprendre leurs mécanismes et savoir réagir. C'est le premier geste de prévention, et le plus puissant.</p>
-          </div>
-        </div>
-        <div class="grid grid-3 reason-cards">
-          <div class="reason-card marine"><span class="reason-num">1</span><h3>Reconnaître</h3><p>Mettre des mots justes sur des situations souvent minimisées, pour ne plus les laisser passer.</p></div>
-          <div class="reason-card verte"><span class="reason-num">2</span><h3>Prévenir</h3><p>Agir en amont, sur les comportements et les représentations, plutôt que de réparer après coup.</p></div>
-          <div class="reason-card dore"><span class="reason-num">3</span><h3>Protéger</h3><p>Un entourage informé sait écouter, orienter et soutenir une victime sans jamais la juger.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section lavande">
-      <div class="wrap">
-        <div class="grid grid-2 ateliers-grid">
-          <img class="atelier-photo" src="assets/img/atelier-1.jpg" width="1160" height="672" loading="lazy" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en salle de classe">
-          <img class="atelier-photo" src="assets/img/atelier-2.jpg" width="824" height="672" loading="lazy" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en amphithéâtre">
-        </div>
-        <p class="lead center mt-14">Images prises au cours de nos ateliers de sensibilisation auprès des étudiants de l'Université de Bordeaux.</p>
-      </div>
-    </section>
-
     <section class="section" id="ld-sensi-form">
       <div class="wrap">
-        <div class="inset-dark">
+        <div class="inset-dark form-duo">
         <div class="section-head">
+          <span class="kicker kicker-clair">Formulaire</span>
           <h2 class="titre">Demander une intervention</h2>
           <p class="lead">Décrivez-nous votre structure et votre besoin.<br>Nous revenons vers vous sous 5 jours ouvrés.</p>
         </div>
@@ -235,7 +215,52 @@
       </div>
     </section>
 
+    <section class="section creme">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="kicker">Ils ont suivi nos ateliers</span>
+          <h2 class="titre">Ce qu'en disent professionnels et étudiants.</h2>
+        </div>
+      </div>
+      <div class="defile" data-defile>
+        <div class="wrap defile-commandes" hidden>
+          <button type="button" class="defile-btn" data-defile-prec aria-label="Témoignages précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" class="defile-btn" data-defile-suiv aria-label="Témoignages suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <ul class="defile-piste" tabindex="0" aria-label="Témoignages d'ateliers">
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à repérer des signaux que je laissais passer avant. Les mises en situation m'ont vraiment aidée à savoir quoi dire.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">S</span>Sophie L.</figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu m'entraîner sur des cas concrets. Je sais maintenant comment réagir si un·e élève se confie à moi, et vers qui l'orienter.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">K</span>Karim B.</figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>J'ai enfin mis des mots sur le consentement, avec des exemples qui me parlent. Je regarde certaines situations différemment maintenant.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">I</span>Inès M.</figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pratiqué des mises en situation qui m'ont bousculé. J'en ressors avec des repères clairs sur ce que dit la loi.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">T</span>Thomas R.</figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Je pensais connaître le sujet. J'ai réalisé tout ce que je laissais passer entre potes, sans même m'en rendre compte.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">L</span>Lucas D.</figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu poser mes questions sans filtre. Je me sens enfin outillée pour agir si une situation se présente.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">A</span>Awa F.</figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Les mises en situation m'ont permis de m'entraîner à réagir. J'en ressors plus vigilante face à ce qui m'entoure.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span>Camille P.</figcaption></figure></li>
+          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à reconnaître les signaux faibles. Je sais désormais comment signaler une situation à risque.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">N</span>Nadia E.</figcaption></figure></li>
+        </ul>
+      </div>
+    </section>
+
     <section class="section">
+      <div class="wrap">
+        <div class="grid-2col-head">
+          <div>
+            <span class="kicker">Pourquoi c'est essentiel</span>
+            <h2 class="titre">On ne combat pas ce qu'on ne sait pas <em class="accent-marine">nommer.</em></h2>
+          </div>
+          <div>
+            <p class="lead">La plupart des violences sexistes et sexuelles restent invisibles, d'abord parce qu'elles prennent naissance dans des actes et des réflexions banalisées, et ensuite parce qu'elles arrivent le plus souvent dans des milieux privés, à l'abri des regards, là où les preuves matérielles se font rares.</p>
+            <p class="lead">Sensibiliser, c'est donner à chacun·e les mots et les repères pour identifier ces violences, comprendre leurs mécanismes et savoir réagir. C'est le premier geste de prévention, et le plus puissant.</p>
+          </div>
+        </div>
+        <div class="grid grid-3 reason-cards">
+          <div class="reason-card marine reveal"><span class="reason-num">1</span><h3>Reconnaître</h3><p>Mettre des mots justes sur des situations souvent minimisées, pour ne plus les laisser passer.</p></div>
+          <div class="reason-card verte reveal" data-delay="1"><span class="reason-num">2</span><h3>Prévenir</h3><p>Agir en amont, sur les comportements et les représentations, plutôt que de réparer après coup.</p></div>
+          <div class="reason-card dore reveal" data-delay="2"><span class="reason-num">3</span><h3>Protéger</h3><p>Un entourage informé sait écouter, orienter et soutenir une victime sans jamais la juger.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section creme">
       <div class="wrap">
         <div class="section-head center">
           <span class="kicker">Questions fréquentes</span>
@@ -247,7 +272,7 @@
           <details><summary>Combien de personnes peuvent participer ?</summary><p>De petits groupes d'une dizaine de personnes jusqu'à des promotions entières. Nous adaptons l'animation à la taille du groupe.</p></details>
           <details><summary>Les ateliers sont-ils payants ?</summary><p>Nous étudions chaque demande au cas par cas. Nous intervenons gratuitement auprès des associations étudiantes, et nous fixons un prix avec les organismes selon le nombre d'interventions prévues et le nombre de personnes sensibilisées. Cette tarification a uniquement pour but de financer les activités d'accompagnement de l'association en lui permettant de soutenir la charge financière des victimes auprès de leurs avocats et leurs psychologues.</p></details>
           <details><summary>Où se déroulent les interventions ?</summary><p>Chez vous : établissement scolaire, entreprise, collectivité… Nous nous déplaçons dans toute la région pour animer la séance sur place.</p></details>
-          <details><summary>Comment réserver une intervention ?</summary><p>Remplissez le formulaire de demande en haut de cette page. Nous revenons vers vous sous quelques jours pour construire ensemble la séance.</p></details>
+          <details><summary>Comment réserver une intervention ?</summary><p>Remplissez le <a href="#ld-sensi-form">formulaire de demande</a> plus haut sur cette page. Nous revenons vers vous sous quelques jours pour construire ensemble la séance.</p></details>
         </div>
       </div>
     </section>
@@ -306,6 +331,11 @@
     </div>
   </footer>
 
+  <div class="cta-bar" id="cta-bar">
+    <a class="btn btn-contour" href="sensibilisation.html#ld-sensi-form">Organiser un atelier</a>
+    <a class="btn btn-terracotta" href="accompagnement.html#ld-contact-confidentiel">J'ai besoin d'aide</a>
+  </div>
+
   <div class="floaters">
     <button class="quick-exit" id="quick-exit" type="button" aria-label="Quitter rapidement le site">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -313,7 +343,7 @@
     </button>
   </div>
 
-  <script src="assets/main.js?v=aeca6471" defer></script>
+  <script src="assets/main.js?v=0bf9c973" defer></script>
   <script src="assets/forms.js?v=55cbabdd" defer></script>
   <script src="assets/cookies.js" defer></script>
 </body>

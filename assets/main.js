@@ -119,6 +119,138 @@
     setTimeout(taper, 300);
   });
 
+  // --- Nav : compactage au defilement (hysteresis pour eviter le clignotement) ---
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var compact = false, tickNav = false;
+    var majNav = function () {
+      tickNav = false;
+      var y = window.scrollY || window.pageYOffset;
+      if (!compact && y > 40) { compact = true; header.classList.add('est-compact'); }
+      else if (compact && y < 8) { compact = false; header.classList.remove('est-compact'); }
+    };
+    window.addEventListener('scroll', function () {
+      if (!tickNav) { tickNav = true; requestAnimationFrame(majNav); }
+    }, { passive: true });
+    majNav();
+  }
+
+  // --- Barre d'action mobile : visible apres le hero, masquee quand un
+  // formulaire de la page est a l'ecran (pour ne jamais gener la saisie). ---
+  var barre = document.getElementById('cta-bar');
+  if (barre) {
+    var racine = document.documentElement;
+    var montrer = function (oui) {
+      barre.classList.toggle('est-visible', oui);
+      racine.classList.toggle('cta-visible', oui);
+    };
+    if (!('IntersectionObserver' in window)) {
+      montrer(true);
+    } else {
+      var premier = document.querySelector('main > :first-child');
+      var heroVisible = !!premier;
+      var formsVisibles = new Set();
+      var majBarre = function () { montrer(!heroVisible && formsVisibles.size === 0); };
+      if (premier) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { heroVisible = e.isIntersecting; });
+          majBarre();
+        }).observe(premier);
+      }
+      var cibles = [];
+      document.querySelectorAll('form.js-contact-form').forEach(function (f) {
+        var bloc = f.closest('.form-card, .form-panel') || f;
+        if (cibles.indexOf(bloc) === -1) cibles.push(bloc);
+      });
+      if (cibles.length) {
+        var fo = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) formsVisibles.add(e.target); else formsVisibles.delete(e.target);
+          });
+          majBarre();
+        });
+        cibles.forEach(function (c) { fo.observe(c); });
+      }
+      majBarre();
+    }
+  }
+
+  // --- Selecteur a onglets accessible (sans JS : blocs affiches les uns sous les autres) ---
+  document.querySelectorAll('[data-onglets]').forEach(function (boite) {
+    var liste = boite.querySelector('[role="tablist"]');
+    if (!liste) return;
+    var onglets = Array.prototype.slice.call(liste.querySelectorAll('[role="tab"]'));
+    var panneaux = onglets.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+    if (panneaux.some(function (p) { return !p; })) return;
+    panneaux.forEach(function (p, i) {
+      p.setAttribute('role', 'tabpanel');
+      p.setAttribute('aria-labelledby', onglets[i].id);
+      p.setAttribute('tabindex', '0');
+    });
+    function choisir(i, focus) {
+      onglets.forEach(function (t, j) {
+        var actif = j === i;
+        t.setAttribute('aria-selected', actif ? 'true' : 'false');
+        t.tabIndex = actif ? 0 : -1;
+        panneaux[j].hidden = !actif;
+      });
+      if (focus) onglets[i].focus();
+    }
+    onglets.forEach(function (t, i) {
+      t.addEventListener('click', function () { choisir(i, false); });
+      t.addEventListener('keydown', function (e) {
+        var n = onglets.length, cible = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') cible = (i + 1) % n;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') cible = (i - 1 + n) % n;
+        else if (e.key === 'Home') cible = 0;
+        else if (e.key === 'End') cible = n - 1;
+        if (cible !== null) { e.preventDefault(); choisir(cible, true); }
+      });
+    });
+    function depuisAncre() {
+      var id = window.location.hash.slice(1);
+      var idx = -1;
+      panneaux.forEach(function (p, j) { if (p.id === id) idx = j; });
+      if (idx !== -1) { choisir(idx, false); boite.scrollIntoView(); return true; }
+      return false;
+    }
+    liste.hidden = false;
+    boite.classList.add('est-actif');
+    if (!depuisAncre()) choisir(0, false);
+    window.addEventListener('hashchange', depuisAncre);
+  });
+
+  // --- Rangees a defilement manuel : boutons precedent / suivant ---
+  document.querySelectorAll('[data-defile]').forEach(function (bloc) {
+    var piste = bloc.querySelector('.defile-piste');
+    var commandes = bloc.querySelector('.defile-commandes');
+    var prec = bloc.querySelector('[data-defile-prec]');
+    var suiv = bloc.querySelector('[data-defile-suiv]');
+    if (!piste || !commandes || !prec || !suiv) return;
+    function pas() {
+      var item = piste.querySelector('.defile-item');
+      var largeur = item ? item.getBoundingClientRect().width + 18 : piste.clientWidth * 0.8;
+      return Math.max(largeur, Math.floor(piste.clientWidth / largeur) * largeur);
+    }
+    function maj() {
+      var max = piste.scrollWidth - piste.clientWidth;
+      commandes.hidden = max <= 2;
+      prec.disabled = piste.scrollLeft <= 2;
+      suiv.disabled = piste.scrollLeft >= max - 2;
+    }
+    function aller(sens) {
+      piste.scrollBy({ left: sens * pas(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    prec.addEventListener('click', function () { aller(-1); });
+    suiv.addEventListener('click', function () { aller(1); });
+    var tick = false;
+    piste.addEventListener('scroll', function () {
+      if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; maj(); }); }
+    }, { passive: true });
+    window.addEventListener('resize', maj);
+    maj();
+  });
+
   // --- Filtres articles (Ressources) : catégorie + thème ---
   var catBtns = document.querySelectorAll('[data-filter]');
   var themeBtns = document.querySelectorAll('[data-theme-filter]');

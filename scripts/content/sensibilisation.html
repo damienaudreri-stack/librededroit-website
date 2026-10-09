@@ -1,15 +1,22 @@
-    <section class="hero section lavande">
-      <div class="wrap">
-        <span class="kicker">Mission · Prévenir</span>
-        <h1>Parler des violences, c'est déjà commencer à les arrêter.</h1>
-        <p class="intro">Nous concevons et animons des ateliers pour reconnaître, nommer et prévenir les violences sexistes et sexuelles.<br>Adaptés à chaque public, ancrés dans le concret.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="#ld-sensi-form">Demander une intervention →</a>
+    <section class="hero hero-sensi">
+      <div class="wrap hero-duo">
+        <div class="hero-duo-texte">
+          <span class="kicker">Mission · Prévenir</span>
+          <h1>Parler des violences, c'est déjà commencer à les arrêter.</h1>
+          <p class="intro">Nous concevons et animons des ateliers pour reconnaître, nommer et prévenir les violences sexistes et sexuelles.<br>Adaptés à chaque public, ancrés dans le concret.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#ld-sensi-form">Demander un atelier <span class="fleche" aria-hidden="true">›</span></a>
+            <a class="btn btn-ghost btn-lg" href="#ld-deroule">Voir le déroulé</a>
+          </div>
         </div>
+        <figure class="hero-duo-image">
+          <img src="assets/img/atelier-1.jpg" width="1160" height="672" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en salle de classe">
+          <figcaption>Images prises au cours de nos ateliers de sensibilisation auprès des étudiants de l'Université de Bordeaux.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="section sombre">
+    <section class="section sombre bande">
       <div class="wrap">
         <div class="meta-band">
           <div class="m"><div class="k">Durée</div><div class="v">1h30 à 4h</div></div>
@@ -21,14 +28,29 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section-serree">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="kicker">Les publics</span>
+          <h2 class="titre">Pour qui ?</h2>
+        </div>
+        <div class="grid grid-3 publics">
+          <div class="public-carte reveal"><h3>Étudiants</h3><ul><li>Associations étudiantes</li><li>Collèges</li><li>Lycées</li><li>Écoles privées</li></ul></div>
+          <div class="public-carte reveal" data-delay="1"><h3>Professionnels</h3><ul><li>Syndicats</li><li>TPE et PME</li><li>Groupes et grandes entreprises</li></ul></div>
+          <div class="public-carte reveal" data-delay="2"><h3>Agents publics</h3><ul><li>Municipalités</li><li>Collectivités</li><li>Régions et départements</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section creme" id="ld-deroule">
       <div class="wrap grid-timeline">
         <div class="section-head sticky-head">
           <span class="kicker">Le déroulé</span>
           <h2 class="titre">Un atelier, quatre temps.</h2>
           <p class="lead">Une progression pensée pour favoriser l'échange et le transmission.</p>
+          <img class="atelier-photo deroule-photo" src="assets/img/atelier-2.jpg" width="824" height="672" loading="lazy" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en amphithéâtre">
         </div>
-        <div class="timeline">
+        <div class="timeline frise">
           <div class="step reveal"><div class="n">1</div><div class="step-body"><h3>Briser la glace</h3><p>On installe un cadre de confiance et de non-jugement.</p></div></div>
           <div class="step reveal"><div class="n">2</div><div class="step-body"><h3>Nommer les violences</h3><p>Définitions, mécanismes, idées reçues : on pose des mots clairs sur des réalités souvent tues.</p></div></div>
           <div class="step reveal"><div class="n">3</div><div class="step-body"><h3>Situations concrètes personnalisées</h3><p>À partir de cas réels et de mises en situation adaptées au public, on apprend à repérer et à réagir.</p></div></div>
@@ -39,7 +61,7 @@
 
     <section class="section">
       <div class="wrap">
-        <div class="encart marine grid-2col-head">
+        <div class="encart marine grid-2col-head reveal">
           <div>
             <p class="lead">Les synthèses scientifiques francophones, notamment celles de l'<strong>Institut national de santé publique du Québec</strong> convergent vers la même direction. Les programmes de sensibilisation améliorent nettement les <strong>connaissances, les attitudes et les réflexes de protection</strong>, et peuvent réduire plusieurs formes de victimisation sexuelle.</p>
             <p class="lead">Mieux informées, les victimes <strong>identifient plus vite ce qu'elles ont subi et en parlent plus tôt.</strong> Un entourage formé sait également mieux les soutenir lors d'un dévoilement.</p>
@@ -53,54 +75,11 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head center">
-          <span class="kicker">Ils ont suivi nos ateliers</span>
-          <h2 class="titre">Ce qu'en disent professionnels et étudiants.</h2>
-        </div>
-      </div>
-      <div class="marquee" aria-label="Témoignages d'ateliers">
-        <div class="marquee-track left">
-          {{temoignages_sensi}}
-        </div>
-      </div>
-    </section>
-
-    <section class="section lavande">
-      <div class="wrap">
-        <div class="grid-2col-head">
-          <div>
-            <span class="kicker">Pourquoi c'est essentiel</span>
-            <h2 class="titre">On ne combat pas ce qu'on ne sait pas <em class="accent-marine">nommer.</em></h2>
-          </div>
-          <div>
-            <p class="lead">La plupart des violences sexistes et sexuelles restent invisibles, d'abord parce qu'elles prennent naissance dans des actes et des réflexions banalisées, et ensuite parce qu'elles arrivent le plus souvent dans des milieux privés, à l'abri des regards, là où les preuves matérielles se font rares.</p>
-            <p class="lead">Sensibiliser, c'est donner à chacun·e les mots et les repères pour identifier ces violences, comprendre leurs mécanismes et savoir réagir. C'est le premier geste de prévention, et le plus puissant.</p>
-          </div>
-        </div>
-        <div class="grid grid-3 reason-cards">
-          <div class="reason-card marine"><span class="reason-num">1</span><h3>Reconnaître</h3><p>Mettre des mots justes sur des situations souvent minimisées, pour ne plus les laisser passer.</p></div>
-          <div class="reason-card verte"><span class="reason-num">2</span><h3>Prévenir</h3><p>Agir en amont, sur les comportements et les représentations, plutôt que de réparer après coup.</p></div>
-          <div class="reason-card dore"><span class="reason-num">3</span><h3>Protéger</h3><p>Un entourage informé sait écouter, orienter et soutenir une victime sans jamais la juger.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section lavande">
-      <div class="wrap">
-        <div class="grid grid-2 ateliers-grid">
-          <img class="atelier-photo" src="assets/img/atelier-1.jpg" width="1160" height="672" loading="lazy" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en salle de classe">
-          <img class="atelier-photo" src="assets/img/atelier-2.jpg" width="824" height="672" loading="lazy" alt="Atelier de sensibilisation LibredeDroit auprès d'étudiants, en amphithéâtre">
-        </div>
-        <p class="lead center mt-14">Images prises au cours de nos ateliers de sensibilisation auprès des étudiants de l'Université de Bordeaux.</p>
-      </div>
-    </section>
-
     <section class="section" id="ld-sensi-form">
       <div class="wrap">
-        <div class="inset-dark">
+        <div class="inset-dark form-duo">
         <div class="section-head">
+          <span class="kicker kicker-clair">Formulaire</span>
           <h2 class="titre">Demander une intervention</h2>
           <p class="lead">Décrivez-nous votre structure et votre besoin.<br>Nous revenons vers vous sous 5 jours ouvrés.</p>
         </div>
@@ -166,7 +145,45 @@
       </div>
     </section>
 
+    <section class="section creme">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="kicker">Ils ont suivi nos ateliers</span>
+          <h2 class="titre">Ce qu'en disent professionnels et étudiants.</h2>
+        </div>
+      </div>
+      <div class="defile" data-defile>
+        <div class="wrap defile-commandes" hidden>
+          <button type="button" class="defile-btn" data-defile-prec aria-label="Témoignages précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" class="defile-btn" data-defile-suiv aria-label="Témoignages suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <ul class="defile-piste" tabindex="0" aria-label="Témoignages d'ateliers">
+          {{temoignages_sensi}}
+        </ul>
+      </div>
+    </section>
+
     <section class="section">
+      <div class="wrap">
+        <div class="grid-2col-head">
+          <div>
+            <span class="kicker">Pourquoi c'est essentiel</span>
+            <h2 class="titre">On ne combat pas ce qu'on ne sait pas <em class="accent-marine">nommer.</em></h2>
+          </div>
+          <div>
+            <p class="lead">La plupart des violences sexistes et sexuelles restent invisibles, d'abord parce qu'elles prennent naissance dans des actes et des réflexions banalisées, et ensuite parce qu'elles arrivent le plus souvent dans des milieux privés, à l'abri des regards, là où les preuves matérielles se font rares.</p>
+            <p class="lead">Sensibiliser, c'est donner à chacun·e les mots et les repères pour identifier ces violences, comprendre leurs mécanismes et savoir réagir. C'est le premier geste de prévention, et le plus puissant.</p>
+          </div>
+        </div>
+        <div class="grid grid-3 reason-cards">
+          <div class="reason-card marine reveal"><span class="reason-num">1</span><h3>Reconnaître</h3><p>Mettre des mots justes sur des situations souvent minimisées, pour ne plus les laisser passer.</p></div>
+          <div class="reason-card verte reveal" data-delay="1"><span class="reason-num">2</span><h3>Prévenir</h3><p>Agir en amont, sur les comportements et les représentations, plutôt que de réparer après coup.</p></div>
+          <div class="reason-card dore reveal" data-delay="2"><span class="reason-num">3</span><h3>Protéger</h3><p>Un entourage informé sait écouter, orienter et soutenir une victime sans jamais la juger.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section creme">
       <div class="wrap">
         <div class="section-head center">
           <span class="kicker">Questions fréquentes</span>
@@ -178,7 +195,7 @@
           <details><summary>Combien de personnes peuvent participer ?</summary><p>De petits groupes d'une dizaine de personnes jusqu'à des promotions entières. Nous adaptons l'animation à la taille du groupe.</p></details>
           <details><summary>Les ateliers sont-ils payants ?</summary><p>Nous étudions chaque demande au cas par cas. Nous intervenons gratuitement auprès des associations étudiantes, et nous fixons un prix avec les organismes selon le nombre d'interventions prévues et le nombre de personnes sensibilisées. Cette tarification a uniquement pour but de financer les activités d'accompagnement de l'association en lui permettant de soutenir la charge financière des victimes auprès de leurs avocats et leurs psychologues.</p></details>
           <details><summary>Où se déroulent les interventions ?</summary><p>Chez vous : établissement scolaire, entreprise, collectivité… Nous nous déplaçons dans toute la région pour animer la séance sur place.</p></details>
-          <details><summary>Comment réserver une intervention ?</summary><p>Remplissez le formulaire de demande en haut de cette page. Nous revenons vers vous sous quelques jours pour construire ensemble la séance.</p></details>
+          <details><summary>Comment réserver une intervention ?</summary><p>Remplissez le <a href="#ld-sensi-form">formulaire de demande</a> plus haut sur cette page. Nous revenons vers vous sous quelques jours pour construire ensemble la séance.</p></details>
         </div>
       </div>
     </section>
