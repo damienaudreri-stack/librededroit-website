@@ -115,12 +115,9 @@ ASSOS = [
 # Fichier None = emplacement provisoire « Photo à venir ».
 # (fichier dans assets/img/, largeur, hauteur, texte alternatif)
 PHOTOS_ACCUEIL = [
-    ("accueil/photo-01.jpg", 420, 560, "Les membres de LibredeDroit réunis lors d'un événement de l'association"),
     ("atelier-1.jpg", 1160, 672, "Atelier de sensibilisation LibredeDroit auprès d'étudiants"),
     ("accueil/photo-02.jpg", 560, 560, "Un bénévole échange avec des étudiants pendant un atelier en amphithéâtre"),
-    ("accueil/photo-03.jpg", 550, 560, "Intervention d'un membre de LibredeDroit lors d'une conférence"),
     ("accueil/photo-05.jpg", 996, 560, "Un amphithéâtre d'étudiants pendant une intervention de LibredeDroit"),
-    ("accueil/photo-04.jpg", 315, 560, "Une intervenante prend la parole au micro"),
     ("atelier-2.jpg", 824, 672, "Une bénévole échange avec des étudiants pendant un atelier de sensibilisation en amphithéâtre"),
     ("accueil/photo-06.jpg", 420, 560, "Le stand de LibredeDroit à la rencontre des étudiants"),
     ("accueil/photo-07.jpg", 842, 560, "Une bénévole anime un échange avec des étudiants pendant un atelier"),
