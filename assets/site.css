@@ -1352,3 +1352,18 @@ h1, h2.titre { text-wrap: balance; }
   .temps-js .temps-onglets { grid-template-columns: repeat(2, 1fr); }
   .temps-js .temps-panneau { min-height: 0; }
 }
+
+/* En-têtes de page : retour au texte sur le côté (texte à gauche, photo à droite),
+   en gardant dégradé, cascade et photo animée. Surcharge la version centrée. */
+.hero-page .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero-page-texte { text-align: left; max-width: none; margin: 0; }
+.hero-page h1 { max-width: 20ch; margin: 0 0 20px; }
+.hero-page p.intro { margin: 0 0 28px; max-width: 560px; }
+.hero-page .hero-cta { justify-content: flex-start; }
+.hero-page-photo { margin: 0; max-width: none; }
+.hero-page-photo img { aspect-ratio: 5 / 4; }
+.hero-page-photo figcaption { text-align: left; }
+@media (max-width: 900px) {
+  .hero-page .wrap { grid-template-columns: 1fr; }
+  .hero-page-photo img { aspect-ratio: 4 / 3; }
+}
