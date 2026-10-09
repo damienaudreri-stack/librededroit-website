@@ -1157,23 +1157,15 @@ h1, h2.titre { text-wrap: balance; }
   }
 }
 @keyframes ldLogoOuverture {
-  0%   { transform: translate(-50%, -50%) scale(.6);  opacity: 0; }
-  28%  { transform: translate(-50%, 40%) scale(3.4);  opacity: .14; }
-  40%  { transform: translate(-50%, 40%) scale(3.75); opacity: .16; }
-  48%  { transform: translate(-50%, 40%) scale(3.4);  opacity: .14; }
-  56%  { transform: translate(-50%, 40%) scale(3.7);  opacity: .16; }
-  66%  { transform: translate(-50%, 40%) scale(3.4);  opacity: .14; }
-  100% { transform: translate(-50%, -50%) scale(1);   opacity: .22; }
+  0%   { transform: translate(-50%, -50%) scale(.96); opacity: 0; }
+  30%  { transform: translate(-50%, -50%) scale(1.08); opacity: .22; }
+  45%  { transform: translate(-50%, -50%) scale(1); }
+  60%  { transform: translate(-50%, -50%) scale(1.06); }
+  100% { transform: translate(-50%, -50%) scale(1);    opacity: .22; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-filigrane { animation: ldLogoOuverture 1.9s cubic-bezier(.45,0,.25,1) both; }
-  /* Le texte du hero attend la fin du battement pour ne pas se superposer au grand logo */
-  .hero-accueil .texte-degrade { animation-delay: 1.35s, 2.4s; }
-  .hero-accueil .titre-mots > .mot:nth-child(1) { animation-delay: 1.45s; }
-  .hero-accueil .titre-mots > .mot:nth-child(2) { animation-delay: 1.53s; }
-  .hero-accueil .titre-mots em .mot:nth-child(1) { animation-delay: 1.63s; }
-  .hero-accueil .titre-mots em .mot:nth-child(2) { animation-delay: 1.71s; }
-  .hero-accueil .hero-intro { animation-delay: 1.8s; }
+  /* Leger battement a l'ouverture, le texte s'affiche normalement en parallele */
+  .hero-filigrane { animation: ldLogoOuverture 1.4s ease-in-out both; }
 }
 @media (max-width: 700px) { .hero-embleme { height: 56px; } .hero-filigrane { width: 84px; } }
 
