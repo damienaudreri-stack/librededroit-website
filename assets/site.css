@@ -921,9 +921,9 @@ h1, h2.titre { text-wrap: balance; }
 /* Deux cartes-choix : les deux parcours */
 .choix { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1060px; margin: clamp(40px, 6vw, 64px) auto 0; }
 .choix-carte {
-  position: relative; display: flex; flex-direction: column; align-items: flex-start;
+  position: relative; display: flex; flex-direction: column; align-items: center;
   padding: clamp(28px, 3.4vw, 40px); border-radius: 28px; color: var(--texte);
-  border: 1px solid transparent; text-align: left;
+  border: 1px solid transparent; text-align: center;
   transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
 }
 .choix-carte:hover { text-decoration: none; transform: translateY(-4px); box-shadow: 0 22px 44px -22px rgba(22,22,63,.32); }
@@ -935,8 +935,8 @@ h1, h2.titre { text-wrap: balance; }
 .choix-atelier .choix-picto { color: var(--marine); }
 .choix-picto svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .choix-titre { display: block; font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-weight: 500; line-height: 1.1; letter-spacing: -.01em; }
-.choix-texte { display: block; margin-top: 12px; color: var(--gris); font-size: 17px; line-height: 1.55; max-width: 40ch; }
-.choix-pied { margin-top: auto; padding-top: 28px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px; }
+.choix-texte { display: block; margin: 12px auto 0; color: var(--gris); font-size: 17px; line-height: 1.55; max-width: 40ch; }
+.choix-pied { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .choix-note { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gris); }
 .choix-note svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
 .choix-carte .fleche { display: inline-block; transition: transform .35s var(--ease-out); }
