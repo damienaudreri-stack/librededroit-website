@@ -1398,3 +1398,50 @@ h1, h2.titre { text-wrap: balance; }
 .positionnement-v2 .valeur-picto { background: rgba(252,250,245,.08); color: var(--creme); }
 @media (max-width: 860px) { .piliers { grid-template-columns: 1fr; } }
 .positionnement-v2 .valeurs { margin-top: 0; }
+
+/* --- Notre histoire : « Notre positionnement » façon manifeste (fond clair,
+   grande phrase, trois lignes numérotées, valeurs en bandeau). Remplace la v2 sombre. --- */
+.section.manifeste { background: var(--surface-2); }
+.manifeste-tete { max-width: 900px; margin-bottom: clamp(36px, 5vw, 56px); }
+h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; letter-spacing: -.02em; margin: 0; }
+.manifeste-lignes { list-style: none; border-top: 1px solid var(--ligne); margin-bottom: clamp(48px, 6vw, 72px); }
+.manifeste-ligne { display: grid; grid-template-columns: 72px minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(16px, 3vw, 40px); align-items: baseline; padding: clamp(22px, 3vw, 34px) 0; border-bottom: 1px solid var(--ligne); }
+.manifeste-n { font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); color: var(--terracotta); font-weight: 500; }
+.manifeste-ligne h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15; margin: 0; }
+.manifeste-ligne p { color: var(--gris); font-size: 18px; line-height: 1.7; max-width: 56ch; }
+.manifeste-valeurs { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); }
+.manifeste-valeur { padding-top: 22px; border-top: 3px solid; }
+.manifeste-valeur.valeur-dore { border-color: var(--dore); }
+.manifeste-valeur.valeur-terracotta { border-color: var(--terracotta); }
+.manifeste-valeur .kicker { display: block; margin-bottom: 6px; }
+.manifeste-valeur.valeur-dore .kicker { color: #8A6A1E; }
+.manifeste-valeur.valeur-terracotta .kicker { color: var(--terracotta); }
+.manifeste-valeur h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2.2vw, 28px); margin-bottom: 10px; }
+.manifeste-valeur p { color: var(--gris); line-height: 1.7; }
+@media (max-width: 860px) {
+  .manifeste-ligne { grid-template-columns: 48px 1fr; }
+  .manifeste-ligne p { grid-column: 2; }
+  .manifeste-valeurs { grid-template-columns: 1fr; }
+}
+
+/* --- Accueil : bloc « Notre vision » (citation + trois convictions) --- */
+.section.vision { text-align: center; padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(48px, 6vw, 80px); }
+.vision-kicker { display: block; }
+.vision-citation { max-width: 920px; margin: 0 auto clamp(40px, 5vw, 64px); }
+.vision-citation p { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(30px, 4vw, 52px); line-height: 1.15; letter-spacing: -.015em; color: var(--texte); text-wrap: balance; }
+.vision-citation p::before { content: '\00AB\202F'; color: var(--dore); }
+.vision-citation p::after { content: '\202F\00BB'; color: var(--dore); }
+.convictions { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); max-width: 1060px; margin: 0 auto; }
+.conviction { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 8px; }
+.conviction + .conviction { border-left: 1px solid var(--ligne); }
+.conviction-picto { width: 48px; height: 48px; border-radius: 50%; background: var(--chaud); color: var(--terracotta); display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+.conviction:nth-child(2) .conviction-picto { background: var(--lavande); color: var(--marine); }
+.conviction:nth-child(3) .conviction-picto { background: #F3E7C9; color: #8A6A1E; }
+.conviction-picto svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.conviction h3 { font-size: 19px; }
+.conviction p { color: var(--gris); font-size: 16.5px; max-width: 30ch; }
+.vision-lien { margin-top: clamp(32px, 4vw, 48px); }
+@media (max-width: 760px) {
+  .convictions { grid-template-columns: 1fr; gap: 28px; }
+  .conviction + .conviction { border-left: none; border-top: 1px solid var(--ligne); padding-top: 24px; }
+}
