@@ -1367,3 +1367,12 @@ h1, h2.titre { text-wrap: balance; }
   .hero-page .wrap { grid-template-columns: 1fr; }
   .hero-page-photo img { aspect-ratio: 4 / 3; }
 }
+
+/* --- Sensibilisation et Accompagnement : sections plus resserrées --- */
+.page-sensi main .section, .page-accomp main .section { padding: clamp(48px, 6vw, 84px) 0; }
+.page-sensi .hero-page, .page-accomp .hero-page { padding-bottom: clamp(32px, 4vw, 56px); }
+.page-sensi .hero-sensi.hero-page { padding-bottom: clamp(64px, 7vw, 96px); }
+.page-sensi .section-pratique { padding-bottom: 0; }
+.page-sensi .section-pratique + .section { padding-top: clamp(40px, 5vw, 64px); }
+.page-accomp main .section.section-confidentiel { padding-top: clamp(8px, 1.5vw, 20px); }
+.marquee-avis .quote-card { border-color: var(--bord-lavande); }

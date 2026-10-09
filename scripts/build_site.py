@@ -225,6 +225,21 @@ def bloc_temoignages_defilants(temoignages):
     return boucle_defilante(temoignages, item, minimum=8)
 
 
+def bloc_avis_defilants(temoignages):
+    """Avis d'ateliers (Sensibilisation) en defilement automatique lent, meme
+    principe que les temoignages de l'accompagnement."""
+    def item(t, cache):
+        nom, meta, texte = t
+        c = "pro" if meta == "Professionnel" else "etu"
+        return (
+            '<figure class="quote-card tagged{d}"{h}><span class="q-tag {c}">{m}</span>'
+            '<blockquote><p>{t}</p></blockquote><hr>'
+            '<figcaption class="who"><span class="avatar {c}">{i}</span>{n}</figcaption></figure>'
+        ).format(d=" dup" if cache else "", h=' aria-hidden="true" tabindex="-1"' if cache else "",
+                 t=esc(texte), n=esc(nom), m=esc(meta), c=c, i=esc(nom[0]))
+    return boucle_defilante(temoignages, item, minimum=8)
+
+
 def bloc_quotes(temoignages, tag=False, victime=False):
     def item(nom, meta, texte):
         if victime:
@@ -330,6 +345,7 @@ def rendre_page(root, actif, title, description, canonical, ogtype, contenu, scr
     out = out.replace("{{v_main}}", V_MAIN)
     out = out.replace("{{scripts}}", scripts)
     out = out.replace("{{content}}", contenu)
+    out = out.replace("{{actif}}", actif)
     return out
 
 
@@ -383,7 +399,7 @@ def construire_pages():
     for p in PAGES:
         contenu = lire(os.path.join(CONTENU, p["src"]))
         contenu = contenu.replace("{{partenaires}}", bloc_partenaires())
-        contenu = contenu.replace("{{temoignages_sensi}}", bloc_quotes(TEMOIGNAGES_SENSI, tag=True))
+        contenu = contenu.replace("{{temoignages_sensi}}", bloc_avis_defilants(TEMOIGNAGES_SENSI))
         contenu = contenu.replace("{{temoignages_accomp}}", bloc_temoignages_defilants(TEMOIGNAGES_ACCOMP))
         contenu = contenu.replace("{{photos_accueil}}", bloc_photos_accueil())
         contenu = contenu.replace("{{urgences}}", bloc_urgences())

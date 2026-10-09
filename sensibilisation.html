@@ -22,9 +22,9 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/spectral-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/site.css?v=99827984">
+  <link rel="stylesheet" href="assets/site.css?v=8af564bf">
 </head>
-<body>
+<body class="page-sensi">
   <header class="site-header">
     <nav class="wrap nav" aria-label="Navigation principale">
       <a class="brand" href="index.html" aria-label="LibredeDroit, accueil">
@@ -277,21 +277,25 @@
           <h2 class="titre">Ce qu'en disent professionnels et étudiants.</h2>
         </div>
       </div>
-      <div class="defile" data-defile>
-        <div class="wrap defile-commandes" hidden>
-          <button type="button" class="defile-btn" data-defile-prec aria-label="Témoignages précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <button type="button" class="defile-btn" data-defile-suiv aria-label="Témoignages suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="marquee marquee-manuel marquee-temoignages marquee-avis" tabindex="0" role="region" aria-label="Avis de professionnels et d'étudiants, défilement automatique mis en pause au survol et au focus">
+        <div class="marquee-track left">
+          <figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à repérer des signaux que je laissais passer avant. Les mises en situation m'ont vraiment aidée à savoir quoi dire.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">S</span>Sophie L.</figcaption></figure>
+          <figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu m'entraîner sur des cas concrets. Je sais maintenant comment réagir si un·e élève se confie à moi, et vers qui l'orienter.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">K</span>Karim B.</figcaption></figure>
+          <figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>J'ai enfin mis des mots sur le consentement, avec des exemples qui me parlent. Je regarde certaines situations différemment maintenant.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">I</span>Inès M.</figcaption></figure>
+          <figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pratiqué des mises en situation qui m'ont bousculé. J'en ressors avec des repères clairs sur ce que dit la loi.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">T</span>Thomas R.</figcaption></figure>
+          <figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Je pensais connaître le sujet. J'ai réalisé tout ce que je laissais passer entre potes, sans même m'en rendre compte.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">L</span>Lucas D.</figcaption></figure>
+          <figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu poser mes questions sans filtre. Je me sens enfin outillée pour agir si une situation se présente.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">A</span>Awa F.</figcaption></figure>
+          <figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Les mises en situation m'ont permis de m'entraîner à réagir. J'en ressors plus vigilante face à ce qui m'entoure.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span>Camille P.</figcaption></figure>
+          <figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à reconnaître les signaux faibles. Je sais désormais comment signaler une situation à risque.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">N</span>Nadia E.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à repérer des signaux que je laissais passer avant. Les mises en situation m'ont vraiment aidée à savoir quoi dire.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">S</span>Sophie L.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu m'entraîner sur des cas concrets. Je sais maintenant comment réagir si un·e élève se confie à moi, et vers qui l'orienter.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">K</span>Karim B.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag etu">Étudiant</span><blockquote><p>J'ai enfin mis des mots sur le consentement, avec des exemples qui me parlent. Je regarde certaines situations différemment maintenant.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">I</span>Inès M.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pratiqué des mises en situation qui m'ont bousculé. J'en ressors avec des repères clairs sur ce que dit la loi.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">T</span>Thomas R.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag etu">Étudiant</span><blockquote><p>Je pensais connaître le sujet. J'ai réalisé tout ce que je laissais passer entre potes, sans même m'en rendre compte.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">L</span>Lucas D.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu poser mes questions sans filtre. Je me sens enfin outillée pour agir si une situation se présente.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">A</span>Awa F.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag etu">Étudiant</span><blockquote><p>Les mises en situation m'ont permis de m'entraîner à réagir. J'en ressors plus vigilante face à ce qui m'entoure.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span>Camille P.</figcaption></figure>
+          <figure class="quote-card tagged dup" aria-hidden="true" tabindex="-1"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à reconnaître les signaux faibles. Je sais désormais comment signaler une situation à risque.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">N</span>Nadia E.</figcaption></figure>
         </div>
-        <ul class="defile-piste" tabindex="0" aria-label="Témoignages d'ateliers">
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à repérer des signaux que je laissais passer avant. Les mises en situation m'ont vraiment aidée à savoir quoi dire.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">S</span>Sophie L.</figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu m'entraîner sur des cas concrets. Je sais maintenant comment réagir si un·e élève se confie à moi, et vers qui l'orienter.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">K</span>Karim B.</figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>J'ai enfin mis des mots sur le consentement, avec des exemples qui me parlent. Je regarde certaines situations différemment maintenant.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">I</span>Inès M.</figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pratiqué des mises en situation qui m'ont bousculé. J'en ressors avec des repères clairs sur ce que dit la loi.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">T</span>Thomas R.</figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Je pensais connaître le sujet. J'ai réalisé tout ce que je laissais passer entre potes, sans même m'en rendre compte.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">L</span>Lucas D.</figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai pu poser mes questions sans filtre. Je me sens enfin outillée pour agir si une situation se présente.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">A</span>Awa F.</figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag etu">Étudiant</span><blockquote><p>Les mises en situation m'ont permis de m'entraîner à réagir. J'en ressors plus vigilante face à ce qui m'entoure.</p></blockquote><hr><figcaption class="who"><span class="avatar etu">C</span>Camille P.</figcaption></figure></li>
-          <li class="defile-item"><figure class="quote-card tagged"><span class="q-tag pro">Professionnel</span><blockquote><p>J'ai appris à reconnaître les signaux faibles. Je sais désormais comment signaler une situation à risque.</p></blockquote><hr><figcaption class="who"><span class="avatar pro">N</span>Nadia E.</figcaption></figure></li>
-        </ul>
       </div>
     </section>
 

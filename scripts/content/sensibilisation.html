@@ -209,14 +209,10 @@
           <h2 class="titre">Ce qu'en disent professionnels et étudiants.</h2>
         </div>
       </div>
-      <div class="defile" data-defile>
-        <div class="wrap defile-commandes" hidden>
-          <button type="button" class="defile-btn" data-defile-prec aria-label="Témoignages précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <button type="button" class="defile-btn" data-defile-suiv aria-label="Témoignages suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-        </div>
-        <ul class="defile-piste" tabindex="0" aria-label="Témoignages d'ateliers">
+      <div class="marquee marquee-manuel marquee-temoignages marquee-avis" tabindex="0" role="region" aria-label="Avis de professionnels et d'étudiants, défilement automatique mis en pause au survol et au focus">
+        <div class="marquee-track left">
           {{temoignages_sensi}}
-        </ul>
+        </div>
       </div>
     </section>
 
