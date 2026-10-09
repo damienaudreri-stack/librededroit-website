@@ -18,3 +18,9 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+# « À propos » est devenu « Notre histoire » (09/2026) : on garde les anciens liens valides.
+[[redirects]]
+  from = "/apropos.html"
+  to = "/notre-histoire.html"
+  status = 301

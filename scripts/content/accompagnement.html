@@ -28,30 +28,59 @@
               <input type="text" id="aide-site" name="site" class="honeypot-field" tabindex="-1" autocomplete="off">
             </div>
             <div class="field">
-              <label for="aide-prenom">Prénom ou pseudo</label>
-              <input type="text" id="aide-prenom" data-label="Prénom ou pseudo" placeholder="Prénom ou pseudo">
+              <label for="aide-prenom">Prénom ou pseudo *</label>
+              <input type="text" id="aide-prenom" data-label="Prénom ou pseudo" placeholder="Prénom ou pseudo" required>
             </div>
             <div class="field">
-              <label for="aide-contact">Email ou téléphone pour vous répondre</label>
-              <input type="text" id="aide-contact" data-label="Email ou téléphone" placeholder="Email ou téléphone pour vous répondre">
+              <label for="aide-region">Région de résidence</label>
+              <select id="aide-region" data-label="Région de résidence">
+                <option value="" disabled selected>Région de résidence</option>
+                <option>Auvergne-Rhône-Alpes</option>
+                <option>Bourgogne-Franche-Comté</option>
+                <option>Bretagne</option>
+                <option>Centre-Val de Loire</option>
+                <option>Corse</option>
+                <option>Grand Est</option>
+                <option>Hauts-de-France</option>
+                <option>Île-de-France</option>
+                <option>Normandie</option>
+                <option>Nouvelle-Aquitaine</option>
+                <option>Occitanie</option>
+                <option>Pays de la Loire</option>
+                <option>Provence-Alpes-Côte d'Azur</option>
+                <option>Guadeloupe</option>
+                <option>Martinique</option>
+                <option>Guyane</option>
+                <option>La Réunion</option>
+                <option>Mayotte</option>
+                <option>Hors de France</option>
+              </select>
             </div>
             <div class="field">
-              <label for="aide-recontact">Comment préférez-vous être recontacté·e ?</label>
-              <select id="aide-recontact" data-label="Mode de recontact préféré">
+              <label for="aide-contact">Email *</label>
+              <input type="email" id="aide-contact" data-label="Email" placeholder="Email" required>
+            </div>
+            <div class="field">
+              <label for="aide-recontact">Comment préférez-vous être recontacté·e ? *</label>
+              <select id="aide-recontact" data-label="Mode de recontact préféré" required>
                 <option value="" disabled selected>Comment préférez-vous être recontacté·e ?</option>
                 <option>Par email</option>
                 <option>Par téléphone</option>
                 <option>Par SMS discret</option>
               </select>
             </div>
+            <div class="field" id="aide-telephone-wrap" hidden>
+              <label for="aide-telephone">Votre numéro de téléphone *</label>
+              <input type="tel" id="aide-telephone" data-label="Numéro de téléphone" placeholder="Votre numéro de téléphone">
+            </div>
             <div class="field" id="aide-sms-pretexte-wrap" hidden>
-              <label for="aide-sms-pretexte">Sous quel nom ou quel prétexte pouvons-nous vous recontacter par SMS ?</label>
+              <label for="aide-sms-pretexte">Sous quel nom ou quel prétexte pouvons-nous vous recontacter par SMS ? *</label>
               <input type="text" id="aide-sms-pretexte" data-label="Prétexte SMS discret" placeholder="Ex. : « C'est Camille pour ton rendez-vous », « Livraison de commande »…">
               <p class="search-conf mt-8">Ce que vous indiquez ici sera utilisé mot pour mot.</p>
             </div>
             <div class="field">
-              <label for="aide-besoin">De quelle aide avez-vous besoin ?</label>
-              <select id="aide-besoin" data-label="Aide souhaitée">
+              <label for="aide-besoin">De quelle aide avez-vous besoin ? *</label>
+              <select id="aide-besoin" data-label="Aide souhaitée" required>
                 <option value="" disabled selected>De quelle aide avez-vous besoin ?</option>
                 <option>Aide juridique</option>
                 <option>Aide psychologique</option>
@@ -60,8 +89,8 @@
               </select>
             </div>
             <div class="field">
-              <label for="aide-message">Votre message</label>
-              <textarea id="aide-message" data-label="Message" placeholder="Vous pouvez écrire ce que vous voulez."></textarea>
+              <label for="aide-message">Votre message *</label>
+              <textarea id="aide-message" data-label="Message" placeholder="Vous pouvez écrire ce que vous voulez." required></textarea>
             </div>
             <button type="submit" class="btn btn-terracotta btn-lg">Envoyer en confidentialité</button>
             <p class="form-status" role="alert" aria-live="polite"></p>
@@ -74,17 +103,61 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="ld-accompagnement-juridique">
       <div class="wrap">
-        <div class="section-head">
-          <span class="kicker">Un accompagnement direct</span>
-          <h2 class="titre">L'association vous accompagne directement, à chaque étape.</h2>
-          <p class="lead">Au-delà de l'écoute, nous mettons à votre disposition nos avocat·es et nos psychologues spécialisé·es dans les violences sexistes et sexuelles. Ils et elles suivent personnellement chaque personne que nous accompagnons, du premier échange jusqu'au bout de vos démarches.</p>
+        <div class="section-head center">
+          <h2 class="titre">Ce que nos avocats partenaires peuvent faire pour vous</h2>
         </div>
-        <div class="grid grid-2">
-          <div class="card reveal reveal-left"><h3><span aria-hidden="true">⚖️</span> Nos avocat·es spécialisé·es</h3><p>Comprendre vos droits, déposer plainte, être défendu·e.<br>Un accompagnement juridique clair, par des juristes et des avocats spécialisés.</p></div>
-          <div class="card peche reveal reveal-right"><h3><span aria-hidden="true">🫂</span> Nos psychologues spécialisé·es</h3><p>Un suivi adapté au psychotraumatisme grâce à des psychologues spécialisé·es, pour avancer dans votre reconstruction.</p></div>
+        <div class="section-head wide">
+          <span class="kicker">Violences sexuelles</span>
+          <h2 class="titre">Faire reconnaître ses droits, jusqu'au bout.</h2>
+          <p class="lead">Nos juristes et nos avocats spécialisés dans les violences sexistes et sexuelles suivent personnellement chaque personne que nous accompagnons. Ils vous aident à comprendre vos droits, à déposer plainte dans de bonnes conditions, ou encore à faire des recours : ils se tiennent à vos côtés jusqu'au bout.</p>
         </div>
+        <div class="grid grid-3 reason-cards">
+          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">📝</span><h3>Dépôt de plainte</h3><p>Préparation et accompagnement au dépôt de plainte, pour vous protéger au mieux de la violence judiciaire.</p></div>
+          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">📁</span><h3>Suivi du dossier pénal</h3><p>Récupération et analyse de votre dossier pénal : auditions, actes d'enquête, rapports médicaux, à chaque étape de la procédure.</p></div>
+          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">🔁</span><h3>Recours aux classements sans suite</h3><p>Un classement sans suite n'est ni un jugement, ni la fin de la procédure. Avec nos avocats, nous engageons les recours qui s'offrent à vous.</p></div>
+          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">⚖️</span><h3>Constitution de partie civile</h3><p>Représentation devant les juridictions pénales et civiles, jusqu'au procès de votre agresseur.</p></div>
+          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🏛️</span><h3>Citation directe</h3><p>Quand les preuves le permettent, citer directement l'auteur devant le tribunal correctionnel, sans attendre l'issue d'une instruction classique.</p></div>
+          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">💶</span><h3>Solution financière</h3><p>L'association prend en charge une partie des frais de procédure, et nous trouvons ensemble des solutions pour que l'argent ne soit jamais un frein à la justice.</p></div>
+        </div>
+        <p class="lead center mt-24">En parallèle de ce suivi juridique, nos <strong>psychologues spécialisé·es</strong> dans le psychotraumatisme vous accompagnent dans votre reconstruction.</p>
+        <p class="mt-14 center"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide →</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="ld-violences-conjugales">
+      <div class="wrap">
+        <div class="section-head wide">
+          <span class="kicker">Violences conjugales</span>
+          <h2 class="titre">Sortir d'une relation violente, en sécurité.</h2>
+          <p class="lead">Les violences conjugales exigent une réponse rapide et adaptée, mais elles ne sauraient se satisfaire d'une seule réponse. Nos juristes et nos avocats vous accompagnent sur le chemin du droit pénal et du droit civil. Nos bénévoles sont à votre écoute et vous suivent réellement au jour le jour, afin de s'assurer que vous n'êtes pas en danger et afin que nous puissions anticiper et réagir face à ce danger.</p>
+        </div>
+        <div class="grid grid-3 reason-cards">
+          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">⚖️</span><h3>Plainte pour violences conjugales</h3><p>Un dépôt de plainte adapté aux violences conjugales, y compris en cas de faits répétés.</p></div>
+          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🛡️</span><h3>Ordonnance de protection</h3><p>Une procédure d'urgence devant le juge aux affaires familiales, pour vous protéger sans attendre une décision pénale.</p></div>
+          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">📱</span><h3>Téléphone grave danger</h3><p>Un dispositif d'alerte immédiate relié aux forces de l'ordre, pour les situations de danger avéré.</p></div>
+          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">📡</span><h3>Bracelet anti-rapprochement</h3><p>Un bracelet électronique porté par l'auteur des violences, qui déclenche une alerte s'il s'approche de vous en dessous d'une distance fixée par le juge.</p></div>
+          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🏠</span><h3>Sécurisation de l'adresse du domicile</h3><p>Déclarer une adresse de domiciliation (celle de votre avocat ou d'un tiers de confiance) à la place de votre domicile réel dans le dossier, pour que votre agresseur ne puisse pas vous retrouver.</p></div>
+          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">📄</span><h3>Divorce et séparation protectrice</h3><p>Un accompagnement du divorce ou de la séparation qui tient compte des violences subies, pas seulement de la rupture.</p></div>
+        </div>
+        <p class="mt-24 center"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide →</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="ld-accompagnement-psychologique">
+      <div class="wrap">
+        <div class="section-head wide">
+          <span class="kicker">Accompagnement psychologique</span>
+          <h2 class="titre">Se reconstruire, avec des professionnels des violences.</h2>
+          <p class="lead">Parce que la justice ne répare pas tout, nos psychologues partenaires vous accompagnent dans votre reconstruction, à votre rythme. Ils et elles sont issu·es du CAUVA de Bordeaux, le centre d'accueil en urgence des victimes d'agressions du CHU, et sont spécialisé·es dans la prise en charge des violences.</p>
+        </div>
+        <div class="grid grid-3 reason-cards">
+          <div class="reason-card marine reveal"><span class="reason-num" aria-hidden="true">🏥</span><h3>Issu·es du CAUVA de Bordeaux</h3><p>Des psychologues qui viennent d'un service hospitalier dédié à l'accueil des victimes d'agressions, et qui connaissent la réalité de ce que vous traversez.</p></div>
+          <div class="reason-card verte reveal"><span class="reason-num" aria-hidden="true">🧠</span><h3>Spécialisé·es dans les violences</h3><p>Une prise en charge adaptée aux violences sexistes, sexuelles et conjugales, et à leurs conséquences sur le long terme.</p></div>
+          <div class="reason-card dore reveal"><span class="reason-num" aria-hidden="true">💶</span><h3>Un tarif préférentiel</h3><p>Nos psychologues partenaires proposent des séances à un tarif préférentiel aux personnes que nous accompagnons, pour que le coût ne soit pas un frein.</p></div>
+        </div>
+        <p class="mt-24 center"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide →</a></p>
       </div>
     </section>
 
@@ -103,22 +176,6 @@
       </div>
     </section>
 
-    <section class="section sombre">
-      <div class="wrap">
-        <div class="section-head center">
-          <span class="kicker kicker-dore">Comprendre</span>
-          <h2 class="titre">Reconnaître les violences.</h2>
-          <p class="lead">Les violences sexistes et sexuelles prennent des formes variées,<br>parfois difficiles à identifier.<br>Voici ce qu'elles recouvrent.</p>
-        </div>
-        <div class="grid grid-2">
-          <div class="valeur-col terracotta-clair"><span class="kicker">Via les technologies</span><h3>Cyber violences</h3><p class="lead-justifie">Selon le Centre Hubertine Auclert, 9 femmes sur 10 victimes de violences au sein du couple en seraient également victimes. Les cyberviolences conjugales reprennent les mêmes formes de violences (verbales, psychologiques, sexuelles, économiques, administratives), mais c'est le moyen de les exercer, via les technologies, qui en fait des cyberviolences : contrôle, surveillance, chantage, harcèlement ou humiliation via les réseaux sociaux, logiciels espions ou objets connectés.</p></div>
-          <div class="valeur-col terracotta-clair"><span class="kicker">Domination et pouvoir</span><h3>Violences sexuelles</h3><p class="lead-justifie">Le fait d'imposer à une personne un acte, un geste ou des propos à caractère sexuel sans son consentement : agression sexuelle, viol, harcèlement sexuel, voyeurisme ou diffusion de contenu intime. Elles sont l'expression d'une volonté de pouvoir de l'auteur, jamais un débordement. Le consentement doit toujours être libre, éclairé et révocable, et aucune tenue, parole ou comportement antérieur de la victime ne les justifie. Elles peuvent aussi survenir au sein de la famille, notamment sous forme d'inceste : les mineurs y sont particulièrement exposés, le plus souvent de la part d'un proche.</p></div>
-          <div class="valeur-col dore"><span class="kicker">Au sein du couple</span><h3>Violences conjugales</h3><p class="lead-justifie">Un moyen pour un partenaire d'exercer une domination sur l'autre au sein du couple, en le soumettant à un contrôle qui l'empêche d'exister librement et dignement. Elles génèrent crainte, peur et culpabilité, et enferment souvent la victime dans le silence. Différentes des conflits conjugaux, où la relation reste égalitaire, elles touchent les femmes sans distinction d'âge, de catégorie sociale ou d'origine.</p></div>
-          <div class="valeur-col dore"><span class="kicker">Stéréotypes de genre</span><h3>Violences sexistes</h3><p class="lead-justifie">Tout propos ou comportement fondé sur le sexe ou le genre d'une personne, qui repose sur des stéréotypes et porte atteinte à sa dignité, sans qu'un acte physique soit nécessaire pour qu'elles soient caractérisées. Remarques, insultes, sifflements ou blagues dégradantes en font partie. Souvent banalisées, elles touchent très majoritairement les femmes et les filles, et constituent le terreau des violences plus graves.</p></div>
-        </div>
-        <p class="mt-24 center"><a class="btn btn-terracotta btn-lg" href="#ld-contact-confidentiel">J'ai besoin d'aide →</a></p>
-      </div>
-    </section>
 
     <section class="section">
       <div class="wrap">

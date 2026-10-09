@@ -128,6 +128,37 @@ def bloc_partenaires():
     return liste + liste
 
 
+# Bénévoles du bandeau défilant de Notre histoire (Damien et Zoé ont leurs fiches fixes au-dessus).
+# Photo absente = None : portrait anonyme.
+EQUIPE_BANDEAU = [
+    ("Oriane Le Saëc", "Membre du pôle sensibilisation", "oriane-portrait.jpg"),
+    ("Kamelya Harouach", "Membre du pôle sensibilisation", "kamelya-portrait.jpg"),
+    ("Yassine Myassal", "Membre du pôle sensibilisation", "yassine-portrait.jpg"),
+    ("Marie Gazeau", "Membre du pôle aide victimes et sensibilisation", "marie-portrait.jpg"),
+    ("Maureen Simphor", "Membre du pôle aide victimes et sensibilisation", "maureen-portrait.jpg"),
+    ("Pauline Willem-Dupau", "Membre du pôle sensibilisation", None),
+    ("Lounes Belkacem", "Membre du pôle sensibilisation", None),
+    ("Lia Troadec", "Membre du pôle sensibilisation", "lia-portrait.jpg"),
+    ("Clara Lamouroux", "Membre du pôle sensibilisation", "clara-portrait.jpg"),
+    ("Emma Bauzerand", "Membre du pôle communication", "emma-portrait.jpg"),
+]
+
+
+def bloc_equipe_bandeau():
+    def item(nom, role, photo, cache):
+        src = photo or "anonyme-portrait.svg"
+        alt = "Portrait de " + nom if photo else "Portrait non communiqué"
+        return (
+            '<div class="team-card"{h}><div class="team-card-photo">'
+            '<img src="assets/img/equipe/{s}" alt="{a}"></div>'
+            '<div class="team-card-info"><h3>{n}</h3><p class="role">{r}</p></div></div>'
+        ).format(h=' aria-hidden="true"' if cache else "", s=src,
+                 a="" if cache else esc(alt), n=esc(nom), r=esc(role))
+    # Deuxième passage masqué aux lecteurs d'écran : il ne sert qu'à la boucle infinie.
+    return ("".join(item(n, r, ph, False) for n, r, ph in EQUIPE_BANDEAU)
+            + "".join(item(n, r, ph, True) for n, r, ph in EQUIPE_BANDEAU))
+
+
 def bloc_quotes(temoignages, tag=False, victime=False):
     def item(nom, meta, texte):
         if victime:
@@ -203,13 +234,15 @@ NAV = lire(os.path.join(TPL, "nav.html"))
 FOOTER = lire(os.path.join(TPL, "footer.html"))
 ARTICLE_TPL = lire(os.path.join(TPL, "article.html"))
 
-ACTIFS = ["accueil", "sensi", "accomp", "ressources", "apropos", "don"]
+ACTIFS = ["accueil", "sensi", "accomp", "ressources", "histoire", "rejoindre", "don"]
+GROUPE_APROPOS = ("histoire", "rejoindre")
 
 
 def rendre_nav(root, actif):
     out = NAV.replace("{{root}}", root)
     for cle in ACTIFS:
         out = out.replace("{{a_" + cle + "}}", "actif" if cle == actif else "")
+    out = out.replace("{{a_apropos_group}}", "actif" if actif in GROUPE_APROPOS else "")
     return out
 
 
@@ -264,10 +297,16 @@ PAGES = [
         "loc": "/ressources.html", "scripts": "",
     },
     {
-        "fichier": "apropos.html", "actif": "apropos", "src": "apropos.html",
-        "title": "À propos — Notre association et notre engagement | LibredeDroit",
-        "description": "LibredeDroit est une association loi 1901 née à Bordeaux, portée par dix bénévoles, qui agit contre les violences sexistes et sexuelles, des causes aux conséquences.",
-        "loc": "/apropos.html", "scripts": "",
+        "fichier": "notre-histoire.html", "actif": "histoire", "src": "notre-histoire.html",
+        "title": "Notre histoire — Notre association et notre engagement | LibredeDroit",
+        "description": "LibredeDroit est une association loi 1901 née à Bordeaux, portée par une quinzaine de bénévoles, qui agit contre les violences sexistes et sexuelles, des causes aux conséquences.",
+        "loc": "/notre-histoire.html", "scripts": "",
+    },
+    {
+        "fichier": "nous-rejoindre.html", "actif": "rejoindre", "src": "nous-rejoindre.html",
+        "title": "Nous rejoindre — Devenir bénévole | LibredeDroit",
+        "description": "LibredeDroit cherche de nouveaux bénévoles pour ses pôles sensibilisation, aide aux victimes, partenariats, communication et coordination. Aucune expérience requise, nous te formons.",
+        "loc": "/nous-rejoindre.html", "scripts": "",
     },
     {
         "fichier": "don.html", "actif": "don", "src": "don.html",
@@ -286,6 +325,7 @@ def construire_pages():
         contenu = contenu.replace("{{temoignages_sensi}}", bloc_quotes(TEMOIGNAGES_SENSI, tag=True))
         contenu = contenu.replace("{{temoignages_accomp}}", bloc_quotes(TEMOIGNAGES_ACCOMP, victime=True))
         contenu = contenu.replace("{{urgences}}", bloc_urgences())
+        contenu = contenu.replace("{{equipe_bandeau}}", bloc_equipe_bandeau())
         contenu = contenu.replace("{{articles_cards}}", bloc_articles_cards())
         contenu = contenu.replace("{{assos_cards}}", bloc_assos())
         canonical = BASE_URL + p["loc"]
