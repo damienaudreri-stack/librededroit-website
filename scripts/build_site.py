@@ -85,17 +85,24 @@ TEMOIGNAGES_ACCOMP = [
     ("Maylis", "25 ans", "Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites."),
 ]
 
-URGENCES = [
-    ("17", "Police secours", "Danger immédiat, 24h/24"),
-    ("15", "SAMU", "Urgence médicale"),
-    ("112", "Urgence européenne", "Depuis toute l'Europe"),
-    ("114", "Urgence par SMS", "Sourds & malentendants"),
-    ("3919", "Violences Femmes Info", "Anonyme & gratuit, 24h/24"),
-    ("0 800 05 95 95", "Viols Femmes Info", "Collectif Féministe Contre le Viol"),
-    ("3018", "Violences numériques", "Cyberharcèlement, gratuit"),
-    ("116 006", "Aide aux victimes", "France Victimes, 7j/7"),
-    ("119", "Enfance en danger", "Anonyme & gratuit, 24h/24"),
-    ("3114", "Prévention du suicide", "Écoute 24h/24, gratuit"),
+# Numeros d'urgence de l'Etat uniquement, regroupes par type de victime.
+URGENCES_PAR_PUBLIC = [
+    ("Toute personne en danger", [
+        ("17", "Police secours", "Danger immédiat, 24h/24"),
+        ("15", "SAMU", "Urgence médicale"),
+        ("112", "Urgence européenne", "Depuis toute l'Europe"),
+        ("114", "Urgence par SMS", "Sourds & malentendants"),
+    ]),
+    ("Femmes victimes de violences", [
+        ("3919", "Violences Femmes Info", "Anonyme & gratuit, 24h/24"),
+    ]),
+    ("Enfants et adolescents", [
+        ("119", "Enfance en danger", "Anonyme & gratuit, 24h/24"),
+        ("3018", "Violences numériques", "Cyberharcèlement, gratuit"),
+    ]),
+    ("Personnes en détresse", [
+        ("3114", "Prévention du suicide", "Écoute 24h/24, gratuit"),
+    ]),
 ]
 
 ASSOS = [
@@ -243,9 +250,9 @@ def bloc_avis_defilants(temoignages):
 # Bandeau d'appel aux dons commun à toutes les pages sauf la page Don.
 # Le bouton mène directement au formulaire de don HelloAsso. Montants repris de la page Don.
 IMPACTS_DON = [
-    ("50 €", "la sensibilisation d'un groupe lors d'un atelier"),
-    ("80 €", "un rendez-vous chez un·e psychologue pour une victime"),
-    ("120 €", "une partie des frais d'avocat·e pour une victime"),
+    ("50 €", "des plaquettes-outils pour le grand public"),
+    ("100 €", "deux séances chez un·e psychologue partenaire"),
+    ("200 €", "une partie des frais d'avocat·e"),
 ]
 
 
@@ -261,7 +268,7 @@ def bloc_bandeau_don():
         '          <div class="don2-texte-bloc">\n'
         '            <span class="kicker">Nous soutenir</span>\n'
         '            <h2 class="titre" id="bandeau-don-titre">Soutenez notre action.</h2>\n'
-        '            <p class="lead">Chaque don finance nos ateliers de sensibilisation et l\'accompagnement gratuit des victimes.</p>\n'
+        '            <p class="lead">Chaque don finance l\'accompagnement gratuit des personnes victimes de violences sexistes et sexuelles.</p>\n'
         '            <p class="don2-actions"><a class="btn btn-dore btn-lg" href="https://www.helloasso.com/associations/libre-de-droit/formulaires/1" target="_blank" rel="noopener noreferrer">Faire un don <span class="fleche" aria-hidden="true">›</span></a>'
         '<a class="lien-fleche" href="https://www.helloasso.com/associations/libre-de-droit/adhesions/adherer" target="_blank" rel="noopener noreferrer">ou adhérer à l\'association <span class="fleche" aria-hidden="true">›</span></a></p>\n'
         '            <p class="don2-securite">Paiement sécurisé via HelloAsso</p>\n'
@@ -299,17 +306,41 @@ def bloc_quotes(temoignages, tag=False, victime=False):
                               for n, m, t in temoignages)
 
 
-def bloc_urgences():
-    lignes = []
-    for num, label, desc in URGENCES:
-        tel = "tel:" + num.replace(" ", "")
-        lignes.append(
-            '<li><a class="urgence-card" href="{tel}"><span class="num">{n}</span>'
-            '<span class="l">{l}</span><span class="d">{d}</span></a></li>'.format(
-                tel=esc(tel), n=esc(num), l=esc(label), d=esc(desc)))
-    # Grille statique : les numeros d'urgence restent toujours visibles et
-    # lisibles (aucun defilement automatique).
-    return "\n            ".join(lignes)
+def bloc_urgences_liste():
+    """Accueil : annuaire des numeros de l'Etat, par type de victime."""
+    groupes = []
+    for public, nums in URGENCES_PAR_PUBLIC:
+        lignes = "".join(
+            '<li><a class="urg2-ligne" href="tel:{tel}"><span class="urg2-num">{n}</span>'
+            '<span class="urg2-l">{l}</span><span class="urg2-d">{d}</span></a></li>'.format(
+                tel=esc(num.replace(" ", "")), n=esc(num), l=esc(label), d=esc(desc))
+            for num, label, desc in nums)
+        groupes.append(
+            '<div class="urg2-groupe"><p class="urg2-groupe-titre">{p}</p>'
+            '<ul>{l}</ul></div>'.format(p=esc(public), l=lignes))
+    return "\n            ".join(groupes)
+
+
+def bloc_urgences_complet():
+    """Bandeau « En danger immédiat ? » (accueil et accompagnement) :
+    appel direct a gauche, annuaire par type de victime a droite."""
+    return (
+        '<div class="urg2 reveal">\n'
+        '          <div class="urg2-alerte">\n'
+        '            <span class="urg2-picto" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>\n'
+        '            <h2 class="titre">En danger immédiat&nbsp;?</h2>\n'
+        '            <p class="urg2-intro">Appelez sans attendre : ces deux numéros sont gratuits et joignables 24h/24.</p>\n'
+        '            <div class="urg2-appels">\n'
+        '              <a class="urg2-appel urg2-appel-17" href="tel:17"><span class="urg2-appel-num">17</span><span class="urg2-appel-txt"><strong>Police secours</strong><span>Danger immédiat</span></span></a>\n'
+        '              <a class="urg2-appel urg2-appel-3919" href="tel:3919"><span class="urg2-appel-num">3919</span><span class="urg2-appel-txt"><strong>Violences Femmes Info</strong><span>Anonyme et gratuit</span></span></a>\n'
+        '            </div>\n'
+        '            <p class="urg2-sms">Vous ne pouvez pas parler&nbsp;? Envoyez un SMS au <a href="sms:114">114</a>.</p>\n'
+        '          </div>\n'
+        '          <div class="urg2-liste">\n'
+        '            <p class="urg2-liste-titre">Les numéros selon votre situation</p>\n'
+        '            ' + bloc_urgences_liste() + '\n'
+        '          </div>\n'
+        '        </div>')
 
 
 def bloc_assos():
@@ -422,7 +453,7 @@ PAGES = [
     {
         "fichier": "don.html", "actif": "don", "src": "don.html",
         "title": "Faire un don, soutenez notre action | LibredeDroit",
-        "description": "Chaque don finance nos ateliers de sensibilisation et l'accompagnement gratuit des victimes de violences sexistes et sexuelles.",
+        "description": "Chaque don finance l'accompagnement gratuit des personnes victimes de violences sexistes et sexuelles.",
         "loc": "/don.html", "scripts": "",
     },
 ]
@@ -436,9 +467,9 @@ def construire_pages():
         contenu = contenu.replace("{{temoignages_sensi}}", bloc_avis_defilants(TEMOIGNAGES_SENSI))
         contenu = contenu.replace("{{temoignages_accomp}}", bloc_temoignages_defilants(TEMOIGNAGES_ACCOMP))
         contenu = contenu.replace("{{photos_accueil}}", bloc_photos_accueil())
-        contenu = contenu.replace("{{urgences}}", bloc_urgences())
         contenu = contenu.replace("{{equipe_bandeau}}", bloc_equipe_bandeau())
         contenu = contenu.replace("{{bandeau_don}}", bloc_bandeau_don())
+        contenu = contenu.replace("{{urgences_bloc}}", bloc_urgences_complet())
         contenu = contenu.replace("{{articles_cards}}", bloc_articles_cards())
         contenu = contenu.replace("{{assos_cards}}", bloc_assos())
         canonical = BASE_URL + p["loc"]

@@ -1721,3 +1721,87 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 @media (max-width: 860px) { .don-ressources, .don-montants { grid-template-columns: 1fr; } .don-transparence { grid-template-columns: 1fr; } }
 /* Page Don : phrase d'introduction sur deux lignes au bureau */
 .hero-don p.intro { max-width: 800px; }
+
+/* --- Accueil : bandeau de dons rapproché des sections voisines --- */
+.page-accueil main .section.section-don { padding: 0; }
+.page-accueil main .section:has(+ .section-don) { padding-bottom: clamp(36px, 4.5vw, 60px); }
+.page-accueil main .section-don + .section { padding-top: clamp(36px, 4.5vw, 60px); }
+
+/* --- Don : titre sur une seule ligne sur grand écran --- */
+@media (min-width: 900px) { .hero-don h1 { max-width: none; white-space: nowrap; } }
+
+/* --- Notre histoire : la direction à droite du texte de présentation (carte claire, deux portraits) --- */
+@media (min-width: 901px) { .hero-apropos .apropos-duo { grid-template-columns: 1.15fr .85fr; align-items: center; } }
+.apropos-direction { background: var(--surface); border: 1px solid rgba(22,22,63,.07); border-radius: 28px; padding: clamp(22px, 2.4vw, 32px); box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 30px 60px -36px rgba(22,22,63,.28); }
+.apropos-direction-titre { display: flex; align-items: center; gap: 14px; font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--terracotta); margin: 0 0 18px; }
+.apropos-direction-titre::after { content: ''; flex: 1; height: 1px; background: rgba(22,22,63,.12); }
+.apropos-direction .team-bands { grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.6vw, 20px); margin: 0; }
+.apropos-direction .team-band { display: block; height: auto; min-height: 0; background: none; border-radius: 0; overflow: visible; }
+.apropos-direction .team-band .team-band-photo { aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; }
+.apropos-direction .team-band .team-band-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+.apropos-direction .team-band .team-band-info { padding: 14px 2px 0; gap: 3px; color: var(--texte); }
+.apropos-direction .team-band .team-band-info h3 { color: var(--texte); font-family: var(--serif); font-weight: 500; font-size: clamp(18px, 1.5vw, 21px); }
+.apropos-direction .team-band .team-band-info .role { color: var(--gris); font-size: 14px; }
+@media (max-width: 900px) { .apropos-direction { max-width: 520px; margin: 0 auto; width: 100%; } }
+@media (max-width: 760px) {
+  .apropos-direction .team-bands { grid-template-columns: 1fr 1fr; }
+  .apropos-direction .team-band { flex-direction: column; }
+  .apropos-direction .team-band .team-band-photo { flex-basis: auto; aspect-ratio: 4 / 5; }
+}
+/* Zoé : visage agrandi pour correspondre au cadrage du portrait de Damien */
+.apropos-direction .team-band .photo-zoe img { transform: scale(1.32); transform-origin: 50% 38%; }
+
+/* --- Accueil : bandeau « En danger immédiat ? » v2 (appel direct à gauche, annuaire à droite) --- */
+.urg2 { display: grid; grid-template-columns: .95fr 1.05fr; border-radius: 28px; overflow: hidden; background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 24px 60px -30px rgba(22,22,63,.3); }
+.urg2-alerte { position: relative; background: var(--marine-fonce); color: var(--creme); padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; justify-content: center; }
+.urg2-alerte::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 12% 10%, rgba(168,85,59,.35), transparent 50%); pointer-events: none; }
+.urg2-alerte > * { position: relative; }
+.urg2-picto { width: 48px; height: 48px; border-radius: 14px; background: rgba(252,250,245,.1); display: grid; place-items: center; margin-bottom: 18px; }
+.urg2-picto svg { width: 22px; height: 22px; fill: none; stroke: #E6B45A; stroke-width: 1.7; stroke-linejoin: round; }
+.urg2-alerte .titre { color: var(--creme); margin: 0 0 10px; }
+.urg2-intro { color: rgba(252,250,245,.8); margin: 0 0 24px; }
+.urg2-appels { display: grid; gap: 12px; }
+.urg2-appel { display: flex; align-items: center; gap: 18px; padding: 14px 20px; border-radius: 18px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.urg2-appel:hover { transform: translateY(-2px); text-decoration: none; box-shadow: 0 14px 30px -16px rgba(0,0,0,.5); }
+.urg2-appel-num { font-family: var(--serif); font-size: clamp(30px, 3vw, 40px); font-weight: 500; line-height: 1; min-width: 2.6em; }
+.urg2-appel-txt { display: flex; flex-direction: column; gap: 2px; font-size: 14px; }
+.urg2-appel-txt strong { font-size: 16px; font-weight: 600; }
+.urg2-appel-17 { background: var(--terracotta); color: #fff; }
+.urg2-appel-17 .urg2-appel-txt span { color: rgba(255,255,255,.82); }
+.urg2-appel-3919 { background: var(--creme); color: var(--marine-fonce); }
+.urg2-appel-3919 .urg2-appel-num { color: var(--terracotta); }
+.urg2-appel-3919 .urg2-appel-txt span { color: var(--gris); }
+.urg2-sms { margin: 18px 0 0; font-size: 14.5px; color: rgba(252,250,245,.75); }
+.urg2-sms a { color: #E6B45A; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.urg2-liste { padding: clamp(24px, 3.5vw, 44px); display: flex; flex-direction: column; justify-content: center; }
+.urg2-liste-titre { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--terracotta); margin: 0 0 10px; }
+.urg2-liste ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; margin: 0; padding: 0; }
+.urg2-ligne { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; align-items: baseline; padding: 13px 0; border-top: 1px solid rgba(22,22,63,.08); text-decoration: none; color: var(--texte); }
+.urg2-liste li:nth-child(-n+2) .urg2-ligne { border-top: none; }
+.urg2-ligne:hover { text-decoration: none; }
+.urg2-ligne:hover .urg2-l { color: var(--marine); }
+.urg2-num { grid-row: span 2; font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--terracotta); white-space: nowrap; min-width: 3.4em; }
+.urg2-l { font-size: 14.5px; font-weight: 600; transition: color .2s ease; }
+.urg2-d { font-size: 13px; color: var(--gris); }
+@media (max-width: 960px) { .urg2 { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .urg2 { border-radius: 22px; }
+  .urg2-liste ul { column-gap: 18px; }
+  .urg2-num { font-size: 19px; }
+}
+@media (max-width: 380px) {
+  .urg2-liste ul { grid-template-columns: 1fr; }
+  .urg2-liste li:nth-child(2) .urg2-ligne { border-top: 1px solid rgba(22,22,63,.08); }
+}
+/* Lignes de l'annuaire : numéro au-dessus, libellé et précision en dessous (les numéros longs ne cassent plus la grille) */
+.urg2-ligne { display: flex; flex-direction: column; gap: 3px; padding: 14px 0; }
+.urg2-num { min-width: 0; font-size: 22px; line-height: 1.1; margin-bottom: 3px; }
+/* Annuaire par type de victime */
+.urg2-liste-titre { margin-bottom: 4px; }
+.urg2-groupe { padding: 14px 0 6px; border-top: 1px solid rgba(22,22,63,.1); }
+.urg2-liste-titre + .urg2-groupe { border-top: none; }
+.urg2-groupe-titre { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--marine-fonce); margin: 0 0 4px; }
+.urg2-groupe .urg2-ligne { border-top: none; padding: 8px 0; }
+.urg2-groupe .urg2-num { font-size: 20px; margin-bottom: 1px; }
+/* 8 numéros de l'État : grille de 4 sur grand écran (deux rangées pleines) */
+@media (min-width: 1081px) { .urgence-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
