@@ -590,15 +590,18 @@ def construire_pages():
     return ecrits
 
 
-# Articles relus et valides par un professionnel : seuls ceux-la sont proposes
-# aux moteurs de recherche. Ajouter l'identifiant d'un article (ex. "prescription")
-# une fois sa validation obtenue.
+# Articles relus et valides par un professionnel : seuls ceux-la sont publies
+# (pages generees et sitemap). Les autres restent dans articles.py sans etre en
+# ligne ; leurs anciennes adresses redirigent vers l'accompagnement (netlify.toml).
+# Ajouter l'identifiant d'un article (ex. "prescription") une fois valide.
 ARTICLES_VALIDES = set()
 
 
 def construire_articles():
     ecrits = []
     for a in ARTICLES:
+        if a["id"] not in ARTICLES_VALIDES:
+            continue
         corps = ARTICLE_TPL
         corps = corps.replace("{{theme}}", esc(a["theme"]))
         corps = corps.replace("{{titre}}", esc(a["titre"]))
@@ -608,10 +611,6 @@ def construire_articles():
         title = a["titre"] + " | LibredeDroit"
         html = rendre_page("../", "accomp", title, a["extrait"],
                            canonical, "article", corps, "")
-        if a["id"] not in ARTICLES_VALIDES:
-            # Article non relu par un professionnel : accessible par son lien,
-            # mais ni affiche par les moteurs de recherche ni dans le sitemap.
-            html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"', 1)
         chemin = os.path.join(RACINE, "articles", a["id"] + ".html")
         ecrire(chemin, html)
         ecrits.append(chemin)

@@ -30,3 +30,11 @@
   from = "/ressources.html"
   to = "/accompagnement.html"
   status = 301
+
+# Articles retirés en attendant leur validation par un professionnel (10/2026) :
+# les anciens liens mènent à l'accompagnement. Un article republié (fichier présent)
+# reprend le dessus sur cette redirection.
+[[redirects]]
+  from = "/articles/*"
+  to = "/accompagnement.html"
+  status = 301

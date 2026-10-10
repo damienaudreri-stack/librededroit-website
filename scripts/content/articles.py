@@ -7,7 +7,7 @@ et l'inclut dans la liste de la page Ressources et le sitemap.
 
 Chaque article :
   id      : slug (nom du fichier + URL)
-  theme   : theme affiche (doit rester coherent avec assets/search.js)
+  theme   : theme affiche
   cat     : 'droit' ou 'psy' (filtre de la page Ressources)
   titre   : titre H1
   extrait : meta description (unique)
