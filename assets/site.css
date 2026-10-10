@@ -1645,3 +1645,7 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .recrut-etape p { color: var(--gris); font-size: 15.5px; line-height: 1.6; }
 @media (max-width: 900px) { .recrut-etapes { grid-template-columns: 1fr 1fr; } .recrut-etapes::before { display: none; } }
 @media (max-width: 560px) { .recrut-etapes { grid-template-columns: 1fr; } }
+/* Nous rejoindre : sections encore plus resserrées */
+.page-rejoindre main .section { padding: clamp(36px, 4.5vw, 64px) 0; }
+.page-rejoindre main .hero { padding-bottom: clamp(16px, 2vw, 28px); }
+.page-rejoindre main .section.section-recrutement { padding-top: clamp(24px, 3vw, 40px); }
