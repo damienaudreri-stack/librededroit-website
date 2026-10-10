@@ -13,6 +13,7 @@ fichiers identiques. Il tourne EN LOCAL pour produire les fichiers commites ;
 il ne s'execute jamais sur Netlify au deploiement.
 """
 
+import json
 import os
 import re
 import sys
@@ -164,7 +165,7 @@ EQUIPE_BANDEAU = [
     ("Yassine Myassal", "Membre du pôle sensibilisation", "yassine-portrait.jpg"),
     ("Marie Gazeau", "Membre du pôle aide victimes et sensibilisation", "marie-portrait.jpg"),
     ("Maureen Simphor", "Membre du pôle aide victimes et sensibilisation", "maureen-portrait.jpg"),
-    ("Pauline Willem-Dupau", "Membre du pôle sensibilisation", None),
+    ("Pauline Willem-Dupau", "Membre du pôle sensibilisation", "pauline-portrait.jpg"),
     ("Lounes Belkacem", "Membre du pôle sensibilisation", None),
     ("Lia Troadec", "Membre du pôle sensibilisation", "lia-portrait.jpg"),
     ("Clara Lamouroux", "Membre du pôle sensibilisation", "clara-portrait.jpg"),
@@ -343,6 +344,54 @@ def bloc_urgences_complet():
         '        </div>')
 
 
+# Zone d'intervention : communes et departements cites en clair, pour que les
+# personnes qui cherchent depuis leur ville trouvent l'association.
+ZONE_METROPOLE = ["Bordeaux", "Mérignac", "Pessac", "Talence", "Bègles", "Villenave-d'Ornon",
+                  "Gradignan", "Le Bouscat", "Bruges", "Eysines", "Blanquefort", "Lormont",
+                  "Cenon", "Floirac"]
+ZONE_GIRONDE = ["Libourne", "Arcachon", "La Teste-de-Buch", "Saint-Médard-en-Jalles",
+                "Andernos-les-Bains", "Langon", "Blaye", "Lesparre-Médoc"]
+ZONE_REGION = ["Gironde", "Landes", "Pyrénées-Atlantiques", "Lot-et-Garonne", "Dordogne",
+               "Charente", "Charente-Maritime", "Deux-Sèvres", "Vienne", "Haute-Vienne",
+               "Corrèze", "Creuse"]
+
+
+CARTE_NA = None
+
+
+def bloc_zone(lead, suite=False):
+    """Section « Où intervenons-nous ? » : carte de la Nouvelle-Aquitaine
+    (Gironde mise en avant, repere sur Bordeaux) et zones citees en clair."""
+    global CARTE_NA
+    if CARTE_NA is None:
+        # Trace genere une fois depuis les contours publics des departements
+        # (france-geojson, version simplifiee).
+        CARTE_NA = lire(os.path.join(TPL, "carte-nouvelle-aquitaine.svg")).strip()
+
+    def niveau(classe, titre, noms):
+        villes = " ".join('<li>{}</li>'.format(esc(n)) for n in noms)
+        return ('<div class="zone3-niveau {c}"><h3><span class="zone3-pastille" aria-hidden="true"></span>{t}</h3>'
+                '<ul class="zone3-villes">{v}</ul></div>'.format(c=classe, t=esc(titre), v=villes))
+    return (
+        '<section class="section{s} section-zone" aria-labelledby="zone-titre">\n'.format(s=" section-suite" if suite else "")
+        + '      <div class="wrap">\n'
+        '        <div class="zone3">\n'
+        '          <figure class="zone3-visuel reveal">' + CARTE_NA + '</figure>\n'
+        '          <div class="zone3-texte reveal" data-delay="1">\n'
+        '            <span class="kicker">Notre zone d\'intervention</span>\n'
+        '            <h2 class="titre" id="zone-titre">Où <span class="sans-cesure">intervenons-nous&nbsp;?</span></h2>\n'
+        '            <p class="lead">' + lead + '</p>\n'
+        '            <div class="zone3-niveaux">'
+        + niveau("n1", "Bordeaux Métropole", ZONE_METROPOLE)
+        + niveau("n2", "En Gironde", ZONE_GIRONDE)
+        + niveau("n3", "En Nouvelle-Aquitaine", ZONE_REGION)
+        + '</div>\n'
+        '          </div>\n'
+        '        </div>\n'
+        '      </div>\n'
+        '    </section>')
+
+
 def bloc_assos():
     cartes = []
     for nom, desc, url in ASSOS:
@@ -397,6 +446,47 @@ def rendre_footer(root):
     return FOOTER.replace("{{root}}", root)
 
 
+# Fiche « association » lue par les moteurs de recherche (donnees structurees
+# schema.org). Uniquement des informations publiques deja presentes sur le site.
+JSONLD_ASSOCIATION = json.dumps({
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "@id": "https://librededroit.co/#association",
+    "name": "LibredeDroit",
+    "legalName": "LIBREDEDROIT",
+    "url": "https://librededroit.co/",
+    "logo": "https://librededroit.co/assets/img/logo-full.png",
+    "image": "https://librededroit.co/assets/img/partage.jpg",
+    "description": "Association bordelaise de prévention des violences sexistes et sexuelles par la sensibilisation, et d'accompagnement juridique et psychologique des victimes.",
+    "email": "contact@librededroit.co",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "66 rue Lagrange",
+        "postalCode": "33000",
+        "addressLocality": "Bordeaux",
+        "addressRegion": "Nouvelle-Aquitaine",
+        "addressCountry": "FR",
+    },
+    "areaServed": [
+        {"@type": "City", "name": "Bordeaux"},
+        {"@type": "AdministrativeArea", "name": "Gironde"},
+        {"@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine"},
+    ],
+    "knowsAbout": [
+        "violences sexistes et sexuelles",
+        "accompagnement des victimes",
+        "violences conjugales",
+        "sensibilisation et prévention",
+    ],
+    "sameAs": [
+        "https://www.instagram.com/librededroit_/",
+        "https://www.tiktok.com/@libre_de_droit",
+        "https://www.linkedin.com/company/libre-de-droit-bordeaux/",
+        "https://www.helloasso.com/associations/libre-de-droit",
+    ],
+}, ensure_ascii=False)
+
+
 def rendre_page(root, actif, title, description, canonical, ogtype, contenu, scripts):
     out = BASE
     out = out.replace("{{title}}", esc(title))
@@ -411,6 +501,7 @@ def rendre_page(root, actif, title, description, canonical, ogtype, contenu, scr
     out = out.replace("{{scripts}}", scripts)
     out = out.replace("{{content}}", contenu)
     out = out.replace("{{actif}}", actif)
+    out = out.replace("{{jsonld}}", JSONLD_ASSOCIATION)
     return out
 
 
@@ -422,20 +513,20 @@ V_FORMS = hash_court(os.path.join(RACINE, "assets", "forms.js"))
 PAGES = [
     {
         "fichier": "index.html", "actif": "accueil", "src": "accueil.html",
-        "title": "LibredeDroit | Contre les violences sexistes et sexuelles, à Bordeaux",
-        "description": "Association bordelaise de prévention par la sensibilisation et d'accompagnement juridique et psychologique des victimes de violences sexistes et sexuelles.",
+        "title": "Association contre les violences sexuelles à Bordeaux | LibredeDroit",
+        "description": "Association bordelaise contre les violences sexuelles : accompagnement gratuit des victimes en Nouvelle-Aquitaine et ateliers de sensibilisation pour établissements, entreprises et associations.",
         "loc": "/", "scripts": "",
     },
     {
         "fichier": "sensibilisation.html", "actif": "sensi", "src": "sensibilisation.html",
-        "title": "Sensibilisation aux violences sexistes et sexuelles, ateliers | LibredeDroit",
-        "description": "Nous concevons et animons des ateliers de prévention des violences sexistes et sexuelles, adaptés aux étudiants, professionnels et agents publics, partout en Gironde.",
+        "title": "Ateliers de sensibilisation aux violences sexuelles, Bordeaux | LibredeDroit",
+        "description": "Ateliers de prévention des violences sexistes et sexuelles pour établissements scolaires, universités, entreprises, syndicats, associations et clubs sportifs, en Nouvelle-Aquitaine.",
         "loc": "/sensibilisation.html", "scripts": f'  <script src="assets/forms.js?v={V_FORMS}" defer></script>',
     },
     {
         "fichier": "accompagnement.html", "actif": "accomp", "src": "accompagnement.html",
-        "title": "Accompagnement des victimes, aide juridique et psychologique | LibredeDroit",
-        "description": "Un accompagnement confidentiel et gratuit pour toute personne victime de violences sexuelles, conjugales ou intrafamiliales : avocats et psychologues spécialisés à vos côtés.",
+        "title": "Aide aux victimes de violences sexuelles à Bordeaux | LibredeDroit",
+        "description": "Victime de viol, d'agression sexuelle ou de violences conjugales ? Accompagnement gratuit et confidentiel en Nouvelle-Aquitaine, avec des avocats et psychologues partenaires.",
         "loc": "/accompagnement.html", "scripts": f'  <script src="assets/forms.js?v={V_FORMS}" defer></script>',
     },
     {
@@ -470,6 +561,12 @@ def construire_pages():
         contenu = contenu.replace("{{equipe_bandeau}}", bloc_equipe_bandeau())
         contenu = contenu.replace("{{bandeau_don}}", bloc_bandeau_don())
         contenu = contenu.replace("{{urgences_bloc}}", bloc_urgences_complet())
+        contenu = contenu.replace("{{zone_accomp}}", bloc_zone(
+            "Nous accompagnons les victimes de violences sexuelles à Bordeaux, dans toute la Gironde "
+            "et partout en Nouvelle-Aquitaine, quelle que soit votre commune.", suite=True))
+        contenu = contenu.replace("{{zone_sensi}}", bloc_zone(
+            "Nous animons nos ateliers de sensibilisation à Bordeaux, dans toute la Gironde "
+            "et partout en Nouvelle-Aquitaine, directement dans vos locaux."))
         contenu = contenu.replace("{{articles_cards}}", bloc_articles_cards())
         contenu = contenu.replace("{{assos_cards}}", bloc_assos())
         canonical = BASE_URL + p["loc"]
@@ -478,7 +575,25 @@ def construire_pages():
         chemin = os.path.join(RACINE, p["fichier"])
         ecrire(chemin, html)
         ecrits.append(chemin)
+    # Page 404 (servie par Netlify pour toute adresse inconnue) : hors sitemap,
+    # liens absolus car elle peut s'afficher a n'importe quelle profondeur.
+    contenu = lire(os.path.join(CONTENU, "404.html")).replace(
+        "{{urgences_section}}",
+        '<section class="section">\n      <div class="wrap">\n        '
+        + bloc_urgences_complet() + '\n      </div>\n    </section>')
+    html = rendre_page("/", "introuvable", "Page introuvable | LibredeDroit",
+                       "Cette page n'existe pas ou plus. Retrouvez l'aide aux victimes et les ateliers de sensibilisation de LibredeDroit.",
+                       BASE_URL + "/404.html", "website", contenu, "")
+    html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"', 1)
+    chemin = os.path.join(RACINE, "404.html")
+    ecrire(chemin, html)
     return ecrits
+
+
+# Articles relus et valides par un professionnel : seuls ceux-la sont proposes
+# aux moteurs de recherche. Ajouter l'identifiant d'un article (ex. "prescription")
+# une fois sa validation obtenue.
+ARTICLES_VALIDES = set()
 
 
 def construire_articles():
@@ -493,6 +608,10 @@ def construire_articles():
         title = a["titre"] + " | LibredeDroit"
         html = rendre_page("../", "accomp", title, a["extrait"],
                            canonical, "article", corps, "")
+        if a["id"] not in ARTICLES_VALIDES:
+            # Article non relu par un professionnel : accessible par son lien,
+            # mais ni affiche par les moteurs de recherche ni dans le sitemap.
+            html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"', 1)
         chemin = os.path.join(RACINE, "articles", a["id"] + ".html")
         ecrire(chemin, html)
         ecrits.append(chemin)
@@ -564,7 +683,8 @@ def construire_sitemap():
     for p in PAGES[1:]:
         urls.append(bloc(BASE_URL + p["loc"], "0.8", "monthly"))
     for a in ARTICLES:
-        urls.append(bloc(BASE_URL + "/articles/" + a["id"] + ".html", "0.6", "monthly"))
+        if a["id"] in ARTICLES_VALIDES:
+            urls.append(bloc(BASE_URL + "/articles/" + a["id"] + ".html", "0.6", "monthly"))
     for nom in LEGALES:
         urls.append(bloc(BASE_URL + "/" + nom, "0.3", "yearly"))
 

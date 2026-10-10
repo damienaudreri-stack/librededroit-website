@@ -1805,3 +1805,42 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .urg2-groupe .urg2-num { font-size: 20px; margin-bottom: 1px; }
 /* 8 numéros de l'État : grille de 4 sur grand écran (deux rangées pleines) */
 @media (min-width: 1081px) { .urgence-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* Notre histoire : « Qui sommes-nous ? » est le h1 de la page (référencement), même apparence que l'étiquette */
+h1.kicker { font-family: var(--sans); letter-spacing: normal; line-height: 1.3; margin-top: 0; max-width: none; }
+/* Page 404 : même en-tête centré que la page Don */
+.hero-404 .hero-cta { flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.hero-404 h1 { white-space: normal; }
+
+/* --- Où intervenons-nous ? (carte de la Nouvelle-Aquitaine + zones citées en clair) --- */
+.zone3 { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
+.zone3-visuel { margin: 0; background: linear-gradient(160deg, #F6EAE2 0%, #FBF4EF 100%); border-radius: 28px; padding: clamp(24px, 3.5vw, 44px); display: flex; justify-content: center; }
+.zone3-carte { width: 100%; max-width: 360px; height: auto; overflow: visible; }
+.zone3-carte .dep { fill: #EBDCCB; stroke: #FBF4EF; stroke-width: 1.6; stroke-linejoin: round; transition: fill .2s ease; }
+.zone3-carte .dep:hover { fill: #E2CDB6; }
+.zone3-carte .gironde, .zone3-carte .gironde:hover { fill: var(--terracotta); }
+.zone3-carte .carte-bordeaux .point { fill: #fff; stroke: var(--marine-fonce); stroke-width: 3; }
+.zone3-carte .carte-bordeaux .halo { fill: rgba(255,255,255,.35); }
+@media (prefers-reduced-motion: no-preference) {
+  .zone3-carte .carte-bordeaux .halo { animation: zonePouls 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes zonePouls { 0% { transform: scale(.5); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+.zone3-texte .titre { margin-bottom: 12px; }
+.zone3-texte .lead { margin: 0 0 8px; }
+.zone3-niveau { padding: 18px 0; border-top: 1px solid rgba(22,22,63,.1); }
+.zone3-niveau:last-child { padding-bottom: 0; }
+.zone3-niveaux { margin-top: 18px; }
+.zone3-niveau h3 { display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--marine-fonce); margin: 0 0 8px; }
+.zone3-pastille { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.n1 .zone3-pastille { background: #fff; border: 3px solid var(--marine-fonce); }
+.n2 .zone3-pastille { background: var(--terracotta); }
+.n3 .zone3-pastille { background: #E2CDB6; }
+.zone3-villes { list-style: none; margin: 0; padding: 0; font-size: 15px; line-height: 1.75; color: #45464C; }
+/* Villes en ligne, séparées par un point médian accroché à la ville précédente (jamais en début de ligne) */
+.zone3-villes li { display: inline; white-space: nowrap; }
+.zone3-villes li:not(:last-child)::after { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--texte); vertical-align: middle; margin: -2px 6px 0 10px; }
+@media (max-width: 900px) {
+  .zone3 { grid-template-columns: 1fr; }
+  .zone3-visuel { order: 2; }
+  .zone3-carte { max-width: 260px; }
+}
+.section-zone .titre .sans-cesure { white-space: nowrap; }
