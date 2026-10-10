@@ -1844,3 +1844,5 @@ h1.kicker { font-family: var(--sans); letter-spacing: normal; line-height: 1.3; 
   .zone3-carte { max-width: 260px; }
 }
 .section-zone .titre .sans-cesure { white-space: nowrap; }
+/* Sensibilisation : légende de la photo d'en-tête centrée sous l'image */
+.hero-sensi .hero-page-photo figcaption, .hero-sensi figcaption { text-align: center; }
