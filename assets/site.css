@@ -1719,3 +1719,5 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .don-montant-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: var(--dore); color: #3a2c07; font-weight: 600; font-size: 15px; padding: 11px 20px; border-radius: 999px; }
 .don-montant:hover .don-montant-cta .fleche { transform: translateX(3px); }
 @media (max-width: 860px) { .don-ressources, .don-montants { grid-template-columns: 1fr; } .don-transparence { grid-template-columns: 1fr; } }
+/* Page Don : phrase d'introduction sur deux lignes au bureau */
+.hero-don p.intro { max-width: 800px; }
