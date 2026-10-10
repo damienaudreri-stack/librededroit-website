@@ -374,19 +374,24 @@
   });
 
   // --- Notre histoire : presentation animee de l'equipe (encadre photo).
-  // Cofondateurs, puis membres un par un avec un rythme qui accelere, puis
-  // les tuiles de la mosaique se posent une a une et la mosaique reste affichee.
+  // Cofondateurs (1 s), un membre (1 s), un autre (1 s), puis acceleration tres
+  // marquee jusqu'a la survitesse (les photos ne se distinguent plus), puis les
+  // portraits se posent en mosaique et y restent.
   // Mouvement reduit ou sans JS : mosaique affichee directement.
   document.querySelectorAll('[data-equipe-anim]').forEach(function (fig) {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var calques = fig.querySelectorAll('.solo-calque');
     var tuiles = Array.prototype.slice.call(fig.querySelectorAll('.mosaique-tuile'));
-    var portraits = tuiles.slice(1, -1).map(function (t) { return t.querySelector('img').getAttribute('src'); });
-    if (calques.length < 2 || !portraits.length) return;
-    // Precharge les portraits pour des transitions sans a-coup
+    var portraits = tuiles.map(function (t) { return t.querySelector('img').getAttribute('src'); });
+    if (calques.length < 2 || portraits.length < 3) return;
     portraits.forEach(function (src) { var im = new Image(); im.src = src; });
-    var DELAIS = [1000, 1000, 700, 500, 350, 250, 180, 140, 110];
-    var courant = 0, etape = 0;
+    // Rythme : 1 s, 1 s, puis chaque intervalle est multiplie par 0,78
+    // jusqu'a 30 ms, et on tient la survitesse quelques images de plus.
+    var delais = [1000, 1000];
+    var d = 650;
+    while (d > 30) { delais.push(Math.round(d)); d *= 0.78; }
+    for (var k = 0; k < 12; k++) delais.push(30);
+    var courant = 0, n = 0;
     fig.classList.add('en-sequence');
     calques[0].classList.add('visible');
     function montrer(src) {
@@ -398,16 +403,17 @@
     }
     function poserMosaique() {
       fig.classList.add('mosaique-prete');
-      tuiles.forEach(function (t, i) { setTimeout(function () { t.classList.add('posee'); }, i * 70); });
+      tuiles.forEach(function (t, i) { setTimeout(function () { t.classList.add('posee'); }, 80 + i * 45); });
     }
     function suite() {
-      if (etape >= portraits.length) { poserMosaique(); return; }
-      montrer(portraits[etape]);
-      var d = DELAIS[Math.min(etape + 1, DELAIS.length - 1)];
-      etape++;
-      setTimeout(suite, d);
+      if (n >= delais.length) { poserMosaique(); return; }
+      var attente = delais[n];
+      if (attente < 160) fig.classList.add('survitesse'); // plus de fondu : images seches
+      montrer(portraits[(n + 2) % portraits.length]); // commence apres Damien et Maïlys
+      n++;
+      setTimeout(suite, attente);
     }
-    function lancer() { setTimeout(suite, DELAIS[0] + 200); }
+    function lancer() { setTimeout(suite, 1000); }
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {
         if (es[0].isIntersecting) { io.disconnect(); lancer(); }
