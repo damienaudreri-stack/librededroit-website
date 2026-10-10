@@ -1500,3 +1500,5 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
   .fondements-figure .fondements-photo { position: static; aspect-ratio: 4 / 3; height: auto; }
   .fondements .temps-js .temps-panneau { min-height: 0; }
 }
+/* Barre dorée des fondements : en pause au survol, au focus et hors écran (sans se réinitialiser) */
+.temps-pause .temps-onglet.en-cours .temps-barre { animation-play-state: paused; }

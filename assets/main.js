@@ -293,13 +293,17 @@
     });
   }
 
-  // --- Deroule interactif de l'atelier (4 temps) : clic, fleches clavier, defilement
-  // automatique doux tant que la personne n'a pas choisi (coupe si mouvement reduit).
-  // Sans JS : les 4 temps restent affiches les uns sous les autres.
+  // --- Fondements interactifs (Sensibilisation) : clic, fleches clavier, et
+  // defilement automatique toutes les 6 s. Une minuterie fait avancer les onglets
+  // et relance la barre doree a chaque etape ; survol, focus et sortie d'ecran
+  // mettent minuterie ET barre en pause ensemble (reprise la ou elles en etaient).
+  // Arret definitif des que la personne choisit un onglet. Coupe si mouvement reduit.
+  // Sans JS : les 4 blocs restent affiches les uns sous les autres.
   document.querySelectorAll('[data-temps]').forEach(function (boite) {
     var onglets = Array.prototype.slice.call(boite.querySelectorAll('[role="tab"]'));
     var panneaux = onglets.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
-    var actif = 0, minuteur = null, choisi = false, DUREE = 6000;
+    var DUREE = 6000, actif = 0, choisi = false;
+    var minuteur = null, reste = DUREE, debut = 0, survol = false, visible = false;
     var calme = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     boite.classList.add('temps-js');
     function montrer(i, focus) {
@@ -308,37 +312,67 @@
         var on = j === i;
         t.setAttribute('aria-selected', on ? 'true' : 'false');
         t.tabIndex = on ? 0 : -1;
-        t.classList.remove('en-cours');
         panneaux[j].hidden = !on;
       });
       if (focus) onglets[i].focus();
-      if (!choisi && !calme) {
-        void onglets[i].offsetWidth;
-        onglets[i].classList.add('en-cours');
-      }
     }
-    function suivant() { montrer((actif + 1) % onglets.length); }
-    function demarrer() { if (choisi || calme || minuteur) return; minuteur = setInterval(suivant, DUREE); onglets[actif].classList.add('en-cours'); }
-    function arreter() { clearInterval(minuteur); minuteur = null; onglets.forEach(function (t) { t.classList.remove('en-cours'); }); }
+    function relancerBarre() {
+      onglets.forEach(function (t) { t.classList.remove('en-cours'); });
+      if (choisi || calme) return;
+      var b = onglets[actif].querySelector('.temps-barre');
+      if (b) void b.getBoundingClientRect(); // repart de zero
+      onglets[actif].classList.add('en-cours');
+    }
+    function enPause() { return survol || !visible; }
+    function planifier() {
+      clearTimeout(minuteur); minuteur = null;
+      if (choisi || calme || enPause()) return;
+      debut = Date.now();
+      minuteur = setTimeout(function () {
+        montrer((actif + 1) % onglets.length);
+        reste = DUREE;
+        relancerBarre();
+        planifier();
+      }, reste);
+    }
+    function suspendre() {
+      if (minuteur) { clearTimeout(minuteur); minuteur = null; reste = Math.max(0, reste - (Date.now() - debut)); }
+      boite.classList.add('temps-pause');
+    }
+    function reprendre() {
+      if (enPause()) return;
+      boite.classList.remove('temps-pause');
+      if (!onglets[actif].classList.contains('en-cours')) { reste = DUREE; relancerBarre(); }
+      planifier();
+    }
+    function choisir(i, focus) {
+      choisi = true; clearTimeout(minuteur); minuteur = null;
+      montrer(i, focus); relancerBarre();
+    }
     onglets.forEach(function (t, i) {
-      t.addEventListener('click', function () { choisi = true; arreter(); montrer(i); });
+      t.addEventListener('click', function () { choisir(i); });
       t.addEventListener('keydown', function (e) {
         var n = onglets.length, c = null;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') c = (i + 1) % n;
         else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') c = (i - 1 + n) % n;
         else if (e.key === 'Home') c = 0;
         else if (e.key === 'End') c = n - 1;
-        if (c !== null) { e.preventDefault(); choisi = true; arreter(); montrer(c, true); }
+        if (c !== null) { e.preventDefault(); choisir(c, true); }
       });
     });
-    boite.addEventListener('mouseenter', arreter);
-    boite.addEventListener('mouseleave', function () { if (!choisi) { demarrer(); } });
-    boite.addEventListener('focusin', arreter);
+    boite.addEventListener('mouseenter', function () { survol = true; suspendre(); });
+    boite.addEventListener('mouseleave', function () { survol = false; reprendre(); });
+    boite.addEventListener('focusin', function () { survol = true; suspendre(); });
+    boite.addEventListener('focusout', function (e) { if (!boite.contains(e.relatedTarget)) { survol = false; reprendre(); } });
     montrer(0);
+    boite.classList.add('temps-pause');
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) demarrer(); else arreter(); });
-      }, { threshold: 0.4 }).observe(boite);
-    }
+        es.forEach(function (e) {
+          visible = e.isIntersecting;
+          if (visible) reprendre(); else suspendre();
+        });
+      }, { threshold: 0.35 }).observe(boite);
+    } else { visible = true; reprendre(); }
   });
 })();
