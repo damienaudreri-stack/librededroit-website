@@ -1505,3 +1505,5 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 /* Accompagnement : la description de chaque onglet prend toute la largeur des cartes */
 .onglet-panneau .section-head.wide { max-width: none; }
 .onglet-panneau .section-head .lead { max-width: none; }
+/* Accompagnement : phrase des 24 heures sur une seule ligne au bureau */
+@media (min-width: 961px) { .lead-24h { white-space: nowrap; font-size: clamp(14px, 1.25vw, 17px); } }
