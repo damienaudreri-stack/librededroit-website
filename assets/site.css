@@ -1650,3 +1650,15 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .page-rejoindre main .hero { padding-bottom: clamp(16px, 2vw, 28px); }
 .page-rejoindre main .section.section-recrutement { padding-top: clamp(24px, 3vw, 40px); }
 .poste-fiche-corps .fiche-bloc { break-inside: avoid; margin-bottom: 4px; }
+
+/* --- Bandeau d'appel aux dons commun (fond pêche, trois repères d'impact) --- */
+.section.section-don { padding-top: clamp(24px, 3vw, 40px); }
+.bandeau-don { background: linear-gradient(160deg, #F6E6DC 0%, #FBF3EE 100%); border: 1px solid #EED6C8; border-radius: 28px; padding: clamp(32px, 4.5vw, 56px); text-align: center; }
+.bandeau-don .titre { color: var(--marine); margin-bottom: 10px; }
+.bandeau-don .lead { margin: 0 auto; }
+.don-impacts { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: clamp(24px, 3vw, 36px) auto; }
+.don-impact-item { background: var(--surface); border-radius: 18px; padding: 20px 18px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.don-impact-montant { font-family: var(--serif); font-size: clamp(30px, 3vw, 38px); font-weight: 500; color: var(--terracotta); line-height: 1; }
+.don-impact-texte { color: var(--gris); font-size: 15.5px; line-height: 1.5; }
+.bandeau-don-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 26px; margin: 0; }
+@media (max-width: 760px) { .don-impacts { grid-template-columns: 1fr; } }
