@@ -372,4 +372,47 @@
       }, { threshold: 0.35 }).observe(boite);
     } else { visible = true; reprendre(); }
   });
+
+  // --- Notre histoire : presentation animee de l'equipe (encadre photo).
+  // Cofondateurs, puis membres un par un avec un rythme qui accelere, puis
+  // les tuiles de la mosaique se posent une a une et la mosaique reste affichee.
+  // Mouvement reduit ou sans JS : mosaique affichee directement.
+  document.querySelectorAll('[data-equipe-anim]').forEach(function (fig) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var calques = fig.querySelectorAll('.solo-calque');
+    var tuiles = Array.prototype.slice.call(fig.querySelectorAll('.mosaique-tuile'));
+    var portraits = tuiles.slice(1, -1).map(function (t) { return t.querySelector('img').getAttribute('src'); });
+    if (calques.length < 2 || !portraits.length) return;
+    // Precharge les portraits pour des transitions sans a-coup
+    portraits.forEach(function (src) { var im = new Image(); im.src = src; });
+    var DELAIS = [1000, 1000, 700, 500, 350, 250, 180, 140, 110];
+    var courant = 0, etape = 0;
+    fig.classList.add('en-sequence');
+    calques[0].classList.add('visible');
+    function montrer(src) {
+      var suivant = calques[1 - courant];
+      suivant.src = src;
+      suivant.classList.add('visible');
+      calques[courant].classList.remove('visible');
+      courant = 1 - courant;
+    }
+    function poserMosaique() {
+      fig.classList.add('mosaique-prete');
+      tuiles.forEach(function (t, i) { setTimeout(function () { t.classList.add('posee'); }, i * 70); });
+    }
+    function suite() {
+      if (etape >= portraits.length) { poserMosaique(); return; }
+      montrer(portraits[etape]);
+      var d = DELAIS[Math.min(etape + 1, DELAIS.length - 1)];
+      etape++;
+      setTimeout(suite, d);
+    }
+    function lancer() { setTimeout(suite, DELAIS[0] + 200); }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { io.disconnect(); lancer(); }
+      }, { threshold: 0.4 });
+      io.observe(fig);
+    } else { lancer(); }
+  });
 })();
