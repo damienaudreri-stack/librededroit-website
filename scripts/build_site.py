@@ -240,9 +240,8 @@ def bloc_avis_defilants(temoignages):
     return boucle_defilante(temoignages, item, minimum=8)
 
 
-# Bandeau d'appel aux dons commun (Accueil, Sensibilisation, Notre histoire,
-# Nous rejoindre). Volontairement absent d'Accompagnement (pas de demande d'argent
-# aux victimes) et de la page Don. Montants repris de la page Don.
+# Bandeau d'appel aux dons commun à toutes les pages sauf la page Don.
+# Le bouton mène directement au formulaire de don HelloAsso. Montants repris de la page Don.
 IMPACTS_DON = [
     ("50 €", "la sensibilisation d'un groupe lors d'un atelier"),
     ("80 €", "un rendez-vous chez un·e psychologue pour une victime"),
@@ -252,22 +251,28 @@ IMPACTS_DON = [
 
 def bloc_bandeau_don():
     impacts = "".join(
-        '<li class="don-impact-item reveal" data-delay="{d}"><span class="don-impact-montant">{m}</span>'
-        '<span class="don-impact-texte">{t}</span></li>'.format(d=i + 1, m=esc(m), t=esc(t))
-        for i, (m, t) in enumerate(IMPACTS_DON))
+        '<li class="don2-impact"><span class="don2-montant">{m}</span>'
+        '<span class="don2-texte">{t}</span></li>'.format(m=esc(m), t=esc(t))
+        for m, t in IMPACTS_DON)
     return (
         '<section class="section section-don" aria-labelledby="bandeau-don-titre">\n'
         '      <div class="wrap">\n'
-        '        <div class="bandeau-don reveal">\n'
-        '          <h2 class="titre" id="bandeau-don-titre">Soutenez notre action.</h2>\n'
-        '          <p class="lead">Chaque don finance nos ateliers de sensibilisation et l\'accompagnement gratuit des victimes.</p>\n'
-        '          <ul class="don-impacts">' + impacts + '</ul>\n'
-        '          <p class="bandeau-don-actions"><a class="btn btn-dore btn-lg" href="don.html">Faire un don <span class="fleche" aria-hidden="true">›</span></a>'
+        '        <div class="don2 reveal">\n'
+        '          <div class="don2-texte-bloc">\n'
+        '            <span class="kicker">Nous soutenir</span>\n'
+        '            <h2 class="titre" id="bandeau-don-titre">Soutenez notre action.</h2>\n'
+        '            <p class="lead">Chaque don finance nos ateliers de sensibilisation et l\'accompagnement gratuit des victimes.</p>\n'
+        '            <p class="don2-actions"><a class="btn btn-dore btn-lg" href="https://www.helloasso.com/associations/libre-de-droit/formulaires/1" target="_blank" rel="noopener noreferrer">Faire un don <span class="fleche" aria-hidden="true">›</span></a>'
         '<a class="lien-fleche" href="https://www.helloasso.com/associations/libre-de-droit/adhesions/adherer" target="_blank" rel="noopener noreferrer">ou adhérer à l\'association <span class="fleche" aria-hidden="true">›</span></a></p>\n'
+        '            <p class="don2-securite">Paiement sécurisé via HelloAsso</p>\n'
+        '          </div>\n'
+        '          <div class="don2-panneau">\n'
+        '            <p class="don2-panneau-titre">Ce que permet votre don</p>\n'
+        '            <ul class="don2-impacts">' + impacts + '</ul>\n'
+        '          </div>\n'
         '        </div>\n'
         '      </div>\n'
         '    </section>')
-
 
 def bloc_quotes(temoignages, tag=False, victime=False):
     def item(nom, meta, texte):

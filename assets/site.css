@@ -1662,3 +1662,60 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .don-impact-texte { color: var(--gris); font-size: 15.5px; line-height: 1.5; }
 .bandeau-don-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 26px; margin: 0; }
 @media (max-width: 760px) { .don-impacts { grid-template-columns: 1fr; } }
+
+/* --- Bandeau de dons v2 : carte en deux parties (texte + panneau d'impact bleu nuit) --- */
+.section.section-don { padding: clamp(28px, 3.5vw, 48px) 0; }
+.don2 { display: grid; grid-template-columns: 1.1fr .9fr; background: var(--surface); border-radius: 28px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 24px 60px -30px rgba(22,22,63,.3); }
+.don2-texte-bloc { padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; justify-content: center; }
+.don2-texte-bloc .kicker { color: var(--terracotta); }
+.don2-texte-bloc .titre { margin-bottom: 12px; }
+.don2-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 24px 0 10px; }
+.don2-securite { font-size: 13.5px; color: var(--gris); }
+.don2-panneau { background: var(--marine-fonce); color: var(--creme); padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; justify-content: center; position: relative; }
+.don2-panneau::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 85% 15%, rgba(201,154,63,.22), transparent 55%); pointer-events: none; }
+.don2-panneau-titre { position: relative; font-size: 14px; font-weight: 600; color: #E6B45A; margin-bottom: 14px; }
+.don2-impacts { position: relative; list-style: none; }
+.don2-impact { display: grid; grid-template-columns: 96px 1fr; align-items: baseline; gap: 14px; padding: 14px 0; border-top: 1px solid rgba(252,250,245,.14); }
+.don2-impact:first-child { border-top: none; }
+.don2-montant { font-family: var(--serif); font-size: clamp(28px, 2.6vw, 36px); font-weight: 500; color: #E6B45A; line-height: 1; }
+.don2-texte { color: rgba(252,250,245,.85); font-size: 15.5px; line-height: 1.5; }
+@media (max-width: 860px) { .don2 { grid-template-columns: 1fr; } }
+
+/* --- Page Don : moderne et compacte --- */
+.page-don main .section { padding: clamp(28px, 3.5vw, 52px) 0; }
+.hero-don { padding: clamp(28px, 4vw, 56px) 0 clamp(16px, 2vw, 28px); background: radial-gradient(ellipse at 50% 0%, #F6EAE2 0%, transparent 70%); }
+.don-hero { text-align: center; max-width: 820px; margin: 0 auto; }
+.hero-don .kicker-page { display: block; font-size: clamp(17px, 1.8vw, 21px); font-weight: 600; margin-bottom: 14px; }
+.hero-don h1 { max-width: 20ch; margin: 0 auto 18px; }
+.hero-don p.intro { margin: 0 auto 26px; }
+.hero-don .hero-cta { justify-content: center; }
+.don-securite { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 14px; color: var(--gris); }
+.don-securite.center { display: block; text-align: center; margin-top: 20px; }
+.don-securite svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-don .kicker-page, .hero-don h1, .hero-don p.intro, .hero-don .hero-cta { animation: ldMonte .9s var(--ease-out) both; }
+  .hero-don h1 { animation-delay: .12s; } .hero-don p.intro { animation-delay: .24s; } .hero-don .hero-cta { animation-delay: .34s; }
+}
+.don-transparence { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px, 3vw, 36px); align-items: start; background: var(--marine-fonce); color: var(--creme); border-radius: 28px; padding: clamp(28px, 4vw, 48px); }
+.don-transparence .kicker { color: #E6B45A; }
+.don-transparence .titre { color: var(--creme); margin-bottom: 12px; }
+.don-transparence p { color: rgba(252,250,245,.82); line-height: 1.7; max-width: 70ch; }
+.don-transparence-picto { width: 64px; height: 64px; border-radius: 20px; background: rgba(252,250,245,.08); color: #E6B45A; display: flex; align-items: center; justify-content: center; }
+.don-transparence-picto svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.don-ressources { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.don-ressource { background: var(--surface); border-radius: 24px; padding: clamp(24px, 3vw, 36px); box-shadow: var(--ombre); }
+.don-ressource-picto { width: 52px; height: 52px; border-radius: 16px; background: var(--lavande); color: var(--marine); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.don-ressource + .don-ressource .don-ressource-picto { background: #F3E7C9; color: #8A6A1E; }
+.don-ressource-picto svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.don-ressource .kicker { display: block; margin-bottom: 4px; }
+.don-ressource h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(21px, 2vw, 25px); line-height: 1.2; margin-bottom: 10px; }
+.don-ressource p { color: var(--gris); line-height: 1.7; }
+.don-montants { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.don-montant { position: relative; display: flex; flex-direction: column; gap: 10px; text-align: center; align-items: center; background: var(--surface); border-radius: 24px; padding: 32px 24px 26px; box-shadow: var(--ombre); color: var(--texte); border: 2px solid transparent; transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .3s ease; }
+.don-montant:hover { text-decoration: none; transform: translateY(-4px); box-shadow: 0 22px 44px -22px rgba(22,22,63,.3); border-color: var(--dore); }
+.don-montant-phare { border-color: var(--marine); }
+.don-montant-num { font-family: var(--serif); font-size: clamp(40px, 4vw, 54px); font-weight: 500; color: var(--marine); line-height: 1; }
+.don-montant-texte { color: var(--gris); font-size: 16px; line-height: 1.55; flex: 1; }
+.don-montant-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: var(--dore); color: #3a2c07; font-weight: 600; font-size: 15px; padding: 11px 20px; border-radius: 999px; }
+.don-montant:hover .don-montant-cta .fleche { transform: translateX(3px); }
+@media (max-width: 860px) { .don-ressources, .don-montants { grid-template-columns: 1fr; } .don-transparence { grid-template-columns: 1fr; } }
