@@ -1471,3 +1471,8 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .page-accueil main .section.section-suite { padding-top: 0; }
 .page-accueil .section-bande { padding: clamp(28px, 4vw, 48px) 0 clamp(40px, 5vw, 64px); }
 .page-accueil main .section.sombre.chiffres { padding-top: clamp(48px, 6vw, 72px); }
+/* Accueil : marges intermédiaires (entre l'ancienne version et la version resserrée) */
+.page-accueil main .section { padding: clamp(60px, 7.5vw, 108px) 0; }
+.page-accueil main .section.section-suite { padding-top: 0; }
+.page-accueil .section-bande { padding: clamp(36px, 5vw, 60px) 0 clamp(52px, 6.5vw, 88px); }
+.page-accueil main .section.sombre.chiffres { padding-top: clamp(56px, 7vw, 92px); }
