@@ -85,6 +85,11 @@
     requestAnimationFrame(phaseRapide);
   }
   if (counters.length) {
+    // Le HTML porte les valeurs finales (lisibles sans JavaScript et par les
+    // moteurs de recherche) ; on repart de 0 seulement si l'animation va jouer.
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      counters.forEach(function (el) { el.textContent = '0'; });
+    }
     if (!('IntersectionObserver' in window)) {
       counters.forEach(runCount);
     } else {

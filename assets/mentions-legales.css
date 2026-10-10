@@ -40,3 +40,4 @@
     .retour { display: inline-block; margin-top: 40px; font-weight: 700; }
     footer { text-align: center; color: var(--gris); font-size: 14px; padding: 30px 24px 50px; border-top: 1px solid #E7E2D6; }
     footer a { color: var(--gris); }
+.retour { padding: 10px 0; }

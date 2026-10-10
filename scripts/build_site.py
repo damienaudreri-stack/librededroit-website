@@ -370,7 +370,7 @@ def bloc_zone(lead, suite=False):
 
     def niveau(classe, titre, noms):
         villes = " ".join('<li>{}</li>'.format(esc(n)) for n in noms)
-        return ('<div class="zone3-niveau {c}"><h3><span class="zone3-pastille" aria-hidden="true"></span>{t}</h3>'
+        return ('<div class="zone3-niveau {c}"><h3><span class="zone3-pastille" aria-hidden="true"></span><span>{t}</span></h3>'
                 '<ul class="zone3-villes">{v}</ul></div>'.format(c=classe, t=esc(titre), v=villes))
     return (
         '<section class="section{s} section-zone" aria-labelledby="zone-titre">\n'.format(s=" section-suite" if suite else "")
@@ -487,6 +487,36 @@ JSONLD_ASSOCIATION = json.dumps({
 }, ensure_ascii=False)
 
 
+SAUTER_BALISES = ("script", "style", "svg", "option", "textarea", "title")
+RE_COMPOSE = re.compile(r"(?<![\w-])([^\W\d_]+(?:-[^\W\d_]+)+)(?![\w-])")
+
+
+def typographie(html):
+    """Regles typographiques francaises appliquees au texte visible (jamais aux
+    attributs, scripts, styles, SVG ni options) : espace insecable avant : ; ? !
+    et dans les guillemets, mots composes (Nouvelle-Aquitaine...) jamais coupes."""
+    morceaux = re.split(r"(<[^>]+>)", html)
+    pile = []
+    for i, m in enumerate(morceaux):
+        if m.startswith("<"):
+            nom = re.match(r"</?\s*([a-zA-Z0-9]+)", m)
+            if nom:
+                n = nom.group(1).lower()
+                if n in SAUTER_BALISES:
+                    if m.startswith("</"):
+                        if n in pile: pile.remove(n)
+                    elif not m.endswith("/>"):
+                        pile.append(n)
+            continue
+        if pile or not m.strip():
+            continue
+        t = re.sub(r" ([:;?!»])", "\u00a0\\1", m)
+        t = t.replace("« ", "«\u00a0")
+        t = RE_COMPOSE.sub(r'<span class="insec">\1</span>', t)
+        morceaux[i] = t
+    return "".join(morceaux)
+
+
 def rendre_page(root, actif, title, description, canonical, ogtype, contenu, scripts):
     out = BASE
     out = out.replace("{{title}}", esc(title))
@@ -499,7 +529,7 @@ def rendre_page(root, actif, title, description, canonical, ogtype, contenu, scr
     out = out.replace("{{v_css}}", V_CSS)
     out = out.replace("{{v_main}}", V_MAIN)
     out = out.replace("{{scripts}}", scripts)
-    out = out.replace("{{content}}", contenu)
+    out = out.replace("{{content}}", typographie(contenu))
     out = out.replace("{{actif}}", actif)
     out = out.replace("{{jsonld}}", JSONLD_ASSOCIATION)
     return out

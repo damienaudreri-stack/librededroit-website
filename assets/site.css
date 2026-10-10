@@ -1846,3 +1846,26 @@ h1.kicker { font-family: var(--sans); letter-spacing: normal; line-height: 1.3; 
 .section-zone .titre .sans-cesure { white-space: nowrap; }
 /* Sensibilisation : légende de la photo d'en-tête centrée sous l'image */
 .hero-sensi .hero-page-photo figcaption, .hero-sensi figcaption { text-align: center; }
+
+/* ===== Optimisations téléphone (audit 10/2026) ===== */
+/* Mots composés (Nouvelle-Aquitaine, Willem-Dupau...) jamais coupés au trait d'union */
+.insec { white-space: nowrap; }
+/* Dans un conteneur flex (questions de FAQ...), le mot composé reste dans le même bloc de texte */
+.faq summary { display: block; position: relative; padding-right: 56px; }
+.faq summary::after { position: absolute; right: 24px; top: 50%; margin-top: -0.6em; }
+@media (max-width: 600px) {
+  /* Réseaux sociaux : vignette à gauche, texte à droite, au lieu d'images pleine largeur */
+  .asso-card:has(.reel-cover) { display: grid; grid-template-columns: 92px 1fr; column-gap: 16px; align-items: start; padding: 14px; }
+  .asso-card .reel-cover { grid-row: 1 / span 3; width: 92px; height: 140px; object-fit: cover; margin: 0; border-radius: 12px; }
+  .asso-card .linkedin-cover { aspect-ratio: auto; display: grid; place-items: center; }
+  .asso-card:has(.reel-cover) h3 { margin-top: 4px; }
+  .asso-card:has(.reel-cover) p { margin-bottom: 8px; }
+  /* La direction (bas de Notre histoire) : portrait à gauche plutôt qu'en pleine largeur */
+  .team-bands-bas .team-band { flex-direction: row; min-height: 0; height: 150px; }
+  .team-bands-bas .team-band .team-band-photo { flex: 0 0 38%; aspect-ratio: auto; }
+  .team-bands-bas .team-band-photo img { object-position: 50% 25%; }
+  /* Pas de zoom automatique de l'iPhone sur les champs de fichier */
+  .field-fichier input[type="file"] { font-size: 16px; }
+}
+.team-bands-bas .photo-zoe img { transform: scale(1.32); transform-origin: 50% 38%; }
+.hero-404 .lien-fleche { padding: 10px 4px; }
