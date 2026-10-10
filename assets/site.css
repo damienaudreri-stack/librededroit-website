@@ -1533,3 +1533,7 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
   .pos-grille, .pos-valeurs { grid-template-columns: 1fr; }
   .pos-valeur + .pos-valeur { border-left: none; padding-left: 0; border-top: 1px solid rgba(252,250,245,.16); padding-top: 24px; }
 }
+/* Notre histoire : marges réduites autour de « Notre positionnement » et avant « La direction » */
+.page-histoire .hero-apropos { padding-bottom: clamp(32px, 4vw, 56px); }
+.page-histoire main .section.pos-cartes { padding: clamp(48px, 6vw, 84px) 0; }
+.page-histoire main .section.pos-cartes + .section { padding-top: clamp(48px, 6vw, 84px); }
