@@ -79,8 +79,8 @@ TEMOIGNAGES_SENSI = [
 ]
 
 TEMOIGNAGES_ACCOMP = [
-    ("Marie", "42 ans", "Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats l'ont accompagnée pour divorcer, se protéger et protéger ses enfants."),
-    ("Chloé", "22 ans", "Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats ont engagé un recours en vue d'un procès et de la condamnation de son agresseur."),
+    ("Marie", "42 ans", "Victime de violences conjugales, Marie a été suivie au quotidien. Nos avocats partenaires l'ont accompagnée pour divorcer, se protéger et protéger ses enfants."),
+    ("Chloé", "22 ans", "Sa plainte pour agression sexuelle avait été classée sans suite. Nous l'avons aidée à récupérer son dossier, et nos avocats partenaires ont engagé un recours en vue d'un procès et de la condamnation de son agresseur."),
     ("Yasmine", "19 ans", "Face à des violences intrafamiliales, Yasmine bénéficie d'un suivi psychologique régulier et d'une stratégie de protection mise en place directement avec elle, pour assurer sa sécurité au plus vite. Notre équipe reste à ses côtés à chaque étape."),
     ("Maylis", "25 ans", "Après un viol, Maylis a reçu une information juridique claire sur la suite de sa plainte, un suivi psychologique, et notre soutien dans l'attente de la décision sur les poursuites."),
 ]
