@@ -1537,3 +1537,8 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .page-histoire .hero-apropos { padding-bottom: clamp(32px, 4vw, 56px); }
 .page-histoire main .section.pos-cartes { padding: clamp(48px, 6vw, 84px) 0; }
 .page-histoire main .section.pos-cartes + .section { padding-top: clamp(48px, 6vw, 84px); }
+/* Notre histoire : texte d'introduction justifié, avec césure française pour éviter les grands blancs entre les mots */
+.apropos-texte p.intro { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; hyphenate-limit-chars: 7 3 3; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
+@media (max-width: 600px) { .apropos-texte p.intro { text-align: left; hyphens: manual; -webkit-hyphens: manual; } }
+.apropos-texte p.intro { font-size: 18.5px; line-height: 1.65; hyphenate-limit-chars: 6 3 2; }
+.sans-cesure { hyphens: manual; -webkit-hyphens: manual; }
