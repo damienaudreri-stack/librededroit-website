@@ -295,8 +295,8 @@
 
   // --- Fondements interactifs (Sensibilisation) : clic, fleches clavier, et
   // defilement automatique toutes les 6 s. Une minuterie fait avancer les onglets
-  // et relance la barre doree a chaque etape ; survol, focus et sortie d'ecran
-  // mettent minuterie ET barre en pause ensemble (reprise la ou elles en etaient).
+  // et relance la barre doree a chaque etape ; seule la sortie d'ecran met
+  // minuterie ET barre en pause ensemble (reprise la ou elles en etaient).
   // Arret definitif des que la personne choisit un onglet. Coupe si mouvement reduit.
   // Sans JS : les 4 blocs restent affiches les uns sous les autres.
   document.querySelectorAll('[data-temps]').forEach(function (boite) {
@@ -360,10 +360,7 @@
         if (c !== null) { e.preventDefault(); choisir(c, true); }
       });
     });
-    boite.addEventListener('mouseenter', function () { survol = true; suspendre(); });
-    boite.addEventListener('mouseleave', function () { survol = false; reprendre(); });
-    boite.addEventListener('focusin', function () { survol = true; suspendre(); });
-    boite.addEventListener('focusout', function (e) { if (!boite.contains(e.relatedTarget)) { survol = false; reprendre(); } });
+    // Pas de pause au survol : la barre continue meme souris sur les cadres.
     montrer(0);
     boite.classList.add('temps-pause');
     if ('IntersectionObserver' in window) {
