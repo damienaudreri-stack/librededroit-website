@@ -1545,30 +1545,3 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 /* Pas de césure sur le site : justification sans trait d'union, lignes équilibrées */
 .apropos-texte p.intro { hyphens: manual; -webkit-hyphens: manual; text-wrap: pretty; }
 .apropos-texte p.intro { font-size: 18px; }
-
-/* --- Notre histoire : présentation animée de l'équipe dans l'encadré photo.
-   Cofondateurs, puis membres un par un (rythme qui accélère), puis mosaïque finale.
-   Sans JS ou en mouvement réduit : la mosaïque s'affiche directement. --- */
-.equipe-anim { position: relative; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--marine-fonce); box-shadow: 0 30px 70px -36px rgba(22,22,63,.45); }
-.equipe-solo { position: absolute; inset: 0; z-index: 2; display: none; }
-.solo-calque { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; opacity: 0; transition: opacity .45s ease; }
-.solo-calque.visible { opacity: 1; }
-.equipe-mosaique { list-style: none; position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(5, 1fr); gap: 3px; background: var(--marine-fonce); }
-.mosaique-tuile { overflow: hidden; }
-.mosaique-tuile img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; }
-.mosaique-fondateurs { grid-column: 1 / -1; grid-row: span 2; }
-.mosaique-fondateurs img { object-position: 50% 35%; }
-.mosaique-logo { background: var(--marine); display: flex; align-items: center; justify-content: center; }
-.mosaique-logo-img { width: 70%; aspect-ratio: 1386 / 924; background: var(--creme); -webkit-mask: url('img/logo-icon.png') center / contain no-repeat; mask: url('img/logo-icon.png') center / contain no-repeat; }
-/* Séquence animée (classe posée par main.js) */
-.equipe-anim.en-sequence .equipe-solo { display: block; }
-.equipe-anim.en-sequence .mosaique-tuile { opacity: 0; transform: scale(.92); transition: opacity .5s ease, transform .6s var(--ease-out); }
-.equipe-anim.en-sequence .mosaique-tuile.posee { opacity: 1; transform: none; }
-.equipe-anim.en-sequence.mosaique-prete .equipe-solo { opacity: 0; transition: opacity .6s ease; }
-@media (max-width: 900px) { .equipe-anim { max-width: 360px; margin: 0 auto; width: 100%; } }
-
-/* Équipe animée v2 : mosaïque de portraits individuels, cases toutes identiques
-   (3 par ligne ; la dernière ligne incomplète est centrée). */
-.equipe-mosaique { display: flex; flex-wrap: wrap; justify-content: center; align-content: stretch; gap: 3px; }
-.equipe-mosaique .mosaique-tuile { flex: 0 0 calc((100% - 6px) / 3); height: calc((100% - 9px) / 4); }
-.equipe-anim.en-sequence.survitesse .solo-calque { transition: none; }
