@@ -372,4 +372,19 @@
       }, { threshold: 0.35 }).observe(boite);
     } else { visible = true; reprendre(); }
   });
+
+  // --- Nous rejoindre : « Candidater à ce poste » présélectionne le poste dans le formulaire ---
+  // L'ancre #candidature fait ensuite défiler la page (fonctionne aussi sans JS).
+  var selectPoste = document.getElementById('cand-poste');
+  if (selectPoste) {
+    document.querySelectorAll('a[data-poste]').forEach(function (lien) {
+      lien.addEventListener('click', function () {
+        var valeur = lien.getAttribute('data-poste');
+        var existe = Array.prototype.some.call(selectPoste.options, function (o) { return o.value === valeur; });
+        if (!existe) return;
+        selectPoste.value = valeur;
+        selectPoste.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
 })();

@@ -383,7 +383,7 @@ PAGES = [
         "fichier": "nous-rejoindre.html", "actif": "rejoindre", "src": "nous-rejoindre.html",
         "title": "Nous rejoindre, devenir bénévole | LibredeDroit",
         "description": "LibredeDroit cherche de nouveaux bénévoles pour ses pôles sensibilisation, aide aux victimes, partenariats, communication et coordination. Aucune expérience requise, nous te formons.",
-        "loc": "/nous-rejoindre.html", "scripts": "",
+        "loc": "/nous-rejoindre.html", "scripts": f'  <script src="assets/forms.js?v={V_FORMS}" defer></script>',
     },
     {
         "fichier": "don.html", "actif": "don", "src": "don.html",

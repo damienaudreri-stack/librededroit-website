@@ -1559,3 +1559,78 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
   .hero-apropos .apropos-texte p.intro { animation-delay: .14s; }
   .hero-apropos .apropos-texte p.intro + p.intro { animation-delay: .26s; }
 }
+/* ==========================================================================
+   Nous rejoindre : surtitre de page, marges, postes ouverts, candidature
+   ========================================================================== */
+/* Surtitre « Devenir bénévole » traité comme les autres surtitres de page */
+.page-rejoindre .hero .kicker-page { display: block; font-size: clamp(17px, 1.8vw, 21px); font-weight: 600; margin-bottom: 14px; }
+@media (prefers-reduced-motion: no-preference) {
+  .page-rejoindre .hero .kicker-page, .page-rejoindre .hero h1, .page-rejoindre .hero p.intro { animation: ldMonte .9s var(--ease-out) both; }
+  .page-rejoindre .hero h1 { animation-delay: .12s; }
+  .page-rejoindre .hero p.intro { animation-delay: .24s; }
+  .page-rejoindre .hero p.intro + p.intro { animation-delay: .34s; }
+}
+/* Page plus compacte */
+.page-rejoindre main .section { padding: clamp(48px, 6vw, 84px) 0; }
+.page-rejoindre main .hero { padding-bottom: clamp(32px, 4vw, 56px); }
+
+/* Fiches de poste */
+.postes-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
+@media (max-width: 960px) { .postes-grille { grid-template-columns: 1fr; max-width: 680px; margin: 0 auto; } }
+.poste-carte { display: flex; flex-direction: column; background: var(--surface); border-radius: 20px; border-top: 3px solid var(--marine); padding: 28px; box-shadow: var(--ombre); min-width: 0; }
+.poste-tete { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.poste-picto { flex: none; width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; background: var(--lavande); color: var(--marine); }
+.poste-picto svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.poste-pole { font-size: 14px; font-weight: 600; color: var(--marine); }
+.poste-carte h3 { margin: 0 0 8px; }
+.poste-resume { color: var(--gris); font-size: 15.5px; }
+.poste-temps { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 14.5px; font-weight: 600; color: var(--texte); }
+.poste-temps svg { flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.poste-terracotta { border-top-color: var(--terracotta); }
+.poste-terracotta .poste-picto { background: var(--peche); color: var(--terracotta); }
+.poste-terracotta .poste-pole, .poste-terracotta .poste-temps svg { color: var(--terracotta); }
+.poste-marine .poste-temps svg { color: var(--marine); }
+.poste-dore { border-top-color: var(--dore); }
+.poste-dore .poste-picto { background: #F3E7C9; color: #8A6A1E; }
+.poste-dore .poste-pole, .poste-dore .poste-temps svg { color: #8A6A1E; }
+
+.poste-fiche { margin-top: 18px; border-top: 1px solid var(--ligne); }
+.poste-fiche summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; font-weight: 600; font-size: 15.5px; color: var(--marine); border-radius: 6px; }
+.poste-fiche summary::-webkit-details-marker { display: none; }
+.poste-fiche summary::after { content: '+'; font-size: 22px; font-weight: 400; line-height: 1; transition: transform .15s ease; }
+.poste-fiche[open] summary::after { transform: rotate(45deg); }
+.poste-fiche summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.poste-fiche-corps { padding-bottom: 8px; font-size: 15px; color: var(--gris); }
+.poste-fiche-corps > p { margin-bottom: 12px; }
+.poste-fiche-corps h4 { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--texte); margin: 18px 0 6px; }
+.poste-fiche-corps ul { margin: 0 0 4px; padding-left: 20px; list-style: disc; }
+.poste-fiche-corps li { margin-bottom: 6px; }
+.poste-fiche-corps li::marker { color: var(--gris3); }
+.poste-attente { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; color: var(--texte); }
+.poste-note { margin: 18px 0 4px; display: block; line-height: 1.55; }
+.poste-cta { align-self: flex-start; margin-top: 14px; }
+@media (prefers-reduced-motion: reduce) { .poste-fiche summary::after { transition: none; } }
+
+/* Formulaire de candidature */
+.field-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+@media (max-width: 560px) { .field-duo { grid-template-columns: 1fr; } }
+.field-fichier input[type="file"] { padding: 8px; background: var(--surface-2); border-style: dashed; cursor: pointer; font-size: 15px; color: var(--gris); max-width: 100%; }
+.field-fichier input[type="file"]::file-selector-button { margin-right: 12px; padding: 9px 16px; border: 1.5px solid var(--marine); border-radius: 999px; background: var(--surface); color: var(--marine); font: inherit; font-weight: 600; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+.field-fichier input[type="file"]:hover::file-selector-button { background: var(--marine); color: var(--creme); }
+.fichiers-aide { margin: -6px 0 20px; font-size: 13.5px; color: var(--gris); }
+.form-mention { margin-top: 14px; font-size: 13.5px; color: var(--gris); }
+.form-mention a { text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 480px) {
+  .field-fichier input[type="file"] { font-size: 14px; padding: 6px; }
+  .field-fichier input[type="file"]::file-selector-button { margin-right: 8px; padding: 8px 12px; }
+}
+/* Nous rejoindre : une fiche dépliée occupe toute la largeur, contenu sur deux colonnes */
+@media (min-width: 900px) {
+  .postes-grille { grid-auto-flow: dense; }
+  .poste-carte:has(.poste-fiche[open]) { grid-column: 1 / -1; order: -1; }
+  .poste-carte:has(.poste-fiche[open]) .poste-fiche-corps { column-count: 2; column-gap: 48px; }
+  .poste-carte:has(.poste-fiche[open]) .poste-fiche-corps > * { break-inside: avoid; }
+}
+/* Texte justifié : jamais sur mobile (colonne trop étroite, grands blancs) */
+@media (max-width: 600px) { .lead-justifie { text-align: left; } }
+.poste-fiche-corps h4 { break-after: avoid; }

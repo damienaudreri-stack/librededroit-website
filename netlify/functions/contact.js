@@ -1,4 +1,4 @@
-// Envoi des formulaires du site (aide, contact, sensibilisation) vers la boîte
+// Envoi des formulaires du site (aide, contact, sensibilisation, candidature) vers la boîte
 // de l'association, via Brevo.
 //
 // La clé Brevo et l'adresse de destination vivent dans les variables
@@ -15,10 +15,66 @@ const FORMULAIRES = {
   aide: { objet: "Demande d'aide", priorite: true },
   contact: { objet: 'Message de contact', priorite: false },
   sensibilisation: { objet: 'Demande de sensibilisation', priorite: false },
+  candidature: { objet: 'Candidature bénévole', priorite: false },
 };
 
 const CHAMPS_MAX = 20;
 const VALEUR_MAX_CARACTERES = 10000;
+
+// Pièces jointes : acceptées uniquement pour le formulaire de candidature.
+// Les fonctions Netlify plafonnent le corps de requête à 6 Mo : deux fichiers
+// de 2 Mo en base64 font environ 5,4 Mo, on refuse tout corps au-delà de 5,8 Mo.
+const CORPS_MAX_OCTETS = 5.8 * 1024 * 1024;
+const FICHIERS_MAX = 2;
+const FICHIER_MAX_OCTETS = 2 * 1024 * 1024;
+const BASE64_MAX_CARACTERES = Math.ceil(FICHIER_MAX_OCTETS / 3) * 4;
+const LIBELLES_FICHIERS = ['CV', 'Lettre de motivation'];
+// Signature binaire attendue selon l'extension.
+const SIGNATURES = {
+  pdf: [0x25, 0x50, 0x44, 0x46], // %PDF
+  docx: [0x50, 0x4b, 0x03, 0x04], // PK\x03\x04 (archive zip)
+  odt: [0x50, 0x4b, 0x03, 0x04],
+  doc: [0xd0, 0xcf, 0x11, 0xe0], // conteneur OLE2 (Word 97-2003)
+};
+
+function nettoyer_nom(nom) {
+  return String(nom)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^A-Za-z0-9._-]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^[._-]+/, '')
+    .slice(0, 100);
+}
+
+// Renvoie la liste des pièces jointes au format Brevo, ou null si invalide.
+function valider_fichiers(fichiers) {
+  if (!Array.isArray(fichiers) || fichiers.length < 1 || fichiers.length > FICHIERS_MAX) return null;
+  const libelles_vus = new Set();
+  const pieces = [];
+  for (const f of fichiers) {
+    if (!f || typeof f.libelle !== 'string' || typeof f.nom !== 'string' || typeof f.contenu !== 'string') return null;
+    if (!LIBELLES_FICHIERS.includes(f.libelle) || libelles_vus.has(f.libelle)) return null;
+    libelles_vus.add(f.libelle);
+
+    const contenu = f.contenu;
+    if (contenu.length === 0 || contenu.length > BASE64_MAX_CARACTERES) return null;
+    if (contenu.length % 4 !== 0 || !/^[A-Za-z0-9+/]+={0,2}$/.test(contenu)) return null;
+    const binaire = Buffer.from(contenu, 'base64');
+    if (binaire.length === 0 || binaire.length > FICHIER_MAX_OCTETS) return null;
+
+    const point = f.nom.lastIndexOf('.');
+    if (point <= 0) return null;
+    const extension = f.nom.slice(point + 1).toLowerCase();
+    const signature = SIGNATURES[extension];
+    if (!signature) return null;
+    if (binaire.length < signature.length || !signature.every((octet, i) => binaire[i] === octet)) return null;
+
+    const base = nettoyer_nom(f.nom.slice(0, point)) || 'document';
+    pieces.push({ name: `${f.libelle} - ${base}.${extension}`, content: contenu });
+  }
+  return pieces;
+}
 
 // Limite de débit par IP : le formulaire ne doit pas devenir un canon à spam
 // braqué sur la boîte de l'asso. Le compteur vit dans l'instance Netlify.
@@ -96,11 +152,16 @@ exports.handler = async function (event) {
     };
   }
 
+  if (typeof event.body === 'string' && Buffer.byteLength(event.body, 'utf8') > CORPS_MAX_OCTETS) {
+    return { statusCode: 413, headers: entetes, body: 'Requête trop volumineuse' };
+  }
+
   let formulaire;
   let champs;
   let piege;
+  let fichiers;
   try {
-    ({ formulaire, champs, piege } = JSON.parse(event.body));
+    ({ formulaire, champs, piege, fichiers } = JSON.parse(event.body));
   } catch {
     return { statusCode: 400, headers: entetes, body: 'Invalid JSON' };
   }
@@ -116,6 +177,21 @@ exports.handler = async function (event) {
   }
   if (!Array.isArray(champs) || champs.length === 0 || champs.length > CHAMPS_MAX) {
     return { statusCode: 400, headers: entetes, body: 'Champs invalides' };
+  }
+
+  // Pièces jointes : seulement pour la candidature, où le CV est obligatoire.
+  let pieces_jointes = null;
+  if (fichiers !== undefined) {
+    if (formulaire !== 'candidature') {
+      return { statusCode: 400, headers: entetes, body: 'Pièce jointe non acceptée' };
+    }
+    pieces_jointes = valider_fichiers(fichiers);
+    if (!pieces_jointes) {
+      return { statusCode: 400, headers: entetes, body: 'Pièce jointe invalide' };
+    }
+  }
+  if (formulaire === 'candidature' && !(pieces_jointes && pieces_jointes.some((p) => p.name.startsWith('CV - ')))) {
+    return { statusCode: 400, headers: entetes, body: 'Pièce jointe invalide' };
   }
 
   const propres = champs
@@ -157,6 +233,10 @@ exports.handler = async function (event) {
 
   if (email_repondre) {
     message.replyTo = { email: email_repondre };
+  }
+
+  if (pieces_jointes) {
+    message.attachment = pieces_jointes;
   }
 
   const reponse = await fetch('https://api.brevo.com/v3/smtp/email', {

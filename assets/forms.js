@@ -13,6 +13,24 @@
     return (el.value || '').trim();
   }
 
+  var EXTENSIONS = ['pdf', 'doc', 'docx', 'odt'];
+  var TAILLE_MAX = 2 * 1024 * 1024;
+
+  // Lit un fichier et renvoie son contenu en base64, sans le préfixe « data:...;base64, ».
+  function lireEnBase64(fichier) {
+    return new Promise(function (resoudre, rejeter) {
+      var lecteur = new FileReader();
+      lecteur.onload = function () {
+        var res = String(lecteur.result || '');
+        var i = res.indexOf('base64,');
+        if (i === -1) { rejeter(new Error('lecture')); return; }
+        resoudre(res.slice(i + 7));
+      };
+      lecteur.onerror = function () { rejeter(new Error('lecture')); };
+      lecteur.readAsDataURL(fichier);
+    });
+  }
+
   function brancher(form) {
     var type = form.getAttribute('data-formulaire');
     var btn = form.querySelector('button[type="submit"]');
@@ -40,13 +58,46 @@
       });
 
       if (statut) { statut.textContent = ''; statut.classList.remove('err'); }
+
+      // Pièces jointes (formulaire de candidature) : contrôlées avant tout envoi.
+      var entrees = [];
+      var erreurFichier = '';
+      form.querySelectorAll('input[type="file"][data-fichier]').forEach(function (input) {
+        var f = input.files && input.files[0];
+        if (!f || erreurFichier) return;
+        var ext = (f.name.split('.').pop() || '').toLowerCase();
+        if (f.name.indexOf('.') === -1 || EXTENSIONS.indexOf(ext) === -1) {
+          erreurFichier = 'Le fichier « ' + f.name + ' » doit être au format PDF, Word ou OpenDocument.';
+        } else if (f.size > TAILLE_MAX) {
+          erreurFichier = 'Le fichier « ' + f.name + ' » dépasse 2 Mo.';
+        } else if (f.size === 0) {
+          erreurFichier = 'Le fichier « ' + f.name + ' » est vide.';
+        } else {
+          entrees.push({ libelle: input.getAttribute('data-fichier'), fichier: f });
+        }
+      });
+      if (erreurFichier) {
+        if (statut) { statut.classList.add('err'); statut.textContent = erreurFichier; }
+        return;
+      }
+
       if (btn) { btn.disabled = true; btn.textContent = 'Envoi en cours…'; }
 
-      fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ formulaire: type, champs: champs, piege: piege })
-      })
+      Promise.all(entrees.map(function (ent) {
+        return lireEnBase64(ent.fichier).then(function (contenu) {
+          return { libelle: ent.libelle, nom: ent.fichier.name, contenu: contenu };
+        });
+      }))
+        .then(function (fichiers) {
+          var donnees = { formulaire: type, champs: champs, piege: piege };
+          // Sans pièce jointe, la requête reste strictement identique à l'existant.
+          if (fichiers.length) donnees.fichiers = fichiers;
+          return fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(donnees)
+          });
+        })
         .then(function (r) {
           if (r.status === 200) {
             if (succes) {
