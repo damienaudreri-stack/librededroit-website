@@ -1545,3 +1545,10 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 /* Pas de césure sur le site : justification sans trait d'union, lignes équilibrées */
 .apropos-texte p.intro { hyphens: manual; -webkit-hyphens: manual; text-wrap: pretty; }
 .apropos-texte p.intro { font-size: 18px; }
+/* Notre histoire : portrait du président à côté de « Qui sommes-nous ? » (taille modérée) */
+.apropos-portrait { max-width: 300px; margin: 0 auto; text-align: center; }
+.apropos-portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%; border-radius: 24px; box-shadow: 0 24px 50px -28px rgba(22,22,63,.4); }
+.apropos-portrait figcaption { margin-top: 14px; display: flex; flex-direction: column; gap: 2px; }
+.apropos-portrait figcaption strong { font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--texte); }
+.apropos-portrait figcaption span { font-size: 15px; color: var(--gris); }
+@media (max-width: 900px) { .apropos-portrait { max-width: 240px; } }
