@@ -1502,3 +1502,6 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 }
 /* Barre dorée des fondements : en pause au survol, au focus et hors écran (sans se réinitialiser) */
 .temps-pause .temps-onglet.en-cours .temps-barre { animation-play-state: paused; }
+/* Accompagnement : la description de chaque onglet prend toute la largeur des cartes */
+.onglet-panneau .section-head.wide { max-width: none; }
+.onglet-panneau .section-head .lead { max-width: none; }
