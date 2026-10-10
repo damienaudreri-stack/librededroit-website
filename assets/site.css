@@ -1552,3 +1552,10 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 .apropos-portrait figcaption strong { font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--texte); }
 .apropos-portrait figcaption span { font-size: 15px; color: var(--gris); }
 @media (max-width: 900px) { .apropos-portrait { max-width: 240px; } }
+/* Notre histoire : « Qui sommes-nous ? » comme les surtitres de page (dégradé animé, même taille, entrée en cascade) */
+.hero-apropos .kicker-page { display: block; font-size: clamp(17px, 1.8vw, 21px); font-weight: 600; margin-bottom: 14px; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-apropos .kicker-page, .hero-apropos .apropos-texte p.intro { animation: ldMonte .9s var(--ease-out) both; }
+  .hero-apropos .apropos-texte p.intro { animation-delay: .14s; }
+  .hero-apropos .apropos-texte p.intro + p.intro { animation-delay: .26s; }
+}
