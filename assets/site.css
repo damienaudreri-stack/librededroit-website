@@ -1505,3 +1505,31 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 /* Accompagnement : la description de chaque onglet prend toute la largeur des cartes */
 .onglet-panneau .section-head.wide { max-width: none; }
 .onglet-panneau .section-head .lead { max-width: none; }
+
+/* --- Notre histoire : « Notre positionnement » en trois cartes illustrées
+   + bandeau des deux valeurs (remplace la version manifeste). --- */
+.section.pos-cartes { background: var(--surface-2); }
+.pos-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); margin-bottom: clamp(20px, 2.5vw, 28px); }
+.pos-carte { position: relative; overflow: hidden; background: var(--surface); border-radius: 26px; padding: clamp(28px, 3vw, 40px); box-shadow: var(--ombre); transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out); }
+.pos-carte::after { content: ''; position: absolute; right: -60px; top: -60px; width: 180px; height: 180px; border-radius: 50%; opacity: .55; pointer-events: none; }
+.pos-carte:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -22px rgba(22,22,63,.3); }
+.pos-picto { position: relative; z-index: 1; width: 68px; height: 68px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+.pos-picto svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.pos-carte h3 { position: relative; z-index: 1; font-family: var(--serif); font-weight: 500; font-size: clamp(23px, 2.1vw, 28px); line-height: 1.2; margin-bottom: 12px; }
+.pos-carte p { position: relative; z-index: 1; color: var(--gris); font-size: 16.5px; line-height: 1.7; }
+.carte-terracotta .pos-picto { background: var(--chaud); color: var(--terracotta); }
+.carte-terracotta::after { background: var(--chaud); }
+.carte-marine .pos-picto { background: var(--lavande); color: var(--marine); }
+.carte-marine::after { background: var(--lavande); }
+.carte-dore .pos-picto { background: #F3E7C9; color: #8A6A1E; }
+.carte-dore::after { background: #F6EDD6; }
+.pos-valeurs { display: grid; grid-template-columns: 1fr 1fr; background: var(--marine-fonce); border-radius: 26px; padding: clamp(28px, 3.4vw, 44px); gap: clamp(24px, 4vw, 56px); }
+.pos-valeur + .pos-valeur { border-left: 1px solid rgba(252,250,245,.16); padding-left: clamp(24px, 4vw, 56px); }
+.pos-valeur .kicker { display: block; color: #E6B45A; margin-bottom: 6px; }
+.pos-valeur + .pos-valeur .kicker { color: #E0967B; }
+.pos-valeur h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2vw, 27px); color: var(--creme); margin-bottom: 10px; }
+.pos-valeur p { color: rgba(252,250,245,.78); line-height: 1.7; }
+@media (max-width: 900px) {
+  .pos-grille, .pos-valeurs { grid-template-columns: 1fr; }
+  .pos-valeur + .pos-valeur { border-left: none; padding-left: 0; border-top: 1px solid rgba(252,250,245,.16); padding-top: 24px; }
+}
