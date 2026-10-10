@@ -1634,3 +1634,14 @@ h2.manifeste-titre { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; lette
 /* Texte justifié : jamais sur mobile (colonne trop étroite, grands blancs) */
 @media (max-width: 600px) { .lead-justifie { text-align: left; } }
 .poste-fiche-corps h4 { break-after: avoid; }
+
+/* --- Nous rejoindre : étapes du recrutement (4 cartes numérotées reliées par un filet) --- */
+.recrut-etapes { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; position: relative; }
+.recrut-etapes::before { content: ''; position: absolute; left: 12%; right: 12%; top: 46px; height: 2px; background: linear-gradient(90deg, var(--marine), var(--terracotta)); opacity: .25; }
+.recrut-etape { position: relative; background: var(--surface); border-radius: 22px; padding: 26px 22px 24px; box-shadow: var(--ombre); text-align: center; }
+.recrut-n { width: 44px; height: 44px; margin: 0 auto 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 600; font-size: 20px; background: var(--marine); color: var(--creme); position: relative; z-index: 1; }
+.recrut-etape:last-child .recrut-n { background: var(--terracotta); }
+.recrut-etape h3 { font-size: 18px; margin-bottom: 8px; }
+.recrut-etape p { color: var(--gris); font-size: 15.5px; line-height: 1.6; }
+@media (max-width: 900px) { .recrut-etapes { grid-template-columns: 1fr 1fr; } .recrut-etapes::before { display: none; } }
+@media (max-width: 560px) { .recrut-etapes { grid-template-columns: 1fr; } }

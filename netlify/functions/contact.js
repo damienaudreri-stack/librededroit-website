@@ -179,7 +179,7 @@ exports.handler = async function (event) {
     return { statusCode: 400, headers: entetes, body: 'Champs invalides' };
   }
 
-  // Pièces jointes : seulement pour la candidature, où le CV est obligatoire.
+  // Pièces jointes : seulement pour la candidature.
   let pieces_jointes = null;
   if (fichiers !== undefined) {
     if (formulaire !== 'candidature') {
@@ -190,7 +190,8 @@ exports.handler = async function (event) {
       return { statusCode: 400, headers: entetes, body: 'Pièce jointe invalide' };
     }
   }
-  if (formulaire === 'candidature' && !(pieces_jointes && pieces_jointes.some((p) => p.name.startsWith('CV - ')))) {
+  // Candidature : CV et lettre de motivation obligatoires.
+  if (formulaire === 'candidature' && !(pieces_jointes && pieces_jointes.some((p) => p.name.startsWith('CV - ')) && pieces_jointes.some((p) => p.name.startsWith('Lettre de motivation - ')))) {
     return { statusCode: 400, headers: entetes, body: 'Pièce jointe invalide' };
   }
 
