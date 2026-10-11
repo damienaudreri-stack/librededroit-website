@@ -55,6 +55,8 @@
     lien.addEventListener('click', function (e) {
       e.preventDefault();
       localStorage.removeItem(CLE);
+      // Choix demandé explicitement : le bandeau réapparaît tout de suite après rechargement
+      try { sessionStorage.setItem('ld-cookies-immediat', '1'); } catch (err) {}
       location.reload();
     });
     var conteneur = pied.querySelector('.footer-bottom') || pied.querySelector('.wrap') || pied;
@@ -68,7 +70,18 @@
     if (choix === 'accepted') {
       chargerGA();
     } else if (choix !== 'refused') {
-      afficherBandeau();
+      // Le bandeau apparaît 15 secondes après l'arrivée sur le site (le délai
+      // continue d'une page à l'autre pendant la visite). Aucun cookie de mesure
+      // n'est déposé avant l'acceptation.
+      var DELAI = 15000, maintenant = Date.now(), arrivee = maintenant, immediat = false;
+      try {
+        arrivee = parseInt(sessionStorage.getItem('ld-arrivee'), 10) || maintenant;
+        sessionStorage.setItem('ld-arrivee', String(arrivee));
+        immediat = sessionStorage.getItem('ld-cookies-immediat') === '1';
+        sessionStorage.removeItem('ld-cookies-immediat');
+      } catch (err) {}
+      var reste = immediat ? 0 : Math.max(0, DELAI - (maintenant - arrivee));
+      setTimeout(afficherBandeau, reste);
     }
     ajouterLienGestion();
   });
