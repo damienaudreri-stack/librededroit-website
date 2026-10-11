@@ -1884,3 +1884,11 @@ h1.kicker { font-family: var(--sans); letter-spacing: normal; line-height: 1.3; 
   .stat-ligne-texte { text-align: center; font-size: 24px; line-height: 1.3; max-width: 22ch; }
   .stat-ligne-note { font-size: 15px; margin-top: 10px; }
 }
+/* Chiffre 54 % : même format que les quatre chiffres au-dessus (taille, libellé, note) */
+.stat.stat-large { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 40px; }
+.stat.stat-large .num { color: var(--dore); }
+.stat-large-txt .lbl { margin-top: 0; }
+@media (max-width: 600px) {
+  .stat.stat-large { display: block; margin-top: 32px; }
+  .stat-large-txt .lbl { margin-top: 14px; }
+}
