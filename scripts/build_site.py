@@ -160,13 +160,12 @@ def bloc_partenaires():
 # Bénévoles du bandeau défilant de Notre histoire (Damien et Zoé ont leurs fiches fixes au-dessus).
 # Photo absente = None : portrait anonyme.
 EQUIPE_BANDEAU = [
+    ("Lounes Belkacem", "Membre du pôle sensibilisation", "lounes-portrait.jpg"),
     ("Oriane Le Saëc", "Membre du pôle sensibilisation", "oriane-portrait.jpg"),
     ("Kamelya Harouach", "Membre du pôle sensibilisation", "kamelya-portrait.jpg"),
-    ("Yassine Myassal", "Membre du pôle sensibilisation", "yassine-portrait.jpg"),
-    ("Marie Gazeau", "Membre du pôle aide victimes et sensibilisation", "marie-portrait.jpg"),
-    ("Maureen Simphor", "Membre du pôle aide victimes et sensibilisation", "maureen-portrait.jpg"),
+    ("Marie Gazeau", "Membre du pôle accompagnement", "marie-portrait.jpg"),
+    ("Maureen Simphor", "Membre du pôle accompagnement", "maureen-portrait.jpg"),
     ("Pauline Willem-Dupau", "Membre du pôle sensibilisation", "pauline-portrait.jpg"),
-    ("Lounes Belkacem", "Membre du pôle sensibilisation", None),
     ("Lia Troadec", "Membre du pôle sensibilisation", "lia-portrait.jpg"),
     ("Clara Lamouroux", "Membre du pôle sensibilisation", "clara-portrait.jpg"),
     ("Emma Bauzerand", "Membre du pôle communication", "emma-portrait.jpg"),
